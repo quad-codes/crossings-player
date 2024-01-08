@@ -18,9 +18,19 @@ export const prepLettersGrid = (crosser) => {
 		const row = spots[key].row
 		const startCol = spots[key].col
 		const endCol = startCol + value.answer.length - 1
-		// console.log(value.answer, row, startCol, endCol)
 
 		range(startCol, endCol + 1).forEach((col, i) => {
+			letters[`${row}-${col}`] = value.answer[i]
+			guesses[`${row}-${col}`] = ""
+		})
+	})
+
+	forEach(down, (value, key) => {
+		const col = spots[key].col
+		const startRow = spots[key].row
+		const endRow = startRow + value.answer.length - 1
+
+		range(startRow, endRow + 1).forEach((row, i) => {
 			letters[`${row}-${col}`] = value.answer[i]
 			guesses[`${row}-${col}`] = ""
 		})
