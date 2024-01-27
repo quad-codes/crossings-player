@@ -8,8 +8,11 @@ import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context"
 import { Letter } from "@/types"
 import { prepLettersGrid } from "@/utils/prepLettersGrid"
 import { Keyboard } from "@/ui/Keyboard"
+import { useAnalytics } from "@segment/analytics-react-native"
 
 export default function Page() {
+	const { track } = useAnalytics()
+
 	return (
 		<View className="flex flex-1">
 			<Header />
@@ -23,7 +26,12 @@ export default function Page() {
 
 			<View className="flex-1" />
 			<SafeAreaView className="w-full h-[180px] bg-gray-300 justify-around mb-safe">
-				<Keyboard onKeyPress={(k) => console.log(k)} />
+				<Keyboard
+					onKeyPress={(k) => {
+						track("key pressed", { k })
+						console.log(k)
+					}}
+				/>
 			</SafeAreaView>
 		</View>
 	)

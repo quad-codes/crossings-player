@@ -4,14 +4,18 @@
   "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
     "ios": "expo start --ios",
-    "eas": "pnpx eas-cli@latest",
+    "android": "expo start --android",
     "doctor": "pnpx expo-doctor@latest",
     "doctor:fix": "pnpx expo@latest install --check",
-    "build:dev": "pnpm eas build --platform all --profile development"
+    "build:dev": "pnpm run eas build --platform all --profile development",
+    "devclient:ios": "pnpm run eas build:run -p ios",
+    "devclient:android": "pnpm run eas build:run -p android",
+    "eas": "pnpx eas-cli@latest"
   },
   "dependencies": {
+    "@segment/analytics-react-native": "^2.17.0",
+    "@segment/sovran-react-native": "^1.0.4",
     "expo": "^50.0.4",
     "expo-constants": "~15.4.5",
     "expo-dev-client": "^3.3.7",
@@ -24,6 +28,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.73.2",
+    "react-native-get-random-values": "^1.10.0",
     "react-native-reanimated": "~3.6.2",
     "react-native-safe-area-context": "4.8.2",
     "react-native-screens": "~3.29.0",
