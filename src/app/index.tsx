@@ -1,16 +1,22 @@
-import { View, Text } from "react-native"
+import { View, Text, TouchableHighlight, SafeAreaView } from "react-native"
 import { FlashList } from "@shopify/flash-list"
+import { Link } from "expo-router"
 
 export default function Page() {
 	return (
-		<FlashList
-			style={{ flex: 1 }}
-			data={["greek"]}
-			renderItem={({ item }) => (
-				<View>
-					<Text>{item}</Text>
-				</View>
-			)}
-		/>
+		<SafeAreaView className="flex flex-1 ">
+			<FlashList
+				style={{ flex: 1, backgroundColor: "red" }}
+				data={["greek"]}
+				estimatedItemSize={40}
+				renderItem={({ item }) => (
+					<Link href="/crosser/greek">
+						<View>
+							<Text>{item}</Text>
+						</View>
+					</Link>
+				)}
+			/>
+		</SafeAreaView>
 	)
 }

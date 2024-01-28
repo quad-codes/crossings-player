@@ -1,20 +1,22 @@
-import { Link } from "expo-router"
-import { View } from "react-native"
+import { Link, useLocalSearchParams } from "expo-router"
+import { View, Text } from "react-native"
 import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context"
 import { Keyboard } from "@/ui/Keyboard"
 import { useAnalytics } from "@segment/analytics-react-native"
 import { Crosser } from "@/ui/Crosser"
 
 export default function Page() {
+	const { id } = useLocalSearchParams()
+
 	const { track } = useAnalytics()
 
 	return (
 		<View className="flex flex-1">
 			<Header />
-			<Crosser />
+			<Text>id</Text>
 
 			<View className="flex-1" />
-			<SafeAreaView className="w-full h-[180px] bg-gray-300 justify-around mb-safe">
+			<SafeAreaView className="mb-safe h-[180px] w-full justify-around bg-gray-300">
 				<Keyboard
 					onKeyPress={(k) => {
 						track("key pressed", { k })
@@ -30,8 +32,8 @@ function Header() {
 	const { top } = useSafeAreaInsets()
 	return (
 		<View style={{ paddingTop: top }}>
-			<View className="px-4 lg:px-6 h-14 flex items-center flex-row justify-between ">
-				<Link className="font-bold flex-1 items-center justify-center" href="#">
+			<View className="flex h-14 flex-row items-center justify-between px-4 lg:px-6 ">
+				<Link className="flex-1 items-center justify-center font-bold" href="#">
 					ACME
 				</Link>
 				<View className="flex flex-row gap-4 sm:gap-6">

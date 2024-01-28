@@ -47,10 +47,10 @@ export function Crosser({ data }: CrosserProps) {
 								highlightedRow === i && highlightedCol === j
 									? 2
 									: direction === "across" && highlightedRow === i
-									? 1
-									: direction === "down" && highlightedCol === j
-									? 1
-									: 0
+										? 1
+										: direction === "down" && highlightedCol === j
+											? 1
+											: 0
 							}
 							onPress={() => void onPress(i, j)}
 						/>

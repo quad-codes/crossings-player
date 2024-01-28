@@ -14,17 +14,17 @@ export function Tile({ letter, guess, highlighted, onPress, spot }: TileProps) {
 		letter === undefined
 			? "bg-black"
 			: highlighted === 0
-			? "bg-white"
-			: highlighted === 1
-			? "bg-blue-200"
-			: "bg-yellow-400"
+				? "bg-white"
+				: highlighted === 1
+					? "bg-blue-200"
+					: "bg-yellow-400"
 
 	return (
 		<Pressable onPress={onPress} className="flex-1" disabled={letter === undefined}>
 			<View
-				className={`flex-1 border-hairline border-black items-center justify-center ${bgColor}`}
+				className={`flex-1 items-center justify-center border-hairline border-black ${bgColor}`}
 			>
-				<Text className="absolute top-0 left-0">{spot}</Text>
+				<Text className="absolute left-0 top-0">{spot}</Text>
 				{letter === undefined ? (
 					<View className="flex-1 bg-black" />
 				) : (

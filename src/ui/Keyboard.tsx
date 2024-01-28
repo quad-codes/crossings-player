@@ -8,18 +8,18 @@ interface KeyboardProps {
 
 export function Keyboard({ onKeyPress }: KeyboardProps) {
 	return (
-		<View className="w-full h-[180px] justify-around">
-			<View className="flex-row justify-center px-4 gap-[4px]">
+		<View className="h-[180px] w-full justify-around">
+			<View className="flex-row justify-center gap-[4px] px-4">
 				{["ε", "ρ", "τ", "υ", "θ", "ι", "ο", "π"].map((c) => (
 					<Key key={c} character={c} onPress={() => onKeyPress(c)} />
 				))}
 			</View>
-			<View className="flex-row justify-center px-4 gap-[4px]">
+			<View className="flex-row justify-center gap-[4px] px-4">
 				{["α", "σ", "δ", "φ", "γ", "η", "ξ", "κ", "λ"].map((c) => (
 					<Key key={c} character={c} onPress={() => onKeyPress(c)} />
 				))}
 			</View>
-			<View className="flex-row justify-center px-4 pr-0 gap-[4px]">
+			<View className="flex-row justify-center gap-[4px] px-4 pr-0">
 				{["ζ", "χ", "ψ", "ω", "β", "ν", "μ"].map((c) => (
 					<Key key={c} character={c} onPress={() => onKeyPress(c)} />
 				))}
@@ -41,7 +41,7 @@ function Key({ character, width = "1u", onPress }: KeyProps) {
 	const w = width === "1u" ? "w-[35px]" : "w-[50px]"
 	return (
 		<Pressable onPress={onPress}>
-			<View className={`${w} h-[45px] border items-center justify-center rounded`}>
+			<View className={`${w} h-[45px] items-center justify-center rounded border`}>
 				<Text className="text-2xl">{character.toUpperCase()}</Text>
 			</View>
 		</Pressable>
