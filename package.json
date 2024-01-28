@@ -16,6 +16,7 @@
   "dependencies": {
     "@segment/analytics-react-native": "^2.17.0",
     "@segment/sovran-react-native": "^1.0.4",
+    "@shopify/flash-list": "^1.6.3",
     "expo": "^50.0.4",
     "expo-constants": "~15.4.5",
     "expo-dev-client": "^3.3.7",
