@@ -8,6 +8,7 @@ const segmentClient = createClient({
 	trackAppLifecycleEvents: true,
 	trackDeepLinks: true,
 	storePersistor: segmentPersistor,
+	debug: false, // dont generate logs
 })
 
 export function Providers({ children }: PropsWithChildren) {

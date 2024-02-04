@@ -1,6 +1,7 @@
 import { Letter } from "@/types"
 import { Pressable, PressableProps, View } from "react-native"
 import { Text } from "@/design-system/Text"
+import { clsx } from "clsx"
 
 interface TileProps {
 	letter: Letter | ""
@@ -33,7 +34,10 @@ export function Tile({ letter, guess, highlighted, onPress, spot }: TileProps) {
 					<View className="flex-1 bg-black" />
 				) : (
 					<Text
-						className={`text-on-grid-background text-5xl ${guessCorrect ? "text-on-grid-background-correct" : ""}`}
+						className={clsx(
+							"text-on-grid-background text-5xl leading-snug",
+							guessCorrect && "text-on-grid-background-correct",
+						)}
 					>
 						{guess?.toUpperCase()}
 					</Text>
@@ -43,4 +47,3 @@ export function Tile({ letter, guess, highlighted, onPress, spot }: TileProps) {
 		</Pressable>
 	)
 }
-

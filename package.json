@@ -19,6 +19,7 @@
     "@segment/analytics-react-native": "^2.17.0",
     "@segment/sovran-react-native": "^1.0.4",
     "@shopify/flash-list": "^1.6.3",
+    "clsx": "^2.1.0",
     "expo": "^50.0.5",
     "expo-constants": "~15.4.5",
     "expo-dev-client": "^3.3.8",
