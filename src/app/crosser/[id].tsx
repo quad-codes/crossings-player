@@ -6,12 +6,13 @@ import { useAnalytics } from "@segment/analytics-react-native"
 import { Crosser } from "@/ui/Crosser"
 import { greek_7x7_20240108 } from "@/crossers"
 import { useState } from "react"
+import { istavrolexo_5x5_20240204 } from "@/crossers/istavrolexo-5x5-20240204"
 
 export default function Page() {
 	const { id } = useLocalSearchParams<{ id: string }>()
 	const { track } = useAnalytics()
 
-	const crosserData = greek_7x7_20240108
+	const crosserData = istavrolexo_5x5_20240204
 
 	const [highlightedRow, setHighlightedRow] = useState<number | undefined>(undefined)
 	const [highlightedCol, setHighlightedCol] = useState<number | undefined>(undefined)
@@ -30,7 +31,7 @@ export default function Page() {
 			/>
 
 			<View className="flex-1" />
-			<SafeAreaView className="mb-safe h-[180px] w-full  justify-around bg-gray-300">
+			<SafeAreaView className="mb-safe h-[180px] w-full justify-around bg-gray-300">
 				<Keyboard
 					onKeyPress={(k) => {
 						setGuesses({ ...guesses, [`${highlightedRow}-${highlightedCol}`]: k })

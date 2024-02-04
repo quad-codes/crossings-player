@@ -7,10 +7,10 @@ export default function Page() {
 	return (
 		<SafeAreaView className="bg-background flex flex-1">
 			<FlashList
-				data={["greek"]}
+				data={["greek", "istavrolexo_5x5_20240204"]}
 				estimatedItemSize={40}
 				renderItem={({ item }) => (
-					<Link href="/crosser/greek">
+					<Link href="/crosser/istavrolexo_5x5_20240204">
 						<View>
 							<Text className="text-4xl">{item}</Text>
 						</View>
