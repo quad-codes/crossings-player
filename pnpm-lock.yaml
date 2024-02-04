@@ -23,6 +23,9 @@ dependencies:
   expo-dev-client:
     specifier: ^3.3.8
     version: 3.3.8(expo@50.0.5)
+  expo-insights:
+    specifier: ~0.6.1
+    version: 0.6.1(expo@50.0.5)
   expo-linking:
     specifier: ~6.2.2
     version: 6.2.2(expo@50.0.5)
@@ -68,6 +71,9 @@ dependencies:
   react-native-screens:
     specifier: ~3.29.0
     version: 3.29.0(react-native@0.73.2)(react@18.2.0)
+  tailwind-merge:
+    specifier: ^2.2.1
+    version: 2.2.1
   tailwindcss:
     specifier: ^3.4.1
     version: 3.4.1(ts-node@10.9.2)
@@ -5261,6 +5267,10 @@ packages:
       semver: 7.5.4
     dev: false
 
+  /expo-eas-client@0.11.2:
+    resolution: {integrity: sha512-SY7rVFxb4ut/OMTgR7A39Jg+8+hXwQNRpZd+RBpB+B5XV2STj/pWXHnGFhBayEF4umI4SxrOvisY90rlPWVO9Q==}
+    dev: false
+
   /expo-file-system@16.0.5(expo@50.0.5):
     resolution: {integrity: sha512-JpKMbKfwTaMCbwUwq7MwcSbPR7r+IqZEL3RFam3ClPHDtKLnlEoywREeaDsWjSZb7dS25hG3WqXspfTuugCDvg==}
     peerDependencies:
@@ -5276,6 +5286,15 @@ packages:
     dependencies:
       expo: 50.0.5(@babel/core@7.23.9)(@react-native/babel-preset@0.73.20)
       fontfaceobserver: 2.3.0
+    dev: false
+
+  /expo-insights@0.6.1(expo@50.0.5):
+    resolution: {integrity: sha512-0cCCKcFq7e7HME9uwVU5eE9LYEPnYEmTkE+LjJs/G15fnw+xK52jwx3p9nZcdI9lmZ23qBtqatlQKz/PMXSheQ==}
+    peerDependencies:
+      expo: '*'
+    dependencies:
+      expo: 50.0.5(@babel/core@7.23.9)(@react-native/babel-preset@0.73.20)
+      expo-eas-client: 0.11.2
     dev: false
 
   /expo-json-utils@0.12.3:
@@ -5730,6 +5749,7 @@ packages:
 
   /glob@6.0.4:
     resolution: {integrity: sha512-MKZeRNyYZAVVVG1oZeLaWie1uweH40m9AZwIwxyPbTSX4hHrVYSzLg0Ro5Z5R7XKkIX+Cc6oD1rqeDJnwsB8/A==}
+    requiresBuild: true
     dependencies:
       inflight: 1.0.6
       inherits: 2.0.4
@@ -7167,6 +7187,7 @@ packages:
   /ncp@2.0.0:
     resolution: {integrity: sha512-zIdGUrPRFTUELUvr3Gmc7KZ2Sw/h1PiVM0Af/oHB6zgnV1ikqSfRk+TOufi79aHYCW3NiOXmr1BP5nWbzojLaA==}
     hasBin: true
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -8233,6 +8254,7 @@ packages:
   /rimraf@2.4.5:
     resolution: {integrity: sha512-J5xnxTyqaiw06JjMftq7L9ouA448dw/E7dKghkP9WpKNuwmARNNg+Gk8/u5ryb9N/Yo2+z3MCwuqFK/+qPOPfQ==}
     hasBin: true
+    requiresBuild: true
     dependencies:
       glob: 6.0.4
     dev: false
@@ -8733,6 +8755,12 @@ packages:
   /supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+    dev: false
+
+  /tailwind-merge@2.2.1:
+    resolution: {integrity: sha512-o+2GTLkthfa5YUt4JxPfzMIpQzZ3adD1vLVkvKE1Twl9UAhGsEbIZhHHZVRttyW177S8PDJI3bTQNaebyofK3Q==}
+    dependencies:
+      '@babel/runtime': 7.23.9
     dev: false
 
   /tailwindcss@3.4.1(ts-node@10.9.2):

@@ -1,5 +1,6 @@
 import { Letter } from "@/types"
-import { Pressable, PressableProps, Text, View } from "react-native"
+import { Pressable, PressableProps, View } from "react-native"
+import { Text } from "@/design-system/Text"
 
 interface TileProps {
 	letter: Letter | ""

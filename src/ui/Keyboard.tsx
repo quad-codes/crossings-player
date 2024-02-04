@@ -1,4 +1,5 @@
-import { View, Text, Pressable } from "react-native"
+import { View, Pressable } from "react-native"
+import { Text } from "@/design-system/Text"
 
 export const BACKSPACE = "⌫"
 
@@ -41,7 +42,9 @@ function Key({ character, width = "1u", onPress }: KeyProps) {
 	const w = width === "1u" ? "w-[35px]" : "w-[50px]"
 	return (
 		<Pressable onPress={onPress}>
-			<View className={`${w} h-[45px] items-center justify-center rounded border`}>
+			<View
+				className={`${w} h-[45px] items-center justify-center rounded border dark:border-white`}
+			>
 				<Text className="text-2xl">{character.toUpperCase()}</Text>
 			</View>
 		</Pressable>
