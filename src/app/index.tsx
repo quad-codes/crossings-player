@@ -5,7 +5,7 @@ import { Link } from "expo-router"
 
 export default function Page() {
 	return (
-		<SafeAreaView className="flex flex-1">
+		<SafeAreaView className="bg-background flex flex-1">
 			<FlashList
 				data={["greek"]}
 				estimatedItemSize={40}

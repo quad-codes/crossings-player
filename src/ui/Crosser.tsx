@@ -33,7 +33,7 @@ export function Crosser({ data, guesses }: CrosserProps) {
 	}
 
 	return (
-		<View className=" border-2 border-black" style={{ width, height: width + 4 }}>
+		<View className="border-2 border-black" style={{ width, height: width + 4 }}>
 			{range(size[0]).map((_, i) => (
 				<View key={i} className="flex-row" style={{ height: width / size[0] }}>
 					{range(size[1]).map((_, j) => (

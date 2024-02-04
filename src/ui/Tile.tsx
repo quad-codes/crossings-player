@@ -15,21 +15,21 @@ export function Tile({ letter, guess, highlighted, onPress, spot }: TileProps) {
 		letter === undefined
 			? "bg-black"
 			: highlighted === 0
-				? "bg-white"
+				? "bg-grid-background"
 				: highlighted === 1
-					? "bg-blue-200"
-					: "bg-yellow-400"
+					? "bg-grid-extension"
+					: "bg-grid-selection"
 
 	return (
 		<Pressable onPress={onPress} className="flex-1" disabled={letter === undefined}>
 			<View
 				className={`flex-1 items-center justify-center border-hairline border-black ${bgColor}`}
 			>
-				<Text className="absolute left-0 top-0">{spot}</Text>
+				<Text className="text-on-grid-background absolute left-0 top-0">{spot}</Text>
 				{letter === undefined ? (
 					<View className="flex-1 bg-black" />
 				) : (
-					<Text className="text-5xl">{guess?.toUpperCase()}</Text>
+					<Text className="text-on-grid-background text-5xl">{guess?.toUpperCase()}</Text>
 				)}
 			</View>
 		</Pressable>

@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	:root {
+		--color-background: 255 255 255;
+		--color-on-background: 0 0 0;
+		--color-grid-background: 0 0 0;
+		--color-on-grid-background: 255 255 255;
+		--color-grid-selection: 250 204 21;
+		--color-grid-extension: 191 219 254;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-background: 0 0 0;
+		--color-on-background: 255 255 255;
+		--color-grid-background: 180 180 170;
+		--color-on-grid-background: 0 0 0;
+		--color-grid-selection: 133 77 14;
+		--color-grid-extension: 29 78 216;
+	}
+}

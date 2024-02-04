@@ -43,7 +43,7 @@ function Key({ character, width = "1u", onPress }: KeyProps) {
 	return (
 		<Pressable onPress={onPress}>
 			<View
-				className={`${w} h-[45px] items-center justify-center rounded border dark:border-white`}
+				className={`${w} border-on-background h-[45px] items-center justify-center rounded border`}
 			>
 				<Text className="text-2xl">{character.toUpperCase()}</Text>
 			</View>
