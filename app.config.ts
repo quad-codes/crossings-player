@@ -9,11 +9,11 @@ const config: ExpoConfig = {
 	version: v.version,
 	icon: "./assets/icon.png",
 	ios: {
-		bundleIdentifier: "is.pvin.crossings",
+		bundleIdentifier: "com.bypavlos.crossings",
 		buildNumber: String(v.build),
 	},
 	android: {
-		package: "is.pvin.crossings",
+		package: "com.bypavlos.crossings",
 		versionCode: v.build,
 	},
 	userInterfaceStyle: "automatic",
