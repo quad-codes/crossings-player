@@ -20,7 +20,11 @@
             "ios": {
                 "appleId": "pvinis@gmail.com",
                 "appleTeamId": "CAG2W9M777",
-                "ascAppId": "6477337585"
+                "ascAppId": "6477339034"
+            },
+            "android": {
+                "serviceAccountKeyPath": "../crossings-expo-88212e70c27d.json",
+                "track": "internal"
             }
         }
     }

@@ -12,7 +12,7 @@
     "build:prod": "pnpm run eas build --platform all --profile production",
     "devclient:ios": "pnpm run eas build:run -p ios",
     "devclient:android": "pnpm run eas build:run -p android",
-    "submit": "pnpm run eas submit",
+    "submit": "pnpm run eas submit --latest",
     "eas": "pnpx eas-cli@latest"
   },
   "dependencies": {

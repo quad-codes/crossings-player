@@ -3,7 +3,7 @@ import { ExpoConfig } from "expo/config"
 import v from "./versions.json"
 
 const config: ExpoConfig = {
-	name: "Καθημερινά Σταυρόλεξα",
+	name: "Σταυρόλεξο Τώρα",
 	slug: "crossings",
 	scheme: "crossings",
 	version: v.version,
