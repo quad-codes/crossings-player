@@ -11,17 +11,17 @@ export function Keyboard({ onKeyPress }: KeyboardProps) {
 	return (
 		<View className="h-[180px] w-full justify-around">
 			<View className="flex-row justify-center gap-[4px] px-4">
-				{["ε", "ρ", "τ", "υ", "θ", "ι", "ο", "π"].map((c) => (
+				{["Ε", "Ρ", "Τ", "Υ", "Θ", "Ι", "Ο", "Π"].map((c) => (
 					<Key key={c} character={c} onPress={() => onKeyPress(c)} />
 				))}
 			</View>
 			<View className="flex-row justify-center gap-[4px] px-4">
-				{["α", "σ", "δ", "φ", "γ", "η", "ξ", "κ", "λ"].map((c) => (
+				{["Α", "Σ", "Δ", "Φ", "Γ", "Η", "Ξ", "Κ", "Λ"].map((c) => (
 					<Key key={c} character={c} onPress={() => onKeyPress(c)} />
 				))}
 			</View>
 			<View className="flex-row justify-center gap-[4px] px-4 pr-0">
-				{["ζ", "χ", "ψ", "ω", "β", "ν", "μ"].map((c) => (
+				{["Ζ", "Χ", "Ψ", "Ω", "Β", "Ν", "Μ"].map((c) => (
 					<Key key={c} character={c} onPress={() => onKeyPress(c)} />
 				))}
 				<View className="ml-2">

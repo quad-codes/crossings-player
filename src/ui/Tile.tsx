@@ -20,6 +20,9 @@ export function Tile({ letter, guess, highlighted, onPress, spot }: TileProps) {
 					? "bg-grid-extension"
 					: "bg-grid-selection"
 
+	const guessWrong = letter !== undefined && guess !== undefined && letter !== guess
+	const guessCorrect = letter !== undefined && guess !== undefined && letter === guess
+
 	return (
 		<Pressable onPress={onPress} className="flex-1" disabled={letter === undefined}>
 			<View
@@ -29,8 +32,13 @@ export function Tile({ letter, guess, highlighted, onPress, spot }: TileProps) {
 				{letter === undefined ? (
 					<View className="flex-1 bg-black" />
 				) : (
-					<Text className="text-on-grid-background text-5xl">{guess?.toUpperCase()}</Text>
+					<Text
+						className={`text-on-grid-background text-5xl ${guessCorrect ? "text-on-grid-background-correct" : ""}`}
+					>
+						{guess?.toUpperCase()}
+					</Text>
 				)}
+				{guessWrong ? <View className="absolute h-[1px] w-[78px] -rotate-45 bg-red-500 " /> : null}
 			</View>
 		</Pressable>
 	)

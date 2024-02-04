@@ -11,6 +11,8 @@ module.exports = {
 				"on-background": "rgb(var(--color-on-background) / <alpha-value>)",
 				"grid-background": "rgb(var(--color-grid-background) / <alpha-value>)",
 				"on-grid-background": "rgb(var(--color-on-grid-background) / <alpha-value>)",
+				"on-grid-background-correct":
+					"rgb(var(--color-on-grid-background-correct) / <alpha-value>)",
 				"grid-selection": "rgb(var(--color-grid-selection) / <alpha-value>)",
 				"grid-extension": "rgb(var(--color-grid-extension) / <alpha-value>)",
 			},

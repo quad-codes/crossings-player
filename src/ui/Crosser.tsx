@@ -7,9 +7,20 @@ import { CrosserData } from "@/crossers/types"
 
 interface CrosserProps {
 	data: CrosserData
+	highlightedRow: number | undefined
+	highlightedCol: number | undefined
+	setHighlightedRow: (row: number) => void
+	setHighlightedCol: (col: number) => void
 }
 
-export function Crosser({ data, guesses }: CrosserProps) {
+export function Crosser({
+	data,
+	highlightedRow,
+	highlightedCol,
+	setHighlightedRow,
+	setHighlightedCol,
+	guesses,
+}: CrosserProps) {
 	const { size, spots } = data
 	const flippedSpots = reduce(spots, (acc, v, k) => ({ ...acc, [`${v.row}-${v.col}`]: k }), {})
 
@@ -19,9 +30,6 @@ export function Crosser({ data, guesses }: CrosserProps) {
 	const letters = cleanData.letters
 
 	const [direction, setDirection] = useState<"across" | "down">("across")
-
-	const [highlightedRow, setHighlightedRow] = useState<number | undefined>(undefined)
-	const [highlightedCol, setHighlightedCol] = useState<number | undefined>(undefined)
 
 	const onPress = (row: number, col: number) => {
 		if (row === highlightedRow && col === highlightedCol) {

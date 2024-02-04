@@ -13,20 +13,28 @@ export default function Page() {
 
 	const crosserData = greek_7x7_20240108
 
+	const [highlightedRow, setHighlightedRow] = useState<number | undefined>(undefined)
+	const [highlightedCol, setHighlightedCol] = useState<number | undefined>(undefined)
 	const [guesses, setGuesses] = useState({})
 
 	return (
 		<View className="flex flex-1">
 			<Header />
-			<Crosser data={crosserData} guesses={guesses} />
+			<Crosser
+				data={crosserData}
+				highlightedRow={highlightedRow}
+				highlightedCol={highlightedCol}
+				setHighlightedRow={setHighlightedRow}
+				setHighlightedCol={setHighlightedCol}
+				guesses={guesses}
+			/>
 
 			<View className="flex-1" />
-			<SafeAreaView className="mb-safe h-[180px] w-full justify-around bg-gray-300">
+			<SafeAreaView className="mb-safe h-[180px] w-full  justify-around bg-gray-300">
 				<Keyboard
 					onKeyPress={(k) => {
-						setGuesses({ ...guesses, [`${0}-${0}`]: k })
+						setGuesses({ ...guesses, [`${highlightedRow}-${highlightedCol}`]: k })
 						track("key pressed", { k })
-						console.log(k)
 					}}
 				/>
 			</SafeAreaView>
