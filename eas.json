@@ -16,6 +16,12 @@
         "production": {}
     },
     "submit": {
-        "production": {}
+        "production": {
+            "ios": {
+                "appleId": "pvinis@gmail.com",
+                "appleTeamId": "CAG2W9M777",
+                "ascAppId": "118413409"
+            }
+        }
     }
 }

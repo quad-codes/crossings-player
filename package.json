@@ -9,8 +9,10 @@
     "doctor": "pnpx expo-doctor@latest",
     "doctor:fix": "pnpx expo@latest install --check",
     "build:dev": "pnpm run eas build --platform all --profile development",
+    "build:prod": "pnpm run eas build --platform all --profile production",
     "devclient:ios": "pnpm run eas build:run -p ios",
     "devclient:android": "pnpm run eas build:run -p android",
+    "submit": "pnpm run eas submit",
     "eas": "pnpx eas-cli@latest"
   },
   "dependencies": {

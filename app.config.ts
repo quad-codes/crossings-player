@@ -5,6 +5,7 @@ const config: ExpoConfig = {
 	name: "crossings",
 	slug: "crossings",
 	scheme: "crossings",
+	icon: "./assets/icon.png",
 	ios: {
 		bundleIdentifier: "is.pvin.crossings",
 	},
