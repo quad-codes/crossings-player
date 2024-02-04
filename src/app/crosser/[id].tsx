@@ -4,21 +4,27 @@ import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context"
 import { Keyboard } from "@/ui/Keyboard"
 import { useAnalytics } from "@segment/analytics-react-native"
 import { Crosser } from "@/ui/Crosser"
+import { greek_7x7_20240108 } from "@/crossers"
+import { useState } from "react"
 
 export default function Page() {
-	const { id } = useLocalSearchParams()
-
+	const { id } = useLocalSearchParams<{ id: string }>()
 	const { track } = useAnalytics()
+
+	const crosserData = greek_7x7_20240108
+
+	const [guesses, setGuesses] = useState({})
 
 	return (
 		<View className="flex flex-1">
 			<Header />
-			<Text>id</Text>
+			<Crosser data={crosserData} guesses={guesses} />
 
 			<View className="flex-1" />
 			<SafeAreaView className="mb-safe h-[180px] w-full justify-around bg-gray-300">
 				<Keyboard
 					onKeyPress={(k) => {
+						setGuesses({ ...guesses, [`${0}-${0}`]: k })
 						track("key pressed", { k })
 						console.log(k)
 					}}

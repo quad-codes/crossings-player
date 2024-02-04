@@ -9,7 +9,7 @@ interface CrosserProps {
 	data: CrosserData
 }
 
-export function Crosser({ data }: CrosserProps) {
+export function Crosser({ data, guesses }: CrosserProps) {
 	const { size, spots } = data
 	const flippedSpots = reduce(spots, (acc, v, k) => ({ ...acc, [`${v.row}-${v.col}`]: k }), {})
 
@@ -17,7 +17,6 @@ export function Crosser({ data }: CrosserProps) {
 
 	const cleanData = prepLettersGrid(data)
 	const letters = cleanData.letters
-	const [guesses, setGuesses] = useState({})
 
 	const [direction, setDirection] = useState<"across" | "down">("across")
 
