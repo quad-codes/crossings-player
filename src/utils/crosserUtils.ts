@@ -1,5 +1,5 @@
-import { Letter } from "@/types"
-import { forEach, range } from "lodash"
+import { Direction, Letter } from "@/types"
+import { forEach, range, filter, reduce, pickBy } from "lodash"
 
 export const prepLettersGrid = (crosser) => {
 	const { size, spots, across, down } = crosser
@@ -37,4 +37,37 @@ export const prepLettersGrid = (crosser) => {
 	})
 
 	return { letters, guesses }
+}
+
+export const activeSpotForPosition = (
+	crosser,
+	row: number,
+	col: number,
+	direction: Direction,
+): number => {
+	const { spots } = crosser
+
+	const directionSpots = pickBy(spots, (v, k) => crosser[direction][k] !== undefined)
+
+	const flippedSpots = reduce(
+		directionSpots,
+		(acc, v, k) => ({ ...acc, [`${v.row}-${v.col}`]: k }),
+		{},
+	)
+
+	if (direction === "across") {
+		while (col >= 0) {
+			if (flippedSpots[`${row}-${col}`]) {
+				return flippedSpots[`${row}-${col}`]
+			}
+			col--
+		}
+	} else {
+		while (row >= 0) {
+			if (flippedSpots[`${row}-${col}`]) {
+				return flippedSpots[`${row}-${col}`]
+			}
+			row--
+		}
+	}
 }

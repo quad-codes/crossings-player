@@ -1,12 +1,19 @@
 import { Link, useLocalSearchParams } from "expo-router"
-import { View, Text } from "react-native"
+import { View } from "react-native"
 import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context"
 import { Keyboard } from "@/ui/Keyboard"
 import { useAnalytics } from "@segment/analytics-react-native"
 import { Crosser } from "@/ui/Crosser"
-import { greek_7x7_20240108 } from "@/crossers"
 import { useState } from "react"
 import { istavrolexo_5x5_20240204 } from "@/crossers/istavrolexo-5x5-20240204"
+import { Clue } from "@/ui/Clue"
+import { useAtom } from "jotai"
+import {
+	clueAtom,
+	directionAtom,
+	highlightedColAtom,
+	highlightedRowAtom,
+} from "@/utils/crosserScreenAtoms"
 
 export default function Page() {
 	const { id } = useLocalSearchParams<{ id: string }>()
@@ -14,24 +21,20 @@ export default function Page() {
 
 	const crosserData = istavrolexo_5x5_20240204
 
-	const [highlightedRow, setHighlightedRow] = useState<number | undefined>(undefined)
-	const [highlightedCol, setHighlightedCol] = useState<number | undefined>(undefined)
+	const [highlightedRow, setHighlightedRow] = useAtom(highlightedRowAtom)
+	const [highlightedCol, setHighlightedCol] = useAtom(highlightedColAtom)
 	const [guesses, setGuesses] = useState({})
+
+	const [clue] = useAtom(clueAtom)
 
 	return (
 		<View className="flex flex-1">
 			<Header />
-			<Crosser
-				data={crosserData}
-				highlightedRow={highlightedRow}
-				highlightedCol={highlightedCol}
-				setHighlightedRow={setHighlightedRow}
-				setHighlightedCol={setHighlightedCol}
-				guesses={guesses}
-			/>
+			<Crosser data={crosserData} guesses={guesses} />
 
 			<View className="flex-1" />
-			<SafeAreaView className="mb-safe h-[180px] w-full justify-around bg-gray-300">
+			<SafeAreaView>
+				<Clue clue={clue} />
 				<Keyboard
 					onKeyPress={(k) => {
 						setGuesses({ ...guesses, [`${highlightedRow}-${highlightedCol}`]: k })

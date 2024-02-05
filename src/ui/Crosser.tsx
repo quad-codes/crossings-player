@@ -1,26 +1,26 @@
 import { range, reduce } from "lodash"
 import { Tile } from "@/ui/Tile"
-import { useState } from "react"
 import { View, useWindowDimensions } from "react-native"
-import { prepLettersGrid } from "@/utils/prepLettersGrid"
+import { prepLettersGrid, activeSpotForPosition } from "@/utils/crosserUtils"
 import { CrosserData } from "@/crossers/types"
+import { useAtom } from "jotai"
+import {
+	clueAtom,
+	directionAtom,
+	highlightedColAtom,
+	highlightedRowAtom,
+} from "@/utils/crosserScreenAtoms"
+import { useEffect } from "react"
 
 interface CrosserProps {
 	data: CrosserData
-	highlightedRow: number | undefined
-	highlightedCol: number | undefined
-	setHighlightedRow: (row: number) => void
-	setHighlightedCol: (col: number) => void
 }
 
-export function Crosser({
-	data,
-	highlightedRow,
-	highlightedCol,
-	setHighlightedRow,
-	setHighlightedCol,
-	guesses,
-}: CrosserProps) {
+export function Crosser({ data, guesses }: CrosserProps) {
+	const [highlightedRow, setHighlightedRow] = useAtom(highlightedRowAtom)
+	const [highlightedCol, setHighlightedCol] = useAtom(highlightedColAtom)
+	const [, setClue] = useAtom(clueAtom)
+
 	const { size, spots } = data
 	const flippedSpots = reduce(spots, (acc, v, k) => ({ ...acc, [`${v.row}-${v.col}`]: k }), {})
 
@@ -29,7 +29,7 @@ export function Crosser({
 	const cleanData = prepLettersGrid(data)
 	const letters = cleanData.letters
 
-	const [direction, setDirection] = useState<"across" | "down">("across")
+	const [direction, setDirection] = useAtom(directionAtom)
 
 	const onPress = (row: number, col: number) => {
 		if (row === highlightedRow && col === highlightedCol) {
@@ -39,6 +39,12 @@ export function Crosser({
 		setHighlightedRow(row)
 		setHighlightedCol(col)
 	}
+
+	useEffect(() => {
+		const spot = activeSpotForPosition(data, highlightedRow, highlightedCol, direction)
+
+		setClue(data[direction][spot].clue)
+	}, [highlightedRow, highlightedCol, direction])
 
 	return (
 		<View className="border-2 border-black" style={{ width, height: width + 4 }}>
