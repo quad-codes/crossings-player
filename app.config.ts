@@ -11,6 +11,7 @@ const config: ExpoConfig = {
 	ios: {
 		bundleIdentifier: "com.bypavlos.crossings",
 		buildNumber: String(v.build),
+		config: { usesNonExemptEncryption: false },
 	},
 	android: {
 		package: "com.bypavlos.crossings",
