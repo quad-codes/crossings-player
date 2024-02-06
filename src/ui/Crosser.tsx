@@ -43,6 +43,8 @@ export function Crosser({ data, guesses }: CrosserProps) {
 	useEffect(() => {
 		const spot = activeSpotForPosition(data, highlightedRow, highlightedCol, direction)
 
+		if (spot === null) return
+
 		setClue(data[direction][spot].clue)
 	}, [highlightedRow, highlightedCol, direction])
 

@@ -41,10 +41,14 @@ export const prepLettersGrid = (crosser) => {
 
 export const activeSpotForPosition = (
 	crosser,
-	row: number,
-	col: number,
+	row: number | null,
+	col: number | null,
 	direction: Direction,
-): number => {
+): number | null => {
+	if (row === null || col === null) {
+		return null
+	}
+
 	const { spots } = crosser
 
 	const directionSpots = pickBy(spots, (v, k) => crosser[direction][k] !== undefined)
@@ -70,4 +74,5 @@ export const activeSpotForPosition = (
 			row--
 		}
 	}
+	return null
 }
