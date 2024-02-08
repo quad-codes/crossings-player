@@ -27,22 +27,22 @@ export function Tile({ letter, guess, highlighted, onPress, spot }: TileProps) {
 	return (
 		<Pressable onPress={onPress} className="flex-1" disabled={letter === undefined}>
 			<View
-				className={`flex-1 items-center justify-center border-hairline border-black ${bgColor}`}
+				className={`flex-1 items-center justify-center border-hairline border-black ${bgColor} overflow-hidden`}
 			>
-				<Text className="text-on-grid-background absolute left-0 top-0">{spot}</Text>
+				{guessWrong ? <View className="absolute h-[1px] w-[200px] -rotate-45 bg-red-500 " /> : null}
+				<Text className="absolute left-0 top-0 text-on-grid-background">{spot}</Text>
 				{letter === undefined ? (
 					<View className="flex-1 bg-black" />
 				) : (
 					<Text
 						className={clsx(
-							"text-on-grid-background text-5xl leading-snug",
+							"text-5xl leading-snug text-on-grid-background",
 							guessCorrect && "text-on-grid-background-correct",
 						)}
 					>
 						{guess?.toUpperCase()}
 					</Text>
 				)}
-				{guessWrong ? <View className="absolute h-[1px] w-[78px] -rotate-45 bg-red-500 " /> : null}
 			</View>
 		</Pressable>
 	)
