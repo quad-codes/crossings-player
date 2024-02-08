@@ -2,9 +2,8 @@ import { createClient, AnalyticsProvider } from "@segment/analytics-react-native
 import { PropsWithChildren } from "react"
 import { segmentPersistor } from "./mmkvSegment"
 
-
 const segmentClient = createClient({
-	writeKey: process.env.EXPO_PUBLIC_SEGMENT_WRITE_KEY,
+	writeKey: process.env.EXPO_PUBLIC_SEGMENT_WRITE_KEY ?? "missing_key",
 	trackAppLifecycleEvents: true,
 	trackDeepLinks: true,
 	storePersistor: segmentPersistor,

@@ -1,20 +1,13 @@
 import { Link, useLocalSearchParams } from "expo-router"
-import { View } from "react-native"
+import { ScrollView, View } from "react-native"
 import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context"
 import { Keyboard } from "@/ui/Keyboard"
 import { useAnalytics } from "@segment/analytics-react-native"
 import { Crosser } from "@/ui/Crosser"
 import { useState } from "react"
-import { istavrolexo_5x5_20240204 } from "@/crossers/istavrolexo-5x5-20240204"
 import { Clue } from "@/ui/Clue"
 import { useAtom } from "jotai"
-import {
-	clueAtom,
-	directionAtom,
-	highlightedColAtom,
-	highlightedRowAtom,
-} from "@/utils/crosserScreenAtoms"
-import { Text } from "@/design-system/Text"
+import { highlightedColAtom, highlightedRowAtom } from "@/utils/crosserScreenAtoms"
 import * as crossers from "@/crossers"
 
 export default function Page() {
@@ -23,26 +16,25 @@ export default function Page() {
 
 	const crosserData = crossers[id]
 
-	const [highlightedRow, setHighlightedRow] = useAtom(highlightedRowAtom)
-	const [highlightedCol, setHighlightedCol] = useAtom(highlightedColAtom)
+	const [highlightedRow] = useAtom(highlightedRowAtom)
+	const [highlightedCol] = useAtom(highlightedColAtom)
 	const [guesses, setGuesses] = useState({})
 
 	return (
-		<View className="flex flex-1">
-			<Header />
-			<Crosser data={crosserData} guesses={guesses} />
+		<SafeAreaView style={{ flex: 1 }}>
+			{/* <Header /> */}
+			<ScrollView className="flex-1">
+				<Crosser data={crosserData} guesses={guesses} />
+			</ScrollView>
 
-			<View className="flex-1" />
-			<SafeAreaView>
-				<Clue />
-				<Keyboard
-					onKeyPress={(k) => {
-						setGuesses({ ...guesses, [`${highlightedRow}-${highlightedCol}`]: k })
-						track("key pressed", { k })
-					}}
-				/>
-			</SafeAreaView>
-		</View>
+			<Clue />
+			<Keyboard
+				onKeyPress={(k) => {
+					setGuesses({ ...guesses, [`${highlightedRow}-${highlightedCol}`]: k })
+					track("key pressed", { k })
+				}}
+			/>
+		</SafeAreaView>
 	)
 }
 
@@ -57,7 +49,7 @@ function Header() {
 				</Link>
 				<View className="flex flex-row gap-4 sm:gap-6">
 					<Link className="text-md font-medium hover:underline web:underline-offset-4" href="#">
-						Previous
+						Piso
 					</Link>
 					<Link className="text-md font-medium hover:underline web:underline-offset-4" href="#">
 						Next
