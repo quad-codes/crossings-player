@@ -31,4 +31,3 @@ export const istavrolexo_5x5_20240204: CrosserData = {
 		5: { clue: "Γιός του Αβραάμ", answer: "ΙΣΑΑΚ" },
 	},
 }
-
