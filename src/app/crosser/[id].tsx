@@ -21,7 +21,7 @@ export default function Page() {
 	const [guesses, setGuesses] = useState({})
 
 	return (
-		<SafeAreaView style={{ flex: 1 }}>
+		<View className="mt-st mb-sb flex-1">
 			<Header />
 			<ScrollView className="flex-1">
 				<Crosser data={crosserData} guesses={guesses} />
@@ -34,7 +34,7 @@ export default function Page() {
 					track("key pressed", { k })
 				}}
 			/>
-		</SafeAreaView>
+		</View>
 	)
 }
 

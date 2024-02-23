@@ -1,0 +1,1 @@
+import { atomWithMMKV } from "./mmkvJotai"

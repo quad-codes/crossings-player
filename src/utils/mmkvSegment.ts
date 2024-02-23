@@ -1,7 +1,7 @@
-import { storage } from "./mmkvStorage"
 import { Persistor } from "@segment/sovran-react-native"
+import { storage } from "./mmkvStorage"
 
-const getItem: Persistor["get"] = async <T>(key: string) => {
+const getItem: Persistor["get"] = async (key: string) => {
 	const value = storage.getString(key)
 	return value ? JSON.parse(value) : undefined
 }

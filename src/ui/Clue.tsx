@@ -1,7 +1,8 @@
 import { Pressable, View } from "react-native"
+import { useAtom } from "jotai"
+import { useMemo } from "react"
 import { Text } from "@/design-system/Text"
 import { clueAtom, directionAtom } from "@/utils/crosserScreenAtoms"
-import { useAtom } from "jotai"
 
 interface ClueProps {}
 

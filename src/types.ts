@@ -1,3 +1,5 @@
+export type DateString = `${number}-${number}-${number}` // keep it YYYY-MM-DD
+
 export type Direction = "across" | "down"
 
 export type Letter =
