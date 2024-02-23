@@ -7,7 +7,7 @@ const config: ExpoConfig = {
 	slug: "crossings",
 	scheme: "crossings",
 	version: v.version,
-	icon: "./assets/icon.png",
+	icon: "./assets/app-icon.png",
 	ios: {
 		bundleIdentifier: "com.bypavlos.crossings",
 		buildNumber: String(v.build),

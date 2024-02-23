@@ -1,5 +1,5 @@
+import { forEach, range, reduce, pickBy } from "lodash"
 import { Direction, Letter } from "@/types"
-import { forEach, range, filter, reduce, pickBy } from "lodash"
 
 export const prepLettersGrid = (crosser) => {
 	const { size, spots, across, down } = crosser

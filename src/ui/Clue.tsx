@@ -10,6 +10,7 @@ export function Clue({}: ClueProps) {
 	const [clue] = useAtom(clueAtom)
 	const [, setDirection] = useAtom(directionAtom)
 
+	const spots = useMemo(() => {
 	return (
 		<Pressable
 			onPress={() => setDirection((d) => (d === "across" ? "down" : "across"))}
