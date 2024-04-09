@@ -1,6 +1,6 @@
-import { Providers } from "@/utils/providers"
 import "../global.css"
 import { Slot } from "expo-router"
+import { Providers } from "@/utils/providers"
 
 export default function RootLayout() {
 	return (

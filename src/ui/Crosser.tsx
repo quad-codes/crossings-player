@@ -40,6 +40,7 @@ export function Crosser({ data, guesses }: CrosserProps) {
 		setHighlightedCol(col)
 	}
 
+	// remove useeffect
 	useEffect(() => {
 		const spot = activeSpotForPosition(data, highlightedRow, highlightedCol, direction)
 

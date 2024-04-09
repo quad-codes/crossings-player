@@ -1,14 +1,17 @@
 import { Link, useLocalSearchParams } from "expo-router"
 import { ScrollView, View } from "react-native"
-import { SafeAreaView } from "react-native-safe-area-context"
-import { Keyboard } from "@/ui/Keyboard"
 import { useAnalytics } from "@segment/analytics-react-native"
-import { Crosser } from "@/ui/Crosser"
-import { useState } from "react"
-import { Clue } from "@/ui/Clue"
 import { useAtom } from "jotai"
-import { highlightedColAtom, highlightedRowAtom } from "@/utils/crosserScreenAtoms"
-import * as crossers from "@/crossers"
+import { useEffect } from "react"
+import { Keyboard } from "@/ui/Keyboard"
+import { Crosser } from "@/ui/Crosser"
+import {
+	guessesAtom,
+	highlightedColAtom,
+	highlightedRowAtom,
+	directionAtom,
+} from "@/utils/crosserScreenAtoms"
+import { Clue } from "@/ui/Clue"
 
 export default function Page() {
 	const { id } = useLocalSearchParams<{ id: string }>()
@@ -16,12 +19,29 @@ export default function Page() {
 
 	const crosserData = crossers[id]
 
-	const [highlightedRow] = useAtom(highlightedRowAtom)
-	const [highlightedCol] = useAtom(highlightedColAtom)
-	const [guesses, setGuesses] = useState({})
+	const [highlightedRow, setHighlightedRow] = useAtom(highlightedRowAtom)
+	const [highlightedCol, setHighlightedCol] = useAtom(highlightedColAtom)
+	const [direction] = useAtom(directionAtom)
+	const [guesses, setGuesses] = useAtom(guessesAtom)
+
+	// useEffect(() => {
+	// 	if (guesses[`${highlightedRow}-${highlightedCol}`] !== undefined) {
+	// 		if (direction === "across") {
+	// 			const nextCol = highlightedCol + 1
+	// 			if (nextCol < crosserData.size[1]) {
+	// 				setHighlightedCol(nextCol)
+	// 			} else if (highlightedRow + 1 < crosserData.size[0]) {
+	// 				setHighlightedRow(highlightedRow + 1)
+	// 				setHighlightedCol(0)
+	// 			}
+	// 		} else {
+	// 			setHighlightedRow(highlightedRow + 1)
+	// 		}
+	// 	}
+	// }, [guesses, highlightedRow, highlightedCol])
 
 	return (
-		<View className="mt-st mb-sb flex-1">
+		<View className="mb-sb mt-st flex-1">
 			<Header />
 			<ScrollView className="flex-1">
 				<Crosser data={crosserData} guesses={guesses} />

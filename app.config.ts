@@ -9,7 +9,7 @@ const config: ExpoConfig = {
 	version: v.version,
 	icon: "./assets/app-icon.png",
 	ios: {
-		bundleIdentifier: "com.bypavlos.crossings",
+		bundleIdentifier: "codes.quad.crossings",
 		buildNumber: String(v.build),
 		config: { usesNonExemptEncryption: false },
 	},
