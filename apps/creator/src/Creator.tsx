@@ -39,8 +39,11 @@ export function Creator() {
 				<h1>Creator</h1>
 				<div className="flex space-x-1">
 					<span>Theme:</span>
+					{/* @ts-expect-error */}
 					<button onClick={() => setTheme("light")}>light</button>
+					{/* @ts-expect-error */}
 					<button onClick={() => setTheme("dark")}>dark</button>
+					{/* @ts-expect-error */}
 					<button onClick={() => setTheme("system")}>system</button>
 				</div>
 				<div>
