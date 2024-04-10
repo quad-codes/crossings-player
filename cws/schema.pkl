@@ -1,5 +1,0 @@
-module Crosser
-
-size: List
-
-wow: Int

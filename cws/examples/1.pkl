@@ -1,6 +1,0 @@
-amends "./Crosser.pkl"
-
-size { 5 5 }
-
-wow = 3
-
