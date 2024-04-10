@@ -1,11 +1,6 @@
 {
   "name": "crossings",
   "version": "0.1.0",
-  "main": "expo-router/entry",
-  "scripts": {
-    "start": "expo start",
-    "ios": "expo start --ios",
-    "android": "expo start --android",
     "doctor": "pnpx expo-doctor@latest",
     "doctor:fix": "pnpx expo@latest install --check",
     "build:dev": "pnpm run eas build --platform ios --profile development",
@@ -48,6 +43,9 @@
     "react-native-svg-transformer": "1.3.0",
     "tailwind-merge": "^2.2.1",
     "tailwindcss": "^3.4.1"
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "@babel/core": "^7.23.9",
@@ -55,14 +53,22 @@
     "@types/react": "~18.2.55",
     "@typescript-eslint/eslint-plugin": "7.0.2",
     "@typescript-eslint/parser": "7.0.2",
-    "eslint": "8.56.0",
     "eslint-config-universe": "12.0.0",
     "eslint-import-resolver-typescript": "3.6.1",
     "eslint-plugin-import": "2.29.1",
     "eslint-plugin-react": "7.33.2",
-    "prettier": "^3.2.5",
-    "prettier-plugin-tailwindcss": "^0.5.11",
     "ts-node": "^10.9.2",
-    "typescript": "^5.3.3"
+    "@eslint/js": "^9.0.0",
+    "eslint": "9.0.0",
+    "eslint-plugin-react": "^7.34.1",
+    "globals": "^15.0.0",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.13",
+    "typescript": "^5.4.4",
+    "typescript-eslint": "^7.6.0"
+  },
+  "author": "Pavlos Vinieratos <pvinis>",
+  "engines": {
+    "node": ">=20"
   }
 }
