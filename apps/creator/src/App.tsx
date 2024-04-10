@@ -8,11 +8,12 @@ import { Coord, Direction, Path, gridExport, spotsCalc, toCoord } from "./cw-log
 import { Input } from "./components/ui/input"
 import { Button } from "./components/ui/button"
 import { Tile } from "./Tile"
+import { Switch } from "./components/ui/switch"
 
 export function App() {
 	const [nRows, setNRows] = useState(5)
 	const [nCols, setNCols] = useState(5)
-	const [blackMode, setBlackMode] = useState(false)
+	const [deadMode, setDeadMode] = useState(false)
 	const [showSpots, setShowSpots] = useState(true)
 	const [debug, setDebug] = useState(false)
 	const [deads, setDeads] = useState<Coord[]>([])
@@ -62,8 +63,8 @@ export function App() {
 					</div>
 
 					<div className="flex items-center  space-x-2">
-						<Checkbox checked={blackMode} onCheckedChange={(v) => setBlackMode(!!v)} />
-						<Label>black mode</Label>
+						<Switch checked={deadMode} onCheckedChange={(v) => setDeadMode(!!v)} />
+						<Label>dead mode</Label>
 					</div>
 
 					<Tabs defaultValue="across" className="w-[400px]">
@@ -92,7 +93,7 @@ export function App() {
 										dead={deads.includes(coords)}
 										// @ts-expect-error
 										spot={spots[coords]}
-										blackMode={blackMode}
+										deadMode={deadMode}
 										nRows={nRows}
 										// @ts-expect-error
 										setDeads={setDeads}
@@ -112,12 +113,12 @@ export function App() {
 				</div>
 
 				<div className="flex items-center space-x-2">
-					<Checkbox checked={showSpots} onCheckedChange={(v) => setShowSpots(!!v)} />
+					<Switch checked={showSpots} onCheckedChange={(v) => setShowSpots(!!v)} />
 					<Label>show spots</Label>
 				</div>
 
 				<div className="flex items-center space-x-2">
-					<Checkbox checked={debug} onCheckedChange={(v) => setDebug(!!v)} id="debug" />
+					<Switch checked={debug} onCheckedChange={(v) => setDebug(!!v)} id="debug" />
 					<Label htmlFor="debug">debug</Label>
 				</div>
 				{debug && (

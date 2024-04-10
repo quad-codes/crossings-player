@@ -8,7 +8,7 @@ export function Tile({
 	cell,
 	dead,
 	spot,
-	blackMode,
+	deadMode,
 	setDeads,
 	deads,
 	letters,
@@ -25,7 +25,7 @@ export function Tile({
 	cell: Coord
 	dead: boolean
 	spot: Coord
-	blackMode: boolean
+	deadMode: boolean
 	setDeads: (deads: string[]) => void
 	deads: Coord[]
 	letters: Record<string, string>
@@ -42,7 +42,7 @@ export function Tile({
 	return (
 		<div
 			onClick={() => {
-				if (!blackMode) return
+				if (!deadMode) return
 
 				console.log("will black", cell)
 				if (dead) {
@@ -60,7 +60,7 @@ export function Tile({
 				selectedCell === cell && "border-yellow-500",
 			)}
 		>
-			{!dead && !blackMode && (
+			{!dead && !deadMode && (
 				<Input
 					autoFocus={cell === "0-0"}
 					ref={inputRef}
