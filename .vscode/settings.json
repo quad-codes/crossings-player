@@ -1,5 +1,14 @@
 {
 	"editor.formatOnSave": true,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"[svg]": { "editor.defaultFormatter": "jock.svg" }
+	"[svg]": {
+		"editor.defaultFormatter": "jock.svg"
+	},
+	"hjson-formatter.options": {
+		"quotes": "min",
+		"separator": false
+	},
+	"[hjson]": {
+		"editor.defaultFormatter": "Tanh.hjson-formatter"
+	}
 }

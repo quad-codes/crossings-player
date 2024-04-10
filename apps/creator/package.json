@@ -1,6 +1,6 @@
 {
   "name": "creator",
-  "version": "0.0.0",
+  "version": "0.5.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,8 +11,11 @@
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.0.4",
     "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-tabs": "^1.0.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "hjson": "^3.2.2",
     "lodash": "^4.17.21",
     "lucide-react": "^0.366.0",
     "react": "^18.2.0",
@@ -21,6 +24,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@types/hjson": "^2.4.6",
     "@types/lodash": "^4.17.0",
     "@types/react": "^18.2.75",
     "@types/react-dom": "^18.2.24",
