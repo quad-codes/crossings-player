@@ -1,4 +1,4 @@
-import { range, reduce } from "lodash"
+import { range } from "lodash"
 
 export type Coord = `${number}-${number}`
 export type Direction = "across" | "down"

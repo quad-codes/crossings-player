@@ -1,92 +1,13 @@
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import HJSON from "hjson"
-import { range, reduce, toUpper } from "lodash"
+import { range } from "lodash"
 import { createRef, useRef, useState } from "react"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "./components/ui/label"
-import { Coord, Direction, Path, gridExport, sameCol, sameRow, spotsCalc } from "./cw-logic"
+import { Coord, Direction, Path, gridExport, spotsCalc, toCoord } from "./cw-logic"
 import { Input } from "./components/ui/input"
-import { cn } from "./lib/utils"
 import { Button } from "./components/ui/button"
-
-function Tile({
-	cell,
-	dead,
-	spot,
-	blackMode,
-	setDeads,
-	deads,
-	letters,
-	setLetters,
-	nCols,
-	nRows,
-	selectedDirection,
-	selectedCell,
-	showSpots,
-	setSelectedCell,
-	inputRef,
-	inputRefs,
-}) {
-	return (
-		<div
-			onClick={() => {
-				if (!blackMode) return
-
-				console.log("will black", cell)
-				if (dead) {
-					setDeads(deads.filter((d) => d !== cell))
-				} else {
-					setDeads([...deads, cell].sort())
-				}
-			}}
-			className={cn(
-				"relative size-14 border-2 border-black flex items-center justify-center",
-				dead && "bg-black",
-				((selectedDirection === "across" && sameRow(cell, selectedCell)) ||
-					(selectedDirection === "down" && sameCol(cell, selectedCell))) &&
-					"border-green-600",
-				selectedCell === cell && "border-yellow-500",
-			)}
-		>
-			{!dead && !blackMode && (
-				<Input
-					autoFocus={cell === "0-0"}
-					ref={inputRef}
-					type="text"
-					className="size-10 text-center"
-					maxLength={1}
-					onFocus={(e) => {
-						setSelectedCell(cell)
-						e.target.select()
-					}}
-					value={letters[cell] || ""}
-					onChange={(e) => {
-						setLetters({ ...letters, [cell]: toUpper(e.nativeEvent.target.value) })
-						if (e.nativeEvent.target.value.length === 1) {
-							const [r, c] = cell.split("-").map(Number)
-							let index = r * nCols + c
-							if (selectedDirection === "across") {
-								index += 1
-							} else {
-								if (r === nRows - 1) {
-									index = 0 * nCols + c + 1
-								} else {
-									index += nCols
-								}
-							}
-							inputRefs.current[index].current.focus()
-						}
-					}}
-				/>
-			)}
-			{showSpots && (
-				<div className="absolute top-0 left-0">
-					<Label className="text-xs">{spot}</Label>
-				</div>
-			)}
-		</div>
-	)
-}
+import { Tile } from "./Tile"
 
 export function App() {
 	const [nRows, setNRows] = useState(5)
@@ -94,15 +15,17 @@ export function App() {
 	const [blackMode, setBlackMode] = useState(false)
 	const [showSpots, setShowSpots] = useState(true)
 	const [debug, setDebug] = useState(false)
-	const [deads, setDeads] = useState([])
+	const [deads, setDeads] = useState<Coord[]>([])
 
 	const [selectedCell, setSelectedCell] = useState<Coord>("0-0")
 	const [selectedDirection, setSelectedDirection] = useState<Direction>("across")
-	const [url, setUrl] = useState(null)
 	const [letters, setLetters] = useState<Record<Coord, string>>({})
 	const [clues, setClues] = useState<Record<Path, string>>({})
 	const inputRefs = useRef([])
+
+	// @ts-expect-error
 	inputRefs.current = range(nRows * nCols).map(
+		// @ts-expect-error
 		(ref, index) => (inputRefs.current[index] = createRef()),
 	)
 
@@ -121,7 +44,8 @@ export function App() {
 								id="rows"
 								placeholder="Rows"
 								value={nRows}
-								onChange={(e) => setNRows(e.nativeEvent.target.value)}
+								// @ts-expect-error
+								onChange={(e) => setNRows(e.nativeEvent.target!.value)}
 							/>
 						</div>
 						<div className="grid w-full max-w-sm items-center gap-1.5">
@@ -131,6 +55,7 @@ export function App() {
 								id="cols"
 								placeholder="Cols"
 								value={nCols}
+								// @ts-expect-error
 								onChange={(e) => setNCols(e.nativeEvent.target.value)}
 							/>
 						</div>
@@ -156,27 +81,32 @@ export function App() {
 				<div className="flex-col flex">
 					{range(nRows).map((i) => (
 						<div className="flex flex-row" key={`${i}`}>
-							{range(nCols).map((j) => (
-								<Tile
-									inputRef={inputRefs.current[i * nCols + j]}
-									key={`${i}-${j}`}
-									nCols={nCols}
-									cell={`${i}-${j}`}
-									dead={deads.includes(`${i}-${j}`)}
-									spot={spots[`${i}-${j}`]}
-									blackMode={blackMode}
-									nRows={nRows}
-									setDeads={setDeads}
-									deads={deads}
-									letters={letters}
-									setLetters={setLetters}
-									selectedDirection={selectedDirection}
-									selectedCell={selectedCell}
-									showSpots={showSpots}
-									setSelectedCell={setSelectedCell}
-									inputRefs={inputRefs}
-								/>
-							))}
+							{range(nCols).map((j) => {
+								const coords = toCoord(i, j)
+								return (
+									<Tile
+										inputRef={inputRefs.current[i * nCols + j]}
+										key={coords}
+										nCols={nCols}
+										cell={coords}
+										dead={deads.includes(coords)}
+										// @ts-expect-error
+										spot={spots[coords]}
+										blackMode={blackMode}
+										nRows={nRows}
+										// @ts-expect-error
+										setDeads={setDeads}
+										deads={deads}
+										letters={letters}
+										setLetters={setLetters}
+										selectedDirection={selectedDirection}
+										selectedCell={selectedCell}
+										showSpots={showSpots}
+										setSelectedCell={setSelectedCell}
+										inputRefs={inputRefs}
+									/>
+								)
+							})}
 						</div>
 					))}
 				</div>
@@ -251,9 +181,13 @@ export function App() {
 						<Label>{spot}</Label>
 						<Input
 							type="text"
+							// @ts-expect-error
 							value={clues[`${spot}-accross`]}
 							onChange={(e) =>
-								setClues({ ...clues, [`${spot}-across`]: e.nativeEvent.target.value })
+								setClues({
+									...clues,
+									[`${spot}-across`]: (e.nativeEvent.target as HTMLInputElement).value,
+								})
 							}
 						/>
 					</div>
@@ -265,7 +199,14 @@ export function App() {
 						<Input
 							type="text"
 							value={clues[`${spot}-down`]}
-							onChange={(e) => setClues({ ...clues, [`${spot}-down`]: e.nativeEvent.target.value })}
+							onChange={(e) => {
+								if (e.nativeEvent.target) {
+									setClues({
+										...clues,
+										[`${spot}-down`]: (e.nativeEvent.target as HTMLInputElement).value,
+									})
+								}
+							}}
 						/>
 					</div>
 				))}
