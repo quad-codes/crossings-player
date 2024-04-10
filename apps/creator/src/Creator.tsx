@@ -8,6 +8,7 @@ import { Input } from "./components/ui/input"
 import { Button } from "./components/ui/button"
 import { Tile } from "./Tile"
 import { Switch } from "./components/ui/switch"
+import { useTheme } from "./App"
 
 export function Creator() {
 	const [nRows, setNRows] = useState(5)
@@ -22,6 +23,7 @@ export function Creator() {
 	const [letters, setLetters] = useState<Record<Coord, string>>({})
 	const [clues, setClues] = useState<Record<Path, string>>({})
 	const inputRefs = useRef([])
+	const { setTheme } = useTheme()
 
 	// @ts-expect-error
 	inputRefs.current = range(nRows * nCols).map(
@@ -35,6 +37,12 @@ export function Creator() {
 		<div className="flex">
 			<div className="flex flex-1 flex-col">
 				<h1>Creator</h1>
+				<div className="flex space-x-1">
+					<span>Theme:</span>
+					<button onClick={() => setTheme("light")}>light</button>
+					<button onClick={() => setTheme("dark")}>dark</button>
+					<button onClick={() => setTheme("system")}>system</button>
+				</div>
 				<div>
 					<div className="flex">
 						<div className="grid w-full max-w-sm items-center gap-1.5">

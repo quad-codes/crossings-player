@@ -3,7 +3,7 @@ import { Creator } from "./Creator"
 
 type Theme = "dark" | "light" | "system"
 
-const ThemeProviderContext = createContext({ theme: "system" })
+const ThemeProviderContext = createContext({ theme: "system", setTheme: () => null })
 
 export function ThemeProvider({
 	children,
