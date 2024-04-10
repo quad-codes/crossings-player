@@ -52,7 +52,7 @@ export function Tile({
 				}
 			}}
 			className={cn(
-				"relative size-14 border-2 border-black flex items-center justify-center",
+				"relative flex size-14 items-center justify-center border-2 border-black",
 				dead && "bg-black",
 				((selectedDirection === "across" && sameRow(cell, selectedCell)) ||
 					(selectedDirection === "down" && sameCol(cell, selectedCell))) &&
@@ -95,7 +95,7 @@ export function Tile({
 				/>
 			)}
 			{showSpots && (
-				<div className="absolute top-0 left-0">
+				<div className="absolute left-0 top-0">
 					<Label className="text-xs">{spot}</Label>
 				</div>
 			)}
