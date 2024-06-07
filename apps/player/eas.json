@@ -1,31 +1,41 @@
 {
-    "cli": {
-        "version": ">= 7.1.0"
-    },
-    "build": {
-        "development": {
-            "developmentClient": true,
-            "distribution": "internal",
-            "ios": {
-                "simulator": true
-            }
-        },
-        "preview": {
-            "distribution": "internal"
-        },
-        "production": {}
-    },
-    "submit": {
-        "production": {
-            "ios": {
-                "appleId": "pvinis@gmail.com",
-                "appleTeamId": "CAG2W9M777",
-                "ascAppId": "6477339034"
-            },
-            "android": {
-                "serviceAccountKeyPath": "../crossings-expo-88212e70c27d.json",
-                "track": "internal"
-            }
-        }
-    }
+	"cli": {
+		"version": ">= 7.8.5",
+		"promptToConfigurePushNotifications": false
+	},
+	"build": {
+		"production": {
+			"pnpm": "9.0.6",
+			"ios": { "image": "latest" },
+			"android": { "image": "latest" }
+		},
+		"preview": {
+			"extends": "production",
+			"distribution": "internal"
+		},
+		"development": {
+			"extends": "production",
+			"developmentClient": true,
+			"distribution": "internal",
+			"ios": { "simulator": true }
+		},
+		"development-device": {
+			"extends": "production",
+			"developmentClient": true,
+			"distribution": "internal"
+		}
+	},
+	"submit": {
+		"production": {
+			"ios": {
+				"appleId": "pvinis@gmail.com",
+				"appleTeamId": "CAG2W9M777",
+				"ascAppId": "6477339034"
+			},
+			"android": {
+				"serviceAccountKeyPath": "../crossings-expo-88212e70c27d.json",
+				"track": "internal"
+			}
+		}
+	}
 }

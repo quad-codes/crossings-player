@@ -1,0 +1,21 @@
+#!/usr/bin/env perl
+
+
+use strict;
+use warnings;
+
+my $filename = './version.json';
+my $forced = $ARGV[0];
+
+# Read the JSON file
+open my $fh, '<', $filename or die "Could not read file '$filename' $!";
+my $json_text = do { local $/; <$fh> };
+close $fh;
+
+# Update the build number
+$json_text =~ s/"build"\s*:\s*(\d+)/"build": @{[ $forced ? $forced : $1 + 1 ]}/;
+
+# Write the updated JSON back to the file
+open $fh, '>', $filename or die "Could not write file '$filename' $!";
+print $fh $json_text;
+close $fh;

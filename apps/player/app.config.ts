@@ -1,6 +1,6 @@
 import "ts-node/register" // this helps to import TypeScript files
 import { ExpoConfig } from "expo/config"
-import v from "./versions.json"
+import v from "./version.json"
 
 const config: ExpoConfig = {
 	name: "Σταυρόλεξο Τώρα",
@@ -14,7 +14,7 @@ const config: ExpoConfig = {
 		config: { usesNonExemptEncryption: false },
 	},
 	android: {
-		package: "com.bypavlos.crossings",
+		package: "codes.quad.crossings",
 		versionCode: v.build,
 	},
 	userInterfaceStyle: "automatic",

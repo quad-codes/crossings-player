@@ -1,12 +1,12 @@
 {
-    "compilerOptions": {
-        "strict": true,
-        "baseUrl": ".",
-        "paths": {
-            "@/*": ["./src/*"],
-            "@@/*": ["./*"]
-        }
-    },
-    "extends": "expo/tsconfig.base",
-    "include": ["global.d.ts", "**/*.ts", "**/*.tsx", "tailwind.config.js"]
+	"compilerOptions": {
+		"strict": true,
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./src/*"],
+			"@@/*": ["./*"]
+		}
+	},
+	"extends": "expo/tsconfig.base",
+	"include": ["global.d.ts", "**/*.ts", "**/*.tsx", "tailwind.config.js"]
 }
