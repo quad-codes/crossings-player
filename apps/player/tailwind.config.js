@@ -12,6 +12,7 @@ module.exports = {
 					"rgb(var(--color-on-grid-background-correct) / <alpha-value>)",
 				"grid-selection": "rgb(var(--color-grid-selection) / <alpha-value>)",
 				"grid-extension": "rgb(var(--color-grid-extension) / <alpha-value>)",
+				t: "red",
 			},
 			borderWidth: {
 				hairline: hairlineWidth(),
