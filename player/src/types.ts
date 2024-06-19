@@ -28,3 +28,7 @@ export type Letter =
 	| "Χ"
 	| "Ψ"
 	| "Ω"
+
+export type Game = "kremala" | "crossword"
+
+export type GameState = "not-started" | "in-progress" | "done"

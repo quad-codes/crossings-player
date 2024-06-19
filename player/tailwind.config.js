@@ -13,14 +13,17 @@ module.exports = {
 				"grid-extension": "var(--color-grid-extension)",
 				t: "red",
 			},
-			borderWidth: {
-				hairline: hairlineWidth(),
-			},
-			spacing: {
-				st: "var(--safe-area-inset-top)",
-				sb: "var(--safe-area-inset-bottom)",
-				sl: "var(--safe-area-inset-left)",
-				sr: "var(--safe-area-inset-right)",
+			// borderWidth: {
+			// hairline: hairlineWidth(),
+			// },
+			// spacing: {
+			// 	st: "var(--safe-area-inset-top)",
+			// 	sb: "var(--safe-area-inset-bottom)",
+			// 	sl: "var(--safe-area-inset-left)",
+			// 	sr: "var(--safe-area-inset-right)",
+			// },
+			fontFamily: {
+				base: "Iosevka",
 			},
 		},
 	},

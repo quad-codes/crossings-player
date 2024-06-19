@@ -23,7 +23,7 @@ const config: ExpoConfig = {
 	plugins: [
 		"expo-router",
 		"expo-localization",
-		["expo-font", { fonts: ["./assets/fonts/Iosevka-Regular.ttf"] }],
+		["expo-font", { fonts: ["./assets/fonts/Iosevka.ttf"] }],
 	],
 
 	extra: {
