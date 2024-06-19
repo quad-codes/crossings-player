@@ -23,7 +23,7 @@ module.exports = {
 			// 	sr: "var(--safe-area-inset-right)",
 			// },
 			fontFamily: {
-				base: "Iosevka",
+				"mono-base": "Iosevka",
 			},
 		},
 	},
