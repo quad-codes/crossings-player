@@ -20,11 +20,15 @@ const config: ExpoConfig = {
 		versionCode: v.build,
 	},
 	userInterfaceStyle: "automatic",
-	plugins: ["expo-router", "expo-localization"],
+	plugins: [
+		"expo-router",
+		"expo-localization",
+		["expo-font", { fonts: ["./assets/fonts/Iosevka-Regular.ttf"] }],
+	],
 
 	extra: {
 		eas: { projectId: "99375595-9000-4912-bb9a-1258a6ed9c0f" },
 	},
 }
 
-fs.writeFileSync("app.json", JSON.stringify(config, null, 2))
+fs.writeFileSync("app.json", JSON.stringify(config))

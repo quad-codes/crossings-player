@@ -6,20 +6,15 @@
 	"icon": "./assets/app-icon.png",
 	"ios": {
 		"bundleIdentifier": "codes.quad.crossings",
-		"buildNumber": "72",
-		"config": {
-			"usesNonExemptEncryption": false
-		}
+		"buildNumber": "73",
+		"config": { "usesNonExemptEncryption": false }
 	},
-	"android": {
-		"package": "codes.quad.crossings",
-		"versionCode": 72
-	},
+	"android": { "package": "codes.quad.crossings", "versionCode": 73 },
 	"userInterfaceStyle": "automatic",
-	"plugins": ["expo-router", "expo-localization"],
-	"extra": {
-		"eas": {
-			"projectId": "99375595-9000-4912-bb9a-1258a6ed9c0f"
-		}
-	}
+	"plugins": [
+		"expo-router",
+		"expo-localization",
+		["expo-font", { "fonts": ["./assets/fonts/Iosevka-Regular.ttf"] }]
+	],
+	"extra": { "eas": { "projectId": "99375595-9000-4912-bb9a-1258a6ed9c0f" } }
 }

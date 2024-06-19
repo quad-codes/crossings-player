@@ -1,26 +1,24 @@
 import { View } from "react-native"
 import { WeekCalendar, CalendarProvider } from "react-native-calendars"
-import { Text } from "@/design-system"
+import { Text, GameButton } from "@/design-system"
 import { useQuery } from "@tanstack/react-query"
 import CrosserIcon from "@@/assets/icons/crosser.svg"
 import { tw } from "@/utils/twHelpers"
-import { Game } from "@/components/Game"
 import { useAnalytics } from "@/hooks/analytics"
 
 const mapUrl = "https://raw.githubusercontent.com/pvinis/crossings-data/main/map.json"
 
 export default function Main() {
-	const { capture } = useAnalytics()
+	const an = useAnalytics()
+
 	// const { isLoading, error, data } = useQuery({
-	// 	queryKey: ["repoData"],
-	// 	queryFn: async () => {
-	// 		const response = await fetch(mapUrl)
-	// 		if (!response.ok) throw new Error("Network response was not ok")
 	// 		return response.json()
 	// 	},
 	// })
 
 	// const dates = data ? Object.keys(data) : []
+
+	/// linear calendar for the 7 previous days!
 
 	return (
 		<View style={tw`flex-1`}>
@@ -38,11 +36,17 @@ export default function Main() {
 					<Text>Games</Text>
 
 					<View style={tw`flex-row justify-between p-4`}>
-						<Game title="Stavrolekso" state="not-started" onPress={() => capture("game_tapped")} />
-						<Game title="Kremala" state="done" />
+						<GameButton
+							title="Σταυρόλεξο"
+							state="not-started"
+							onPress={() => an.capture("game_tapped")}
+						/>
+						<GameButton title="Κρεμάλα" state="done" onPress={() => an.capture("test_event")} />
 					</View>
 				</View>
 			</CalendarProvider>
 		</View>
 	)
 }
+
+/// A/B test for all buttons to be capital text?

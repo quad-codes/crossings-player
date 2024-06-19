@@ -1,6 +1,6 @@
 import { tw } from "@/utils/twHelpers"
 import { View, TouchableOpacity } from "react-native"
-import { Text } from "@/design-system"
+import { Text } from "./Text"
 
 interface GameProps {
 	title: string
