@@ -8,7 +8,8 @@
     "android": "expo run:android",
     "doctor": "pnpx expo-doctor@latest",
     "doctor:fix": "expo install --check",
-    "bump": "pnpx node-jq '.build = .build+1' version.json | pnpx sponge version.json; pnpx prettier -w version.json",
+    "gen-appjson": "./generateAppJson.ts ; pnpx prettier -w app.json",
+    "bump": "pnpx node-jq '.build = .build+1' version.json | pnpx sponge version.json; pnpx prettier -w version.json; pnpm run gen-appjson",
     "build:dev": "pnpm run eas build --platform all --profile development --non-interactive",
     "build:devdevice": "pnpm run eas build --platform all --profile development-device --non-interactive",
     "build:prod": "pnpm run eas build --platform all --non-interactive",
@@ -56,7 +57,6 @@
     "react-native-svg-transformer": "^1.4.0",
     "tailwindcss": "^3.4.4",
     "tailwindcss-safe-area": "^0.5.1",
-    "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }
 }

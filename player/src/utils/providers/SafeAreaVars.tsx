@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react"
 import { View } from "react-native"
-import { vars } from "nativewind"
+// import { vars } from "nativewind"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 
 export function SafeAreaVars({ children }: PropsWithChildren) {

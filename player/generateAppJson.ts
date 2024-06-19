@@ -1,4 +1,6 @@
-import "ts-node/register" // this helps to import TypeScript files
+#!/usr/bin/env pnpx ts-node
+
+import fs from "fs"
 import { ExpoConfig } from "expo/config"
 import v from "./version.json"
 
@@ -18,10 +20,11 @@ const config: ExpoConfig = {
 		versionCode: v.build,
 	},
 	userInterfaceStyle: "automatic",
-	plugins: [["expo-router", { origin: "https://n" }], "expo-localization"],
+	plugins: ["expo-router", "expo-localization"],
 
 	extra: {
 		eas: { projectId: "99375595-9000-4912-bb9a-1258a6ed9c0f" },
 	},
 }
-export default config
+
+fs.writeFileSync("app.json", JSON.stringify(config, null, 2))
