@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--color-background: rgb(255 255 255);
+		--color-on-background: rgb(0 0 0);
+		--color-grid-background: rgb(255 255 255);
+		--color-on-grid-background: rgb(0 0 0);
+		--color-on-grid-background-correct: rgb(190 190 255);
+		--color-grid-selection: rgb(250 204 21);
+		--color-grid-extension: rgb(191 219 254);
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-background: rgb(0 0 0);
+		--color-on-background: rgb(255 255 255);
+		--color-grid-background: rgb(180 180 170);
+		--color-on-grid-background: rgb(0 0 0);
+		--color-on-grid-background-correct: rgb(190 190 255);
+		--color-grid-selection: rgb(133 77 14);
+		--color-grid-extension: rgb(29 78 216);
+	}
+}

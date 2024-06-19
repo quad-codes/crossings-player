@@ -1,0 +1,13 @@
+{
+  grid:
+    '''
+    SAKOS
+    ANANI
+    MORON
+    OMORA
+    SALES
+    '''
+  clues: {
+    1-across: Σαν άνθρωπος... προδότης
+  }
+}
