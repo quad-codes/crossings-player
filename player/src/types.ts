@@ -3,6 +3,7 @@ export type DateString = `${number}-${number}-${number}`
 
 export type Direction = "across" | "down"
 
+/** Unaccented Capital Letter */
 export type Letter =
 	| "Α"
 	| "Β"
@@ -29,6 +30,12 @@ export type Letter =
 	| "Ψ"
 	| "Ω"
 
+/** Unaccented Capital Letters */
+export type Word = string & { _opaque: typeof NormalizedGreekString }
+declare const NormalizedGreekString: unique symbol
+
 export type Game = "kremala" | "crossword"
 
 export type GameState = "not-started" | "in-progress" | "done"
+
+export type KeyState = "off" | "correct"

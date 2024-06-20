@@ -6,7 +6,7 @@ import CrosserIcon from "@@/assets/icons/crosser.svg"
 import { tw } from "@/utils/twHelpers"
 import useInterval from "react-use/lib/useInterval"
 import { useAnalytics } from "@/hooks/analytics"
-import { DateTime, Duration } from "luxon"
+import { DateTime } from "luxon"
 import { useAtom } from "jotai"
 import { calendarDataAtom } from "@/atoms/storage"
 import { every, reduce, set } from "lodash"
@@ -18,11 +18,6 @@ import { DateString } from "@/types"
 const mapUrl = "https://raw.githubusercontent.com/pvinis/crossings-data/main/map.json"
 
 export default function Main() {
-	const an = useAnalytics()
-
-	// const { isLoading, error, data } = useQuery({
-	// })
-
 	const todayDT = DateTime.now()
 	const tomorrowDT = todayDT.plus({ day: 1 }).set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
 	const [remainingMillis, setRemainingMillis] = useState(0)
@@ -86,13 +81,13 @@ export default function Main() {
 						<GameButton
 							title="Κρεμάλα"
 							state={calendarData[selectedDate]?.kremala ?? "not-started"}
-							onPress={() => router.push(`kremala/2024-06-18`)}
+							onPress={() => router.push(`kremala/${selectedDate}`)}
 							style={tw`mt-4`}
 						/>
 						<GameButton
 							title="Σταυρόλεξο"
 							state={calendarData[selectedDate]?.crossword ?? "not-started"}
-							onPress={() => an.capture("game_tapped")}
+							onPress={() => router.push(`crossword/${selectedDate}`)}
 							style={tw`mt-4`}
 						/>
 					</View>

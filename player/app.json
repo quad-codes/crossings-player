@@ -6,10 +6,10 @@
 	"icon": "./assets/app-icon.png",
 	"ios": {
 		"bundleIdentifier": "codes.quad.crossings",
-		"buildNumber": "74",
+		"buildNumber": "75",
 		"config": { "usesNonExemptEncryption": false }
 	},
-	"android": { "package": "codes.quad.crossings", "versionCode": 74 },
+	"android": { "package": "codes.quad.crossings", "versionCode": 75 },
 	"userInterfaceStyle": "automatic",
 	"plugins": [
 		"expo-router",
