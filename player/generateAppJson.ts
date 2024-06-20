@@ -29,6 +29,9 @@ const config: ExpoConfig = {
 	extra: {
 		eas: { projectId: "99375595-9000-4912-bb9a-1258a6ed9c0f" },
 	},
+
+	runtimeVersion: { policy: "appVersion" },
+	updates: { url: "https://u.expo.dev/99375595-9000-4912-bb9a-1258a6ed9c0f" },
 }
 
-fs.writeFileSync("app.json", JSON.stringify(config))
+fs.writeFileSync("app.json", JSON.stringify({ expo: config }))
