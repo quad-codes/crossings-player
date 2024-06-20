@@ -49,7 +49,6 @@ export default function Page() {
 		wrongGuessesDisplayed.push(...Array(ERRORS_ALLOWED - wrongGuesses.length).fill("_"))
 	}
 
-
 	const lost = wrongGuesses.length >= ERRORS_ALLOWED
 
 	return (
@@ -57,10 +56,7 @@ export default function Page() {
 			<View style={tw`flex-1 py-24`}>
 				<Link href="..">Go back</Link>
 
-				<Text>
-					Λέξη για
-					{isToday(date) ? "σήμερα" : date}
-				</Text>
+				<Text>Λέξη για {isToday(date) ? "σήμερα" : date}</Text>
 
 				<View style={tw`mt-8 flex-1 flex-row`}>
 					{(word.split("") as Letter[]).map((letter, i) => (

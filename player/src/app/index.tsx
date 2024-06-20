@@ -1,7 +1,7 @@
 import { View } from "react-native"
 import humanizeDuration from "humanize-duration"
 import { CalendarProvider, ExpandableCalendar } from "react-native-calendars"
-import { Text, GameButton } from "@/design-system"
+import { Text, GameButton, Screen } from "@/design-system"
 import CrosserIcon from "@@/assets/icons/crosser.svg"
 import { tw } from "@/utils/twHelpers"
 import useInterval from "react-use/lib/useInterval"
@@ -47,9 +47,7 @@ export default function Main() {
 	)
 
 	return (
-		<View style={tw`flex-1`}>
-			<Text>Show all,a to go to list </Text>
-			<CrosserIcon width={74} height={74} />
+		<Screen>
 			<CalendarProvider
 				date={selectedDate}
 				onDateChanged={(date) => setSelectedDate(date as DateString)}
@@ -93,7 +91,7 @@ export default function Main() {
 					</View>
 				</View>
 			</CalendarProvider>
-		</View>
+		</Screen>
 	)
 }
 

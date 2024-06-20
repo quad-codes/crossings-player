@@ -2,31 +2,30 @@
 
 import fs from "fs"
 import { Config } from "tailwindcss"
-
-type Colors = Record<"background" | "on-background", string>
-
-const colors: Record<"light" | "dark", Colors> = {
-	light: {
-		background: "white",
-		"on-background": "black",
-	},
-	dark: {
-		background: "black",
-		"on-background": "white",
-	},
-}
+import { colors } from "./colors"
+import { reduce } from "lodash"
 
 const config: Config = {
 	content: ["./src/**/*.{ts,tsx}"],
 	theme: {
 		extend: {
 			colors: {
-				background: colors.light.background,
-				"on-background": colors.light["on-background"],
-
-				"dark-background": colors.dark.background,
-				"dark-on-background": colors.dark["on-background"],
-
+				...reduce(
+					colors.light,
+					(acc, value, key) => {
+						acc[key] = value
+						return acc
+					},
+					{} as Record<string, string>,
+				),
+				...reduce(
+					colors.dark,
+					(acc, value, key) => {
+						acc[`dark-${key}`] = value
+						return acc
+					},
+					{} as Record<string, string>,
+				),
 				t: "red",
 			},
 			fontFamily: {

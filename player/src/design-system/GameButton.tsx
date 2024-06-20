@@ -17,9 +17,9 @@ export function GameButton({ title, state, onPress, style }: GameProps) {
 			<View
 				style={tws(
 					`h-28 w-auto flex-row items-center rounded-lg p-4`,
-					state === "not-started" && `bg-green-600`,
-					state === "in-progress" && `bg-blue-600`,
-					state === "done" && `bg-purple-700`,
+					state === "not-started" && `bg-surface-not-started`,
+					state === "in-progress" && `bg-surface-in-progress`,
+					state === "done" && `bg-surface-done`,
 					style,
 				)}
 			>
@@ -34,7 +34,7 @@ export function GameButton({ title, state, onPress, style }: GameProps) {
 					size={32}
 					color="white"
 				/>
-				<Text style={tw`ml-4 text-lg text-white`}>{title}</Text>
+				<Text style={tw`text-on-surface ml-4 text-lg`}>{title}</Text>
 			</View>
 		</TouchableOpacity>
 	)
