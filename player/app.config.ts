@@ -1,10 +1,8 @@
-#!/usr/bin/env pnpx ts-node
-
-import fs from "fs"
-import { ExpoConfig } from "expo/config"
+import { ExpoConfig, ConfigContext } from "expo/config"
 import v from "./version.json"
 
-const config: ExpoConfig = {
+export default ({ config }: ConfigContext): ExpoConfig => ({
+	...config,
 	name: "Σταυρόλεξο Τώρα",
 	slug: "crossings",
 	scheme: "crossings",
@@ -32,6 +30,4 @@ const config: ExpoConfig = {
 
 	runtimeVersion: { policy: "appVersion" },
 	updates: { url: "https://u.expo.dev/99375595-9000-4912-bb9a-1258a6ed9c0f" },
-}
-
-fs.writeFileSync("app.json", JSON.stringify({ expo: config }))
+})
