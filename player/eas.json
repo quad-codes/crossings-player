@@ -6,12 +6,8 @@
 	"build": {
 		"production": {
 			"pnpm": "9.0.6",
-			"ios": {
-				"image": "latest"
-			},
-			"android": {
-				"image": "latest"
-			},
+			"ios": { "image": "latest" },
+			"android": { "image": "latest" },
 			"channel": "production"
 		},
 		"preview": {
@@ -23,9 +19,7 @@
 			"extends": "production",
 			"developmentClient": true,
 			"distribution": "internal",
-			"ios": {
-				"simulator": true
-			},
+			"ios": { "simulator": true },
 			"channel": "development"
 		},
 		"development-device": {
