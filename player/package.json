@@ -8,7 +8,6 @@
     "android": "expo run:android",
     "doctor": "pnpx expo-doctor@latest",
     "doctor:fix": "expo install --check",
-    "gen-twconfig": "./generateTailwindConfig.ts ; pnpx prettier -w tailwind.config.js",
     "bump": "pnpx node-jq '.build = .build+1' version.json | pnpx sponge version.json; pnpx prettier -w version.json",
     "build:dev": "pnpm run eas build --platform all --profile development --non-interactive",
     "build:devdevice": "pnpm run eas build --platform all --profile development-device --non-interactive",
