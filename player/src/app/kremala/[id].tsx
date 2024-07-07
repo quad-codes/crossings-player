@@ -2,7 +2,7 @@ import { Link, useLocalSearchParams } from "expo-router"
 import { View } from "react-native"
 import { useQuery } from "@tanstack/react-query"
 import { filter, reduce, reject, uniq } from "lodash"
-import { Screen, Text } from "@/design-system"
+import { Button, Screen, Text } from "@/design-system"
 import { getKremalaByDate } from "@/utils/dbQueries"
 import type { DateString, KeyState, Letter } from "@/types"
 import { tw } from "@/utils/twHelpers"
@@ -50,6 +50,7 @@ export default function Page() {
 	}
 
 	const lost = wrongGuesses.length >= ERRORS_ALLOWED
+	const won = word.split("").every((l) => correctGuesses.includes(l))
 
 	return (
 		<Screen>
@@ -92,10 +93,26 @@ export default function Page() {
 			</View>
 			{lost && (
 				<View
-					style={tw`absolute bottom-0 left-0 right-0 top-0 items-center justify-center bg-red-400 opacity-80`}
+					style={tw`absolute bottom-0 left-0 right-0 top-0 items-center justify-center bg-background opacity-90 dark:bg-dark-background`}
 				>
-					<Text style={tw`text-4xl`}>You lost</Text>
-					<Link href="..">Go back</Link>
+					<Text style={tw`text-4xl`}>Δε το βρήκες σήμερα.</Text>
+					<Text style={tw`text-2xl`}>Αλλά αυριο θα τα καταφέρεις!</Text>
+
+					<Button href=".." style={tw`mt-24`}>
+						Πίσω
+					</Button>
+				</View>
+			)}
+			{won && (
+				<View
+					style={tw`absolute bottom-0 left-0 right-0 top-0 items-center justify-center bg-background opacity-90 dark:bg-dark-background`}
+				>
+					<Text style={tw`text-4xl`}>Μπράβο!</Text>
+					<Text style={tw`text-2xl`}>Το streak σου είναι 55.</Text>
+
+					<Button href=".." style={tw`mt-24`}>
+						Πίσω
+					</Button>
 				</View>
 			)}
 		</Screen>

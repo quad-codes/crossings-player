@@ -3,7 +3,7 @@ import v from "./version.json"
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
 	...config,
-	name: "Σταυρόλεξο Τώρα",
+	name: "Παιχνίδια Τώρα",
 	slug: "crossings",
 	scheme: "crossings",
 	version: v.version,

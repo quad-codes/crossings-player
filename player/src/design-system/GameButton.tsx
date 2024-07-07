@@ -6,12 +6,13 @@ import { GameState } from "@/types"
 
 interface GameProps {
 	title: string
+	subtitle?: string
 	state: GameState
 	onPress?: () => void
 	style?: ViewStyle
 }
 
-export function GameButton({ title, state, onPress, style }: GameProps) {
+export function GameButton({ title, subtitle, state, onPress, style }: GameProps) {
 	return (
 		<TouchableOpacity onPress={onPress}>
 			<View
@@ -34,7 +35,8 @@ export function GameButton({ title, state, onPress, style }: GameProps) {
 					size={32}
 					color="white"
 				/>
-				<Text style={tw`text-on-surface ml-4 text-lg`}>{title}</Text>
+				<Text style={tw`ml-4 text-lg text-on-surface`}>{title}</Text>
+				<Text style={tw`ml-4 text-sm text-on-surface`}>{subtitle}</Text>
 			</View>
 		</TouchableOpacity>
 	)
