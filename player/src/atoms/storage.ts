@@ -9,3 +9,5 @@ export const calendarDataAtom = atomWithStorage<
 	"2024-06-18": { kremala: "in-progress", crossword: "done" },
 	"2024-06-19": { kremala: "done" },
 })
+
+export const scheduledDailyNotifAtom = atomWithStorage("scheduledDailyNotif", false)

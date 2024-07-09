@@ -1,7 +1,7 @@
 const { reduce } = require("lodash")
 
 /**
- * @typedef {"background" | "on-background" | "primary" | "on-primary" | "surface-not-started" | "surface-in-progress" | "surface-done" | "on-surface"} ColorName
+ * @typedef {"background" | "on-background" | "on-background-low" | "primary" | "on-primary" | "surface-not-started" | "surface-in-progress" | "surface-done" | "on-surface"} ColorName
  * @typedef {Record<ColorName, string>} Colors
  */
 
@@ -10,6 +10,7 @@ const colors = {
 	light: {
 		background: "white",
 		"on-background": "black",
+		"on-background-low": "#eee",
 		primary: "blue",
 		"on-primary": "white",
 		"surface-not-started": "#6A0DAD",
@@ -20,6 +21,7 @@ const colors = {
 	dark: {
 		background: "black",
 		"on-background": "white",
+		"on-background-low": "#111",
 		primary: "blue",
 		"on-primary": "white",
 		"surface-not-started": "green",

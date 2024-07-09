@@ -2,20 +2,22 @@ import { Alert, View } from "react-native"
 import humanizeDuration from "humanize-duration"
 import { CalendarProvider, ExpandableCalendar } from "react-native-calendars"
 import { Text, GameButton, Screen, Button } from "@/design-system"
+import * as Application from "expo-application"
 import CrosserIcon from "@@/assets/icons/crosser.svg"
 import * as Linking from "expo-linking"
 import * as Notifications from "expo-notifications"
-import { tw } from "@/utils/twHelpers"
+import { tw, tws } from "@/utils/twHelpers"
 import useInterval from "react-use/lib/useInterval"
 import { useAnalytics } from "@/hooks/analytics"
 import { DateTime } from "luxon"
 import { useAtom } from "jotai"
 import { calendarDataAtom, scheduledDailyNotifAtom } from "@/atoms/storage"
-import { every, reduce, set } from "lodash"
+import { every, reduce } from "lodash"
 import { MarkedDates } from "react-native-calendars/src/types"
 import { router } from "expo-router"
 import { useState } from "react"
 import { DateString } from "@/types"
+import { useSafeAreaInsets } from "react-native-safe-area-context"
 
 const mapUrl = "https://raw.githubusercontent.com/pvinis/crossings-data/main/map.json"
 
@@ -133,6 +135,14 @@ export default function Main() {
 					</View>
 				</View>
 			</CalendarProvider>
+
+			<Text
+				style={tws(`text-on-background-low dark:text-on-background-low absolute right-4`, {
+					bottom: saInsets.bottom,
+				})}
+			>
+				v{Application.nativeApplicationVersion} ({Application.nativeBuildVersion})
+			</Text>
 		</Screen>
 	)
 }
