@@ -37,8 +37,8 @@
 				"ascAppId": "6477339034"
 			},
 			"android": {
-				"serviceAccountKeyPath": "../crossings-expo-88212e70c27d.json",
-				"track": "internal"
+				"track": "internal",
+				"releaseStatus": "draft"
 			}
 		}
 	}
