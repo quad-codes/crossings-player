@@ -1,20 +1,23 @@
 import { ExpoConfig, ConfigContext } from "expo/config"
 import v from "./version.json"
 
+const IS_DEV = process.env.APP_VARIANT === "development"
+
 export default ({ config }: ConfigContext): ExpoConfig => ({
 	...config,
-	name: "Καθημερινά Παιχνίδια",
+
+	name: IS_DEV ? "Καθημερινά Παιχνίδια (DEV)" : "Καθημερινά Παιχνίδια",
 	slug: "crossings",
 	scheme: "crossings",
 	version: v.version,
 	icon: "./assets/app-icon.png",
 	ios: {
-		bundleIdentifier: "codes.quad.crossings",
+		bundleIdentifier: IS_DEV ? "codes.quad.crossings.dev" : "codes.quad.crossings",
 		buildNumber: String(v.build),
 		config: { usesNonExemptEncryption: false },
 	},
 	android: {
-		package: "codes.quad.crossings",
+		package: IS_DEV ? "codes.quad.crossings.dev" : "codes.quad.crossings",
 		versionCode: v.build,
 	},
 	userInterfaceStyle: "automatic",

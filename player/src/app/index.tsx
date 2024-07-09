@@ -141,7 +141,7 @@ export default function Main() {
 					bottom: saInsets.bottom,
 				})}
 			>
-				v{Application.nativeApplicationVersion} ({Application.nativeBuildVersion}) wow
+				v{Application.nativeApplicationVersion} ({Application.nativeBuildVersion})
 			</Text>
 		</Screen>
 	)

@@ -10,14 +10,12 @@
 			"android": { "image": "latest" },
 			"channel": "production"
 		},
-		"preview": {
-			"extends": "production",
-			"distribution": "internal",
-			"channel": "preview"
-		},
 		"development": {
 			"extends": "production",
 			"developmentClient": true,
+			"env": {
+				"APP_VARIANT": "development"
+			},
 			"distribution": "internal",
 			"ios": { "simulator": true },
 			"channel": "development"
@@ -25,6 +23,9 @@
 		"development-device": {
 			"extends": "production",
 			"developmentClient": true,
+			"env": {
+				"APP_VARIANT": "development"
+			},
 			"distribution": "internal",
 			"channel": "development-device"
 		}
