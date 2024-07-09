@@ -1,25 +1,22 @@
 import { Link, useLocalSearchParams } from "expo-router"
 import { View } from "react-native"
-import { useQuery } from "@tanstack/react-query"
 import { filter, reduce, reject, uniq } from "lodash"
 import { Button, Screen, Text } from "@/design-system"
-import { getKremalaByDate } from "@/utils/dbQueries"
 import type { DateString, KeyState, Letter } from "@/types"
 import { tw } from "@/utils/twHelpers"
 import { Keyboard } from "@/components/Keyboard"
+import Share from "react-native-share"
 import { useState } from "react"
 import { normalizeGreek } from "@/utils/normalizeGreek"
 import { createWord } from "@/utils/kremalaUtils"
 import { isToday } from "@/utils/dateUtils"
+import { useKremalaQuery } from "@/hooks/useKremalaQuery"
 
 const ERRORS_ALLOWED = 6
 
 export default function Page() {
 
-	const { isLoading, data } = useQuery({
-		queryKey: ["kremalaToday", date],
-		queryFn: () => getKremalaByDate(date),
-	})
+	const { isLoading, data } = useKremalaQuery(date)
 
 	const [guesses, setGuesses] = useState<Letter[]>([]) //// move to atom
 
@@ -51,6 +48,7 @@ export default function Page() {
 
 	const lost = wrongGuesses.length >= ERRORS_ALLOWED
 	const won = word.split("").every((l) => correctGuesses.includes(l))
+	const finished = lost || won
 
 	return (
 		<Screen>
@@ -91,31 +89,49 @@ export default function Page() {
 					onKeyPress={(k) => setGuesses(uniq([...guesses, k]))}
 				/>
 			</View>
-			{lost && (
+
+			{finished && (
 				<View
 					style={tw`absolute bottom-0 left-0 right-0 top-0 items-center justify-center bg-background opacity-90 dark:bg-dark-background`}
 				>
-					<Text style={tw`text-4xl`}>Δε το βρήκες σήμερα.</Text>
-					<Text style={tw`text-2xl`}>Αλλά αυριο θα τα καταφέρεις!</Text>
+					{lost && (
+						<>
+							<Text style={tw`text-4xl`}>Δε το βρήκες σήμερα.</Text>
+							<Text style={tw`text-2xl`}>Αλλά αυριο θα τα καταφέρεις!</Text>
+							<Text style={tw`text-4xl`}>Η λέξη ήταν "{word}".</Text>
+						</>
+					)}
+					{won && (
+						<>
+							<Text style={tw`text-4xl`}>Μπράβο!</Text>
+							<Text style={tw`text-2xl`}>Το streak σου είναι 55.</Text>
+						</>
+					)}
 
-					<Button href=".." style={tw`mt-24`}>
-						Πίσω
+					<Button
+						onPress={() => {
+							const sharedText = guesses
+								.map((g, idx) => {
+									if (idx === guesses.length - 1) return correctGuesses.includes(g) ? "✅" : "❌"
+									return correctGuesses.includes(g) ? "🟩" : "🟥"
+								})
+								.join("")
+							Share.open({
+								message: `Κρεμαλα #${data.id}\n\n${sharedText}`,
+								type: "text/plain",
+							})
+						}}
+						style={tw`mt-24`}
+					>
+						Μοιράσου το
 					</Button>
-				</View>
-			)}
-			{won && (
-				<View
-					style={tw`absolute bottom-0 left-0 right-0 top-0 items-center justify-center bg-background opacity-90 dark:bg-dark-background`}
-				>
-					<Text style={tw`text-4xl`}>Μπράβο!</Text>
-					<Text style={tw`text-2xl`}>Το streak σου είναι 55.</Text>
 
-					<Button href=".." style={tw`mt-24`}>
+					<Button href=".." style={tw`mt-12`}>
 						Πίσω
 					</Button>
 				</View>
 			)}
 		</Screen>
 	)
-
 }
+

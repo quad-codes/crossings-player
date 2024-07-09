@@ -1,14 +1,16 @@
-import { View } from "react-native"
+import { Alert, View } from "react-native"
 import humanizeDuration from "humanize-duration"
 import { CalendarProvider, ExpandableCalendar } from "react-native-calendars"
-import { Text, GameButton, Screen } from "@/design-system"
+import { Text, GameButton, Screen, Button } from "@/design-system"
 import CrosserIcon from "@@/assets/icons/crosser.svg"
+import * as Linking from "expo-linking"
+import * as Notifications from "expo-notifications"
 import { tw } from "@/utils/twHelpers"
 import useInterval from "react-use/lib/useInterval"
 import { useAnalytics } from "@/hooks/analytics"
 import { DateTime } from "luxon"
 import { useAtom } from "jotai"
-import { calendarDataAtom } from "@/atoms/storage"
+import { calendarDataAtom, scheduledDailyNotifAtom } from "@/atoms/storage"
 import { every, reduce, set } from "lodash"
 import { MarkedDates } from "react-native-calendars/src/types"
 import { router } from "expo-router"
@@ -18,6 +20,8 @@ import { DateString } from "@/types"
 const mapUrl = "https://raw.githubusercontent.com/pvinis/crossings-data/main/map.json"
 
 export default function Main() {
+	const [scheduledDailyNotif, setScheduledDailyNotif] = useAtom(scheduledDailyNotifAtom)
+
 	const todayDT = DateTime.now()
 	const tomorrowDT = todayDT.plus({ day: 1 }).set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
 	const [remainingMillis, setRemainingMillis] = useState(0)
@@ -46,6 +50,38 @@ export default function Main() {
 		{} as MarkedDates,
 	)
 
+	const scheduleDailyNotif = async () => {
+		const { status: existingStatus } = await Notifications.getPermissionsAsync()
+		let finalStatus = existingStatus
+
+		if (existingStatus === "undetermined") {
+			const { status: newStatus } = await Notifications.requestPermissionsAsync()
+			finalStatus = newStatus
+		}
+		if (existingStatus === "denied") {
+			Alert.alert(
+				"Δεν μπορείς να λαμβάνεις ειδοποιήσεις",
+				"Πήγαινε στις ρυθμίσεις της συσκευής σου και ενεργοποίησε τις ειδοποιήσεις για την εφαρμογή.",
+				[{ text: "Ρυθμίσεις", onPress: () => Linking.openSettings() }, { text: "Άκυρο" }],
+			)
+		}
+
+		if (finalStatus !== "granted") return
+
+		Notifications.scheduleNotificationAsync({
+			content: {
+				title: "Let's go!",
+				body: "Μόλις ανέβηκαν νέα παιχνίδια!",
+			},
+			trigger: {
+				hour: 0,
+				minute: 0,
+				repeats: true,
+			},
+		})
+		setScheduledDailyNotif(true)
+	}
+
 	return (
 		<Screen>
 			<CalendarProvider
@@ -73,6 +109,11 @@ export default function Main() {
 								<Text style={tw`mt-1`}>
 									{humanizeDuration(remainingMillis, { round: true, language: "el" })}
 								</Text>
+								{!scheduledDailyNotif && (
+									<Button small onPress={() => scheduleDailyNotif()}>
+										Ενημέρωσέ με
+									</Button>
+								)}
 							</>
 						)}
 
@@ -84,9 +125,10 @@ export default function Main() {
 						/>
 						<GameButton
 							title="Σταυρόλεξο"
+							subtitle="Έρχεται σύντομα"
 							state={calendarData[selectedDate]?.crossword ?? "not-started"}
-							onPress={() => router.push(`crossword/${selectedDate}`)}
-							style={tw`mt-4`}
+							// onPress={() => router.push(`crossword/${selectedDate}`)}
+							style={tw`mt-4 opacity-30`}
 						/>
 					</View>
 				</View>
