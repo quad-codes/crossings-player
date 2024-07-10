@@ -1,0 +1,4 @@
+appId: codes.quad.crossings.dev
+---
+- launchApp
+- tapOn: ".*Κρεμάλα.*"

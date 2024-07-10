@@ -1,3 +1,4 @@
 [tools]
 pnpm = "9"
 node = "18"
+maestro = "1"

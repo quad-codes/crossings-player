@@ -9,7 +9,7 @@
     "doctor": "pnpx expo-doctor@latest",
     "doctor:fix": "expo install --check",
     "bump": "pnpx node-jq '.build = .build+1' version.json | pnpx sponge version.json; pnpx prettier -w version.json",
-    "build:dev": "pnpm run eas build --platform all --profile development --non-interactive",
+    "build:dev": "pnpm run eas build --platform all --profile development",
     "build:devdevice": "pnpm run eas build --platform all --profile development-device --non-interactive",
     "build:prod": "pnpm run eas build --platform all --non-interactive",
     "bbuild:dev": "pnpm run bump ; pnpm run build:dev",
@@ -21,6 +21,8 @@
     "submit": "pnpm run eas submit --platform all",
     "db:init": "pnpx supabase login ; pnpx supabase init ; pnpx supabase link",
     "db:gen-types": "pnpx supabase gen types typescript --linked --schema=public > src/generated/database.types.ts",
+    "test:ui": "maestro test trial.yaml",
+    "test:ui:studio": "maestro studio",
     "eas": "pnpx eas-cli@latest"
   },
   "dependencies": {
