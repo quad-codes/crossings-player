@@ -6,20 +6,27 @@ import type { DateString, KeyState, Letter } from "@/types"
 import { tw } from "@/utils/twHelpers"
 import { Keyboard } from "@/components/Keyboard"
 import Share from "react-native-share"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { normalizeGreek } from "@/utils/normalizeGreek"
 import { createWord } from "@/utils/kremalaUtils"
-import { isToday } from "@/utils/dateUtils"
+import { diffFromToday, isToday } from "@/utils/dateUtils"
 import { useKremalaQuery } from "@/hooks/useKremalaQuery"
+import { useAnalytics } from "@/hooks/useAnalytics"
 
 const ERRORS_ALLOWED = 6
 
 export default function Page() {
+	const { captureTimeliness } = useAnalytics()
+	const { id: date = "1-2-3" } = useLocalSearchParams<{ id: DateString }>()
 
 	const { isLoading, data } = useKremalaQuery(date)
 
 	const [guesses, setGuesses] = useState<Letter[]>([]) //// move to atom
 
+	useEffect(() => {
+		const timeliness = diffFromToday(date)
+		captureTimeliness(timeliness, "kremala")
+	}, [date])
 
 	if (isLoading) {
 		return (

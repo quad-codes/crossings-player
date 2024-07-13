@@ -20,6 +20,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context"
 const mapUrl = "https://raw.githubusercontent.com/pvinis/crossings-data/main/map.json"
 
 export default function Main() {
+	const saInsets = useSafeAreaInsets()
 	const [scheduledDailyNotif, setScheduledDailyNotif] = useAtom(scheduledDailyNotifAtom)
 
 	const todayDT = DateTime.now()
