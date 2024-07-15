@@ -1,14 +1,24 @@
 import * as Updates from "expo-updates"
-import useInterval from "react-use/lib/useInterval"
+import { useEffect } from "react"
 
 export function useOTAUpdates() {
 	const shouldReceiveUpdates = Updates.isEnabled && !__DEV__
 
-	// 	const appState = useAppState
+	useEffect(() => {
+		if (!shouldReceiveUpdates) return
 
-	//   useInterval(() => {
-	//     if (appState === "active" && needsUpdateCheck()) {
-	//       checkForUpdate().then((reason) => setNoUpdateReason(reason))
-	//     }
-	//   }, monitorInterval / 4)
+		onFetchUpdateAsync()
+	}, [])
+}
+
+async function onFetchUpdateAsync() {
+	try {
+		const update = await Updates.checkForUpdateAsync()
+		if (update.isAvailable) {
+			await Updates.fetchUpdateAsync()
+			await Updates.reloadAsync()
+		}
+	} catch (e) {
+		console.error("Error fetching update", e)
+	}
 }

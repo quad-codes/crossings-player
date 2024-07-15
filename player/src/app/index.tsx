@@ -1,11 +1,13 @@
 import { Alert, View } from "react-native"
 import humanizeDuration from "humanize-duration"
 import { CalendarProvider, ExpandableCalendar } from "react-native-calendars"
+import v from "../../version.json"
 import { Text, GameButton, Screen, Button } from "@/design-system"
 import * as Application from "expo-application"
 import * as Linking from "expo-linking"
 import * as Notifications from "expo-notifications"
 import { tw, tws } from "@/utils/twHelpers"
+import * as Updates from "expo-updates"
 import useInterval from "react-use/lib/useInterval"
 import { DateTime } from "luxon"
 import { useAtom } from "jotai"
@@ -21,6 +23,8 @@ const mapUrl = "https://raw.githubusercontent.com/pvinis/crossings-data/main/map
 
 export default function Main() {
 	const saInsets = useSafeAreaInsets()
+	const upd = Updates.useUpdates()
+
 	const [scheduledDailyNotif, setScheduledDailyNotif] = useAtom(scheduledDailyNotifAtom)
 
 	const todayDT = DateTime.now()
@@ -140,7 +144,8 @@ export default function Main() {
 					bottom: saInsets.bottom,
 				})}
 			>
-				v{Application.nativeApplicationVersion} ({Application.nativeBuildVersion})
+				{upd.isUpdateAvailable ? "• " : ""}v{Application.nativeApplicationVersion} (
+				{Application.nativeBuildVersion} - {v.jsbuild})
 			</Text>
 		</Screen>
 	)
