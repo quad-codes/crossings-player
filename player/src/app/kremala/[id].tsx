@@ -1,4 +1,4 @@
-import { Link, useLocalSearchParams } from "expo-router"
+import { Link, router, useLocalSearchParams } from "expo-router"
 import { View } from "react-native"
 import { filter, reduce, reject, uniq } from "lodash"
 import { Button, Screen, Text } from "@/design-system"
@@ -58,23 +58,21 @@ export default function Page() {
 	const finished = lost || won
 
 	return (
-		<Screen>
+		<Screen back>
 			<View style={tw`flex-1 py-24`}>
-				<Link href="..">Go back</Link>
+				<Text style={tw`text-lg`}>Λέξη για {isToday(date) ? "σήμερα" : date}</Text>
 
-				<Text>Λέξη για {isToday(date) ? "σήμερα" : date}</Text>
-
-				<View style={tw`mt-8 flex-1 flex-row`}>
+				<View style={tw`mt-8 flex-1 flex-row justify-center`}>
 					{(word.split("") as Letter[]).map((letter, i) => (
-						<Text key={i} style={tw`mx-0.5 font-mono-base text-2xl`}>
+						<Text key={i} style={tw`mx-0.5 font-mono-base text-3xl`}>
 							{guesses.includes(normalizeGreek(letter)) ? letter : "_"}
 						</Text>
 					))}
 				</View>
 				<View style={tw`flex-1`}>
-					<Text>Λάθη</Text>
+					<Text style={tw`text-lg`}>Λάθη</Text>
 					<View style={tw`flex-1 flex-row flex-wrap`}>
-						<Text style={tw`font-mono-base text-2xl`}>{wrongGuessesDisplayed.join(" ")}</Text>
+						<Text style={tw`font-mono-base text-3xl`}>{wrongGuessesDisplayed.join(" ")}</Text>
 					</View>
 				</View>
 

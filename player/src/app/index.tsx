@@ -1,17 +1,13 @@
-import { Alert, View } from "react-native"
-import humanizeDuration from "humanize-duration"
+import { View } from "react-native"
 import { CalendarProvider, ExpandableCalendar } from "react-native-calendars"
 import v from "../../version.json"
 import { Text, GameButton, Screen, Button } from "@/design-system"
 import * as Application from "expo-application"
-import * as Linking from "expo-linking"
-import * as Notifications from "expo-notifications"
 import { tw, tws } from "@/utils/twHelpers"
 import * as Updates from "expo-updates"
-import useInterval from "react-use/lib/useInterval"
 import { DateTime } from "luxon"
 import { useAtom } from "jotai"
-import { calendarDataAtom, scheduledDailyNotifAtom } from "@/atoms/storage"
+import { calendarDataAtom } from "@/atoms/storage"
 import { every, reduce } from "lodash"
 import { MarkedDates } from "react-native-calendars/src/types"
 import { router } from "expo-router"
@@ -19,6 +15,8 @@ import { useState } from "react"
 import { DateString } from "@/types"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { useAppColorScheme } from "twrnc"
+import { CountdownOrToday } from "@/components/CountdownOrToday"
+import { selectedDateAtom } from "@/atoms/session"
 
 
 export default function Index() {
@@ -26,18 +24,10 @@ export default function Index() {
 	const upd = Updates.useUpdates()
 	const [theme] = useAppColorScheme(tw)
 
-	const [scheduledDailyNotif, setScheduledDailyNotif] = useAtom(scheduledDailyNotifAtom)
-
 	const todayDT = DateTime.now()
-	const tomorrowDT = todayDT.plus({ day: 1 }).set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
-	const [remainingMillis, setRemainingMillis] = useState(0)
-
-	useInterval(() => {
-		setRemainingMillis(Math.trunc(tomorrowDT.diffNow().milliseconds))
-	}, 1000)
 
 	const today = todayDT.toFormat("yyyy-MM-dd") as DateString
-	const [selectedDate, setSelectedDate] = useState(today)
+	const [selectedDate, setSelectedDate] = useAtom(selectedDateAtom)
 
 	const [calendarData] = useAtom(calendarDataAtom)
 	const markedDates = reduce(
@@ -55,38 +45,6 @@ export default function Index() {
 		},
 		{} as MarkedDates,
 	)
-
-	const scheduleDailyNotif = async () => {
-		const { status: existingStatus } = await Notifications.getPermissionsAsync()
-		let finalStatus = existingStatus
-
-		if (existingStatus === "undetermined") {
-			const { status: newStatus } = await Notifications.requestPermissionsAsync()
-			finalStatus = newStatus
-		}
-		if (existingStatus === "denied") {
-			Alert.alert(
-				"Δεν μπορείς να λαμβάνεις ειδοποιήσεις",
-				"Πήγαινε στις ρυθμίσεις της συσκευής σου και ενεργοποίησε τις ειδοποιήσεις για την εφαρμογή.",
-				[{ text: "Ρυθμίσεις", onPress: () => Linking.openSettings() }, { text: "Άκυρο" }],
-			)
-		}
-
-		if (finalStatus !== "granted") return
-
-		Notifications.scheduleNotificationAsync({
-			content: {
-				title: "Let's go!",
-				body: "Μόλις ανέβηκαν νέα παιχνίδια!",
-			},
-			trigger: {
-				hour: 0,
-				minute: 0,
-				repeats: true,
-			},
-		})
-		setScheduledDailyNotif(true)
-	}
 
 	// return <DebugSplashScreen />
 	return (
@@ -112,20 +70,7 @@ export default function Index() {
 					<Text style={tw`mb-4 text-4xl`}>Παιχνίδια</Text>
 
 					<View>
-						<Text style={tw`text-xl`}>Σήμερα: {selectedDate}</Text>
-						{selectedDate === today && (
-							<>
-								<Text style={tw`mt-1`}>Τα επόμενα παιχνίδια θα εμφανιστούν σε:</Text>
-								<Text style={tw`mt-1`}>
-									{humanizeDuration(remainingMillis, { round: true, language: "el" })}
-								</Text>
-								{!scheduledDailyNotif && (
-									<Button small onPress={() => scheduleDailyNotif()}>
-										Ενημέρωσέ με
-									</Button>
-								)}
-							</>
-						)}
+						<CountdownOrToday />
 
 						<GameButton
 							title="Κρεμάλα"
