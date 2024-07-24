@@ -2,8 +2,12 @@ import { DateString } from "@/types"
 import { round } from "lodash"
 import { DateTime } from "luxon"
 
+export function getToday(): DateString {
+	return DateTime.now().toFormat("yyyy-MM-dd") as DateString
+}
+
 export function isToday(date: DateString): boolean {
-	const today = DateTime.now().toFormat("yyyy-MM-dd") as DateString
+	const today = getToday()
 	return date === today
 }
 
