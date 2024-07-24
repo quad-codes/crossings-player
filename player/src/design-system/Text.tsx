@@ -5,7 +5,7 @@ export function Text({ children, style, ...restProps }: TextProps) {
 	return (
 		<RNText
 			{...restProps}
-			style={[tw`dark:text-dark-on-background text-base text-on-background`, style]}
+			style={[tw`text-base text-on-background dark:text-dark-on-background`, style]}
 		>
 			{children}
 		</RNText>

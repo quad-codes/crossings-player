@@ -21,6 +21,10 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
 		versionCode: v.build,
 	},
 	userInterfaceStyle: "automatic",
+	splash: {
+		image: "./assets/splash-screen.png",
+		backgroundColor: "#150050",
+	},
 	plugins: [
 		"expo-router",
 		"expo-localization",

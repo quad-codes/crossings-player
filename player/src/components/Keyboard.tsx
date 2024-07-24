@@ -60,7 +60,7 @@ function Key({ character, width = "1u", onPress, ghost, keyState }: KeyProps) {
 		<Pressable onPress={onPress}>
 			<View
 				style={tws(
-					`${w} h-[45px] items-center justify-center rounded border border-on-background`,
+					`${w} h-[45px] items-center justify-center rounded border border-on-background dark:border-dark-on-background`,
 					keyState === "off" && `bg-gray-500`,
 					keyState === "correct" && `bg-green-400`,
 				)}
