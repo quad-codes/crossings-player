@@ -1,6 +1,7 @@
 import { ExpoConfig, ConfigContext } from "expo/config"
 import v from "./version.json"
-import loc from "./loc.json"
+import extra from "./extraConfig.json"
+import loc from "./languages/lang.json"
 
 const IS_DEV = process.env.APP_VARIANT === "development"
 
@@ -10,11 +11,11 @@ const LID = loc[L].id
 export default ({ config }: ConfigContext): ExpoConfig => ({
 	...config,
 
-	name: IS_DEV ? `${loc[L].appName} (DEV)` : loc[L].appName,
+	name: IS_DEV ? `${extra.appName} (DEV)` : extra.appName,
 	slug: `crossings-${LID}`,
 	scheme: `crossings-${LID}`,
 	version: v.version,
-	icon: `./assets/app-icon-${LID}.png`,
+	icon: "./assets/app-icon.png",
 	ios: {
 		bundleIdentifier: IS_DEV ? `codes.quad.crossings.${LID}.dev` : `codes.quad.crossings.${LID}`,
 		buildNumber: String(v.build),
@@ -26,7 +27,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
 	},
 	userInterfaceStyle: "automatic",
 	splash: {
-		image: `./assets/splash-screen-${LID}.png`,
+		image: "./assets/splash-screen.png",
 		backgroundColor: "#150050",
 	},
 	plugins: [
@@ -36,8 +37,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
 	],
 
 	extra: {
-		eas: { projectId: loc[L].easProjectId },
-		pvinis: { jsbuild: v.jsbuild },
+		eas: { projectId: extra.easProjectId },
+		pvinis: { lang: extra.id, jsbuild: v.jsbuild },
 	},
 
 	runtimeVersion: { policy: "appVersion" },

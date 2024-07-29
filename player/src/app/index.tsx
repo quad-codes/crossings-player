@@ -73,8 +73,8 @@ export default function Index() {
 
 						<GameButton
 							title="Κρεμάλα"
-							state={calendarData[selectedDate]?.kremala ?? "not-started"}
-							onPress={() => router.push(`kremala/${selectedDate}`)}
+							state={calendarData[selectedDate]?.hangman ?? "not-started"}
+							onPress={() => router.push(`hangman/${selectedDate}`)}
 							style={tw`mt-4`}
 						/>
 						<GameButton
