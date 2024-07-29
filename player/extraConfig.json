@@ -1,5 +1,9 @@
 {
-	"id": "he",
-	"appName": "la",
-	"easProjectId": "your-exp"
+	"id": "el",
+	"appName": "Καθημερινά Παιχνίδια",
+	"slug": "crossings-el",
+	"scheme": "crossings-el",
+	"iosBundleIdentifier": "codes.quad.crossings.el",
+	"androidPackage": "codes.quad.crossings.el",
+	"easProjectId": "8503a5c0-0951-49df-81f7-cdd323478b0e"
 }

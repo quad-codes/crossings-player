@@ -1,28 +1,24 @@
 import { ExpoConfig, ConfigContext } from "expo/config"
 import v from "./version.json"
 import extra from "./extraConfig.json"
-import loc from "./languages/lang.json"
 
 const IS_DEV = process.env.APP_VARIANT === "development"
-
-const L = (process.env.L as "el" | "he") ?? "el"
-const LID = loc[L].id
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
 	...config,
 
 	name: IS_DEV ? `${extra.appName} (DEV)` : extra.appName,
-	slug: `crossings-${LID}`,
-	scheme: `crossings-${LID}`,
+	slug: extra.slug,
+	scheme: extra.scheme,
 	version: v.version,
 	icon: "./assets/app-icon.png",
 	ios: {
-		bundleIdentifier: IS_DEV ? `codes.quad.crossings.${LID}.dev` : `codes.quad.crossings.${LID}`,
+		bundleIdentifier: extra.iosBundleIdentifier + (IS_DEV ? ".dev" : ""),
 		buildNumber: String(v.build),
 		config: { usesNonExemptEncryption: false },
 	},
 	android: {
-		package: IS_DEV ? `codes.quad.crossings.${LID}.dev` : `codes.quad.crossings.${LID}`,
+		package: extra.androidPackage + (IS_DEV ? ".dev" : ""),
 		versionCode: v.build,
 	},
 	userInterfaceStyle: "automatic",
