@@ -33,6 +33,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
 
 	extra: {
 		eas: { projectId: "99375595-9000-4912-bb9a-1258a6ed9c0f" },
+		pvinis: {jsbuild: v.jsbuild}
 	},
 
 	runtimeVersion: { policy: "appVersion" },
