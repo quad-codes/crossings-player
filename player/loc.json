@@ -1,0 +1,14 @@
+{
+	"el": {
+		"language": "greek",
+		"id": "el",
+		"appName": "Καθημερινά Παιχνίδια",
+		"easProjectId": "8503a5c0-0951-49df-81f7-cdd323478b0e"
+	},
+	"he": {
+		"language": "hebrew",
+		"id": "he",
+		"appName": "משחקי יום",
+		"easProjectId": "cd7d3480-e939-4d96-93c8-5e2d5f3d0a8c"
+	}
+}
