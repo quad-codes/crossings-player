@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "expo-router/entry",
   "scripts": {
-    "set-lang": "./scripts/set-lang.js",
+    "set-lang": "run(){ ./scripts/set-lang.js $1 ; pnpx prettier -w extraConfig.json ;} ; run",
     "start": "APP_VARIANT=development expo start",
     "ios": "expo run:ios",
     "android": "expo run:android",
