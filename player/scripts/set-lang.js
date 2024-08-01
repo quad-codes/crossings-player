@@ -9,6 +9,7 @@ const validLanguages = ["el", "he"]
 
 async function main() {
 	const lang = process.argv[2]
+
 	if (!validLanguages.includes(lang)) {
 		console.error("Invalid language")
 		process.exit(1)
