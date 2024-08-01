@@ -66,7 +66,7 @@ export default function Index() {
 
 				/>
 				<View style={tw`px-4 pt-4`}>
-					<Text style={tw`mb-4 text-4xl`}>Παιχνίδια</Text>
+					<Text style={tw`mb-4 text-4xl`}>{t("games")}</Text>
 
 					<View>
 						<CountdownOrToday />

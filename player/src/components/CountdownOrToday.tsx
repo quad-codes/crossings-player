@@ -12,6 +12,7 @@ import { useState } from "react"
 import { getToday, isToday } from "@/utils/dateUtils"
 import { selectedDateAtom } from "@/atoms/session"
 import { useAppState } from "@/hooks/useAppState"
+import { t } from "@/utils/texts"
 
 export function CountdownOrToday() {
 	useAppState({
@@ -73,7 +74,7 @@ export function CountdownOrToday() {
 					</Text>
 					{!scheduledDailyNotif && (
 						<Button small onPress={() => scheduleDailyNotif()} style={tw`mt-2`}>
-							Ενημέρωσέ με
+							{t("notif.new-games")}
 						</Button>
 					)}
 				</>

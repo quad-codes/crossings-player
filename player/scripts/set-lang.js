@@ -24,6 +24,11 @@ async function main() {
 		path.join(__dirname, "../assets/splash-screen.png"),
 	)
 
+	fs.copyFileSync(
+		path.join(__dirname, `../languages/translations/${lang}.json`),
+		path.join(__dirname, "../assets/texts.json"),
+	)
+
 	const extraConfigJson = await jq.run(
 		`.id = "${langConfig[lang].id}" |` +
 			`.appName = "${langConfig[lang].appName}" |` +

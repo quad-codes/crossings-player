@@ -2,6 +2,7 @@ import { View, Pressable } from "react-native"
 import { Text } from "@/design-system/Text"
 import { tw, tws } from "@/utils/twHelpers"
 import { KeyState, Letter } from "@/types"
+import { LetterGreek, LetterHebrew } from "@/languages"
 
 export const BACKSPACE = "⌫"
 
@@ -69,4 +70,17 @@ function Key({ character, width = "1u", onPress, ghost, keyState }: KeyProps) {
 			</View>
 		</Pressable>
 	)
+}
+
+const layouts: { el: LetterGreek[][]; he: LetterHebrew[][] } = {
+	el: [
+		["Ε", "Ρ", "Τ", "Υ", "Θ", "Ι", "Ο", "Π"],
+		["Α", "Σ", "Δ", "Φ", "Γ", "Η", "Ξ", "Κ", "Λ"],
+		["Ζ", "Χ", "Ψ", "Ω", "Β", "Ν", "Μ"],
+	],
+	he: [
+		["ק", "ר", "א", "ט", "ו", "ן", "ם", "פ"],
+		["ש", "ד", "ג", "כ", "ע", "י", "ח", "ל", "ך", "ף"],
+		["ז", "ס", "ב", "ה", "נ", "מ", "צ", "ת", "ץ"],
+	],
 }
