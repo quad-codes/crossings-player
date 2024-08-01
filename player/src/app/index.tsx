@@ -16,6 +16,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { useAppColorScheme } from "twrnc"
 import { CountdownOrToday } from "@/components/CountdownOrToday"
 import { selectedDateAtom } from "@/atoms/session"
+import { t } from "@/utils/texts"
 
 
 export default function Index() {

@@ -30,6 +30,14 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
 		"expo-router",
 		"expo-localization",
 		["expo-font", { fonts: ["./assets/fonts/Iosevka.ttf"] }],
+		[
+			"@sentry/react-native/expo",
+			{
+				url: "https://sentry.io/",
+				organization: "pvinis",
+				project: "crossings",
+			},
+		],
 	],
 
 	extra: {

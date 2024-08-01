@@ -2,6 +2,7 @@
   "name": "player",
   "version": "1.0.0",
   "main": "expo-router/entry",
+  "type": "module",
   "scripts": {
     "set-lang": "run(){ ./scripts/set-lang.js $1 ; pnpx prettier -w extraConfig.json ;} ; run",
     "start": "APP_VARIANT=development expo start",
@@ -30,6 +31,7 @@
     "eas": "pnpx eas-cli@latest"
   },
   "dependencies": {
+    "@sentry/react-native": "~5.22.3",
     "@shopify/flash-list": "1.6.4",
     "@supabase-cache-helpers/postgrest-react-query": "^1.8.1",
     "@supabase/supabase-js": "^2.44.4",
@@ -74,11 +76,10 @@
     "@types/luxon": "^3.4.2",
     "@types/react": "~18.2.79",
     "node-jq": "^6.0.1",
-    "prettier": "^3.2.0",
-    "prettier-plugin-tailwindcss": "^0.6.5",
+    "prettier": "3.3.3",
+    "prettier-plugin-tailwindcss": "0.6.5",
     "react-native-svg-transformer": "^1.5.0",
-    "tailwindcss": "^3.4.6",
-    "tailwindcss-safe-area": "^0.5.1",
+    "tailwindcss": "^3.4.7",
     "typescript": "~5.3.3"
   }
 }
