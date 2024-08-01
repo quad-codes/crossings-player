@@ -1,4 +1,5 @@
 {
-	"games": "okkkkkk",
-	"notif.new-games": "Ενημέρωσέ με"
+	"games": "Παιχνίδια",
+	"notif.new-games": "Ενημέρωσέ με",
+	"today-date": "Σήμερα: {{date}}"
 }
