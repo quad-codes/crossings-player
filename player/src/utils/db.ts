@@ -1,8 +1,8 @@
 import "react-native-url-polyfill"
-import { SupabaseClient, createClient } from "@supabase/supabase-js"
-import { mmkvStorage } from "@/utils/mmkvStorage"
-import { SupabaseAuthClientOptions } from "@supabase/supabase-js/dist/module/lib/types"
 import type { Database } from "@/generated/database.types"
+import { mmkvStorage } from "@/utils/mmkvStorage"
+import { createClient, SupabaseClient } from "@supabase/supabase-js"
+import { SupabaseAuthClientOptions } from "@supabase/supabase-js/dist/module/lib/types"
 
 const url = process.env.EXPO_PUBLIC_SUPABASE_PROJECT_URL
 const anon = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY

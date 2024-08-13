@@ -1,4 +1,4 @@
-import { Game, GameState, DateString } from "@/types"
+import { DateString, Game, GameState } from "@/types"
 import { atomWithStorage } from "@/utils/atomWithStorage"
 import { atom } from "jotai"
 

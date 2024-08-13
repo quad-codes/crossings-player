@@ -1,14 +1,14 @@
 import { tw } from "@/utils/twHelpers"
 import { SplashScreen } from "expo-router"
 import { useEffect, useState } from "react"
-import { View, Image } from "react-native"
+import { Image, View } from "react-native"
 import Animated, {
-	useSharedValue,
-	useAnimatedStyle,
-	withTiming,
+	Easing,
 	interpolate,
 	runOnJS,
-	Easing,
+	useAnimatedStyle,
+	useSharedValue,
+	withTiming,
 } from "react-native-reanimated"
 
 SplashScreen.preventAutoHideAsync()

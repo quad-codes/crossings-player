@@ -1,8 +1,8 @@
 import { tw, tws } from "@/utils/twHelpers"
-import { View, TouchableOpacity, ViewStyle } from "react-native"
-import { Text } from "./Text"
-import { PropsWithChildren } from "react"
 import { router } from "expo-router"
+import { PropsWithChildren } from "react"
+import { TouchableOpacity, View, ViewStyle } from "react-native"
+import { Text } from "./Text"
 
 interface ButtonProps {
 	onPress?: () => void

@@ -1,18 +1,18 @@
-import { Alert, View } from "react-native"
-import humanizeDuration from "humanize-duration"
-import { Text, Button } from "@/design-system"
+import { selectedDateAtom } from "@/atoms/session"
+import { scheduledDailyNotifAtom } from "@/atoms/storage"
+import { Button, Text } from "@/design-system"
+import { useAppState } from "@/hooks/useAppState"
+import { getToday, isToday } from "@/utils/dateUtils"
+import { t } from "@/utils/texts"
+import { tw } from "@/utils/twHelpers"
 import * as Linking from "expo-linking"
 import * as Notifications from "expo-notifications"
-import { tw } from "@/utils/twHelpers"
-import useInterval from "react-use/lib/useInterval"
-import { DateTime } from "luxon"
+import humanizeDuration from "humanize-duration"
 import { useAtom } from "jotai"
-import { scheduledDailyNotifAtom } from "@/atoms/storage"
+import { DateTime } from "luxon"
 import { useState } from "react"
-import { getToday, isToday } from "@/utils/dateUtils"
-import { selectedDateAtom } from "@/atoms/session"
-import { useAppState } from "@/hooks/useAppState"
-import { t } from "@/utils/texts"
+import { Alert, View } from "react-native"
+import useInterval from "react-use/lib/useInterval"
 
 export function CountdownOrToday() {
 	useAppState({
@@ -66,23 +66,25 @@ export function CountdownOrToday() {
 	return (
 		<View style={tw`pt-4`}>
 			<Text style={tw`text-xl`}>Σήμερα: {selectedDate}</Text>
-			{isToday(selectedDate) ? (
-				<>
-					<Text style={tw`mt-1`}>Τα επόμενα παιχνίδια θα εμφανιστούν σε:</Text>
-					<Text style={tw`mt-1`}>
-						{humanizeDuration(remainingMillis, { round: true, language: "el" })}
-					</Text>
-					{!scheduledDailyNotif && (
-						<Button small onPress={() => scheduleDailyNotif()} style={tw`mt-2`}>
-							{t("notif.new-games")}
-						</Button>
-					)}
-				</>
-			) : (
-				<Button small onPress={() => setSelectedDate(getToday())} style={tw`mt-2`}>
-					Πήγαινε στα σημερινά
-				</Button>
-			)}
+			{isToday(selectedDate)
+				? (
+					<>
+						<Text style={tw`mt-1`}>Τα επόμενα παιχνίδια θα εμφανιστούν σε:</Text>
+						<Text style={tw`mt-1`}>
+							{humanizeDuration(remainingMillis, { round: true, language: "el" })}
+						</Text>
+						{!scheduledDailyNotif && (
+							<Button small onPress={() => scheduleDailyNotif()} style={tw`mt-2`}>
+								{t("notif.new-games")}
+							</Button>
+						)}
+					</>
+				)
+				: (
+					<Button small onPress={() => setSelectedDate(getToday())} style={tw`mt-2`}>
+						Πήγαινε στα σημερινά
+					</Button>
+				)}
 		</View>
 	)
 }

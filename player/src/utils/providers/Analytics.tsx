@@ -1,8 +1,8 @@
+import * as Application from "expo-application"
+import { modelName, osName, osVersion } from "expo-device"
 import PostHog, { PostHogProvider } from "posthog-react-native"
 import { PropsWithChildren } from "react"
 import { Platform } from "react-native"
-import { modelName, osName, osVersion } from "expo-device"
-import * as Application from "expo-application"
 import v from "../../../version.json"
 
 const client = new PostHog(process.env.EXPO_PUBLIC_POSTHOG_API_KEY, {

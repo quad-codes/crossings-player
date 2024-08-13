@@ -1,9 +1,9 @@
 import { tw, tws } from "@/utils/twHelpers"
+import Icon from "@expo/vector-icons/MaterialCommunityIcons"
+import { router } from "expo-router"
 import { PropsWithChildren } from "react"
 import { View, ViewStyle } from "react-native"
-import Icon from "@expo/vector-icons/MaterialCommunityIcons"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
-import { router } from "expo-router"
 
 export interface ScreenProps {
 	style?: ViewStyle

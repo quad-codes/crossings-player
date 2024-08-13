@@ -1,8 +1,8 @@
-import { tw, tws } from "@/utils/twHelpers"
-import { View, TouchableOpacity, ViewStyle } from "react-native"
-import { Text } from "./Text"
-import Icon from "@expo/vector-icons/MaterialCommunityIcons"
 import { GameState } from "@/types"
+import { tw, tws } from "@/utils/twHelpers"
+import Icon from "@expo/vector-icons/MaterialCommunityIcons"
+import { TouchableOpacity, View, ViewStyle } from "react-native"
+import { Text } from "./Text"
 
 interface GameProps {
 	title: string

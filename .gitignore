@@ -1,4 +1,7 @@
-node_modules/
 .expo/
-dist/
 .DS_Store
+
+node_modules/
+
+.env
+.envrc

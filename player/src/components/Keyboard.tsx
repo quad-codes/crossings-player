@@ -1,8 +1,8 @@
-import { View, Pressable } from "react-native"
 import { Text } from "@/design-system/Text"
-import { tw, tws } from "@/utils/twHelpers"
-import { KeyState, Letter } from "@/types"
 import { LetterGreek, LetterHebrew } from "@/languages"
+import { KeyState, Letter } from "@/types"
+import { tw, tws } from "@/utils/twHelpers"
+import { Pressable, View } from "react-native"
 
 export const BACKSPACE = "⌫"
 
@@ -17,17 +17,32 @@ export function Keyboard({ onKeyPress, noBackspace, keyStates }: KeyboardProps) 
 		<View style={tw`h-[180px] w-full justify-around`}>
 			<View style={tw`flex-row justify-center gap-[4px] px-4`}>
 				{(["Ε", "Ρ", "Τ", "Υ", "Θ", "Ι", "Ο", "Π"] as Letter[]).map((c) => (
-					<Key key={c} character={c} onPress={() => onKeyPress(c)} keyState={keyStates?.[c]} />
+					<Key
+						key={c}
+						character={c}
+						onPress={() => onKeyPress(c)}
+						keyState={keyStates?.[c]}
+					/>
 				))}
 			</View>
 			<View style={tw`flex-row justify-center gap-[4px] px-4`}>
 				{(["Α", "Σ", "Δ", "Φ", "Γ", "Η", "Ξ", "Κ", "Λ"] as Letter[]).map((c) => (
-					<Key key={c} character={c} onPress={() => onKeyPress(c)} keyState={keyStates?.[c]} />
+					<Key
+						key={c}
+						character={c}
+						onPress={() => onKeyPress(c)}
+						keyState={keyStates?.[c]}
+					/>
 				))}
 			</View>
 			<View style={tw`flex-row justify-center gap-[4px] px-4 pr-0`}>
 				{(["Ζ", "Χ", "Ψ", "Ω", "Β", "Ν", "Μ"] as Letter[]).map((c) => (
-					<Key key={c} character={c} onPress={() => onKeyPress(c)} keyState={keyStates?.[c]} />
+					<Key
+						key={c}
+						character={c}
+						onPress={() => onKeyPress(c)}
+						keyState={keyStates?.[c]}
+					/>
 				))}
 				<View style={tw`ml-2`}>
 					<Key
