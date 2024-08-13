@@ -1,8 +1,7 @@
-import { ClassName } from "@/types"
 import { cn } from "@/utils/twHelpers"
 import { Text as RNText, TextProps as RNTextProps } from "react-native"
 
-interface TextProps extends RNTextProps, ClassName {}
+interface TextProps extends RNTextProps {}
 
 export function Text({ children, className, ...restProps }: TextProps) {
 	return (

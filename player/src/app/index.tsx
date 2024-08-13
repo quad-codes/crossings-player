@@ -13,14 +13,22 @@ import { DateTime } from "luxon"
 import { View } from "react-native"
 import { CalendarProvider, ExpandableCalendar } from "react-native-calendars"
 import { MarkedDates } from "react-native-calendars/src/types"
-import { useSafeAreaInsets } from "react-native-safe-area-context"
 import v from "../../version.json"
+import { cssInterop, useColorScheme } from "nativewind"
 
+
+const NWExpandableCalendar = cssInterop(ExpandableCalendar, {
+	themeClassName: {
+		target: false,
+		nativeStyleToProp: {
+			color: "theme",
+		},
+	},
+})
 
 export default function Index() {
-	const saInsets = useSafeAreaInsets()
 	const upd = Updates.useUpdates()
-	const [theme] = useAppColorScheme(tw)
+	const { colorScheme } = useColorScheme()
 
 	const todayDT = DateTime.now()
 
@@ -51,13 +59,10 @@ export default function Index() {
 				date={selectedDate}
 				onDateChanged={(date) => setSelectedDate(date as DateString)}
 			>
-				<ExpandableCalendar
-					key={theme}
+				<NWExpandableCalendar
+					key={colorScheme}
 					allowShadow={false}
-					theme={{
-						selectedDayBackgroundColor: "purple",
-						calendarBackground: tw`bg-background `.backgroundColor as string,
-					}}
+					themeClassName="{}-[theme.calendarBackground]:color-background {}-[theme.selectedDayBackgroundColor]:color-purple-500"
 					firstDay={1}
 					maxDate={today}
 					markedDates={markedDates}
@@ -86,7 +91,7 @@ export default function Index() {
 				</View>
 			</CalendarProvider>
 
-			<Text className="absolute right-4 text-on-background-low bottom-safe">
+			<Text className="absolute right-4 bottom-safe">
 				{upd.isUpdateAvailable ? "• " : ""}v{Application.nativeApplicationVersion} (
 				{Application.nativeBuildVersion} - {v.jsbuild})
 			</Text>
@@ -102,3 +107,4 @@ function DebugSplashScreen() {
 		</View>
 	)
 }
+

@@ -1,6 +1,6 @@
 import { ClassName, GameState } from "@/types"
 import Icon from "@expo/vector-icons/MaterialCommunityIcons"
-import { TouchableOpacity, View, ViewStyle } from "react-native"
+import { TouchableOpacity, View } from "react-native"
 import { Text } from "./Text"
 import { cn } from "@/utils/twHelpers"
 

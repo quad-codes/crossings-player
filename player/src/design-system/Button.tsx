@@ -1,8 +1,8 @@
 import { router } from "expo-router"
 import { PropsWithChildren } from "react"
 import { TouchableOpacity, View } from "react-native"
-import { Text } from "./Text"
 import { ClassName } from "@/types"
+import { Text } from "./Text"
 import { cn } from "@/utils/twHelpers"
 
 interface ButtonProps extends ClassName {

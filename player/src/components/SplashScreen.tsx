@@ -66,6 +66,7 @@ export function AnimatedSplashScreen({ homeScreenReady, allLoaded }: AnimatedSpl
 				<Animated.View
 					pointerEvents="none"
 					className="items-center justify-center bg-transparent full"
+					style={zoomAnim}
 				>
 					<Image
 						source={require("@/assets/splash-screen.png")}

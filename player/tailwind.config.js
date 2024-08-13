@@ -1,7 +1,10 @@
 const plugin = require("tailwindcss/plugin")
+const { hairlineWidth } = require("nativewind/theme")
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
 	content: ["./src/**/*.{ts,tsx}"],
+	presets: [require("nativewind/preset")],
 	theme: {
 		extend: {
 			colors: {
@@ -15,9 +18,13 @@ module.exports = {
 				"surface-in-progress": "var(--color-surface-in-progress)",
 				"surface-done": "var(--color-surface-done)",
 				"on-surface": "var(--color-on-surface)",
+
 				t: "red",
 			},
 			fontFamily: { "mono-base": "Iosevka" },
+			borderWidth: {
+				hairline: hairlineWidth(),
+			},
 		},
 	},
 	plugins: [

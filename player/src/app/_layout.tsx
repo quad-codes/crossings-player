@@ -3,7 +3,8 @@ import { AnimatedSplashScreen } from "@/components/SplashScreen"
 import { useOTAUpdates } from "@/hooks/useOTAUpdates"
 import { Providers } from "@/utils/providers"
 import { Stack } from "expo-router"
-import { LogBox } from "react-native"
+import { LogBox, View } from "react-native"
+import { useSafeAreaEnv } from "react-native-css-interop/dist/runtime/api"
 import * as Sentry from "@sentry/react-native"
 
 LogBox.ignoreLogs(["ExpandableCalendar"])
@@ -17,7 +18,7 @@ export default function RootLayout() {
 	useOTAUpdates()
 
 	return (
-		<>
+		<View style={[{ flex: 1 }, useSafeAreaEnv()]}>
 			<Providers>
 				<Stack screenOptions={{ headerShown: false }} />
 			</Providers>
@@ -28,6 +29,6 @@ export default function RootLayout() {
 					true
 				}
 			/>
-		</>
+		</View>
 	)
 }

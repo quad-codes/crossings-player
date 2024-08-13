@@ -2,8 +2,8 @@ import { ClassName } from "@/types"
 import { cn } from "@/utils/twHelpers"
 import Icon from "@expo/vector-icons/MaterialCommunityIcons"
 import { router } from "expo-router"
-import { PropsWithChildren } from "react"
 import { View } from "react-native"
+import { PropsWithChildren } from "react"
 
 export interface ScreenProps extends ClassName {
 	back?: boolean
