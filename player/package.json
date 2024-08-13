@@ -30,11 +30,11 @@
     "eas": "pnpx eas-cli@latest"
   },
   "dependencies": {
-    "@sentry/react-native": "~5.22.3",
+    "@sentry/react-native": "~5.24.1",
     "@shopify/flash-list": "1.6.4",
     "@supabase-cache-helpers/postgrest-react-query": "^1.8.1",
-    "@supabase/supabase-js": "^2.44.4",
-    "@tanstack/react-query": "^5.51.11",
+    "@supabase/supabase-js": "^2.45.1",
+    "@tanstack/react-query": "^5.51.23",
     "clsx": "^2.1.1",
     "expo": "~51.0.26",
     "expo-application": "~5.9.1",
@@ -51,9 +51,9 @@
     "expo-splash-screen": "^0.27.5",
     "expo-updates": "~0.25.22",
     "humanize-duration": "^3.32.1",
-    "jotai": "^2.9.1",
+    "jotai": "^2.9.3",
     "lodash": "^4.17.21",
-    "luxon": "^3.4.4",
+    "luxon": "^3.5.0",
     "nativewind": "^4.0.36",
     "posthog-react-native": "^3.1.1",
     "react": "18.2.0",
@@ -71,16 +71,16 @@
     "tailwind-merge": "^2.5.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.9",
+    "@babel/core": "^7.25.2",
     "@types/humanize-duration": "^3.27.4",
     "@types/lodash": "^4.17.7",
     "@types/luxon": "^3.4.2",
     "@types/react": "~18.2.79",
     "node-jq": "^6.0.1",
     "prettier": "3.3.3",
-    "prettier-plugin-tailwindcss": "0.6.5",
+    "prettier-plugin-tailwindcss": "0.6.6",
     "react-native-svg-transformer": "^1.5.0",
-    "tailwindcss": "^3.4.7",
+    "tailwindcss": "^3.4.10",
     "typescript": "~5.3.3"
   }
 }
