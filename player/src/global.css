@@ -1,0 +1,31 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+:root {
+	--color-background: white;
+	--color-on-background: black;
+	--color-on-background-low: #eee;
+	--color-primary: blue;
+	--color-on-primary: white;
+	--color-opening: #f9f9f9;
+	--color-surface-not-started: #6a0dad;
+	--color-surface-in-progress: #a76acd;
+	--color-surface-done: #dcc1e9;
+	--color-on-surface: white;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-background: black;
+		--color-on-background: white;
+		--color-on-background-low: #111;
+		--color-primary: blue;
+		--color-on-primary: white;
+		--color-opening: #222;
+		--color-surface-not-started: green;
+		--color-surface-in-progress: yellow;
+		--color-surface-done: red;
+		--color-on-surface: white;
+	}
+}

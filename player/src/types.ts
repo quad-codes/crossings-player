@@ -17,3 +17,7 @@ export type Game = "hangman" | "crossword"
 export type GameState = "not-started" | "in-progress" | "done"
 
 export type KeyState = "off" | "correct"
+
+export interface ClassName {
+	className?: string
+}

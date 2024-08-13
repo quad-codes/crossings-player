@@ -1,4 +1,3 @@
-import { tw } from "@/utils/twHelpers"
 import { SplashScreen } from "expo-router"
 import { useEffect, useState } from "react"
 import { Image, View } from "react-native"
@@ -62,15 +61,15 @@ export function AnimatedSplashScreen({ homeScreenReady, allLoaded }: AnimatedSpl
 	if (splashAnimationDone) return null
 
 	return (
-		<View style={tw`full`}>
+		<View className="absolute full">
 			{!splashAnimationDone && (
 				<Animated.View
 					pointerEvents="none"
-					style={[tw`full items-center justify-center bg-transparent`, zoomAnim]}
+					className="items-center justify-center bg-transparent full"
 				>
 					<Image
 						source={require("@/assets/splash-screen.png")}
-						style={tw`h-full w-full`}
+						className="h-full w-full"
 						onLoadEnd={() => setImageLoaded(true)}
 					/>
 				</Animated.View>

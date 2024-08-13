@@ -1,17 +1,23 @@
-import { tw, tws } from "@/utils/twHelpers"
 import { router } from "expo-router"
 import { PropsWithChildren } from "react"
-import { TouchableOpacity, View, ViewStyle } from "react-native"
+import { TouchableOpacity, View } from "react-native"
 import { Text } from "./Text"
+import { ClassName } from "@/types"
+import { cn } from "@/utils/twHelpers"
 
-interface ButtonProps {
+interface ButtonProps extends ClassName {
 	onPress?: () => void
 	href?: string
-	style?: ViewStyle
 	small?: boolean
 }
 
-export function Button({ href, onPress, style, small, children }: PropsWithChildren<ButtonProps>) {
+export function Button({
+	href,
+	onPress,
+	className,
+	small,
+	children,
+}: PropsWithChildren<ButtonProps>) {
 	return (
 		<TouchableOpacity
 			onPress={() => {
@@ -19,8 +25,8 @@ export function Button({ href, onPress, style, small, children }: PropsWithChild
 				return onPress?.()
 			}}
 		>
-			<View style={tws(`items-center rounded-lg bg-primary px-4 py-2`, style)}>
-				<Text style={tws(`text-lg text-on-primary`, small && `text-sm`)}>{children}</Text>
+			<View className={cn("items-center rounded-lg bg-primary px-4 py-2", className)}>
+				<Text className={cn("text-lg text-on-primary", small && "text-sm")}>{children}</Text>
 			</View>
 		</TouchableOpacity>
 	)

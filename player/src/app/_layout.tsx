@@ -1,10 +1,9 @@
-import { Stack } from "expo-router"
-import { Providers } from "@/utils/providers"
-import { LogBox } from "react-native"
-import { tw } from "@/utils/twHelpers"
-import { useDeviceContext } from "twrnc"
-import { useOTAUpdates } from "@/hooks/useOTAUpdates"
+import "@/global.css"
 import { AnimatedSplashScreen } from "@/components/SplashScreen"
+import { useOTAUpdates } from "@/hooks/useOTAUpdates"
+import { Providers } from "@/utils/providers"
+import { Stack } from "expo-router"
+import { LogBox } from "react-native"
 import * as Sentry from "@sentry/react-native"
 
 LogBox.ignoreLogs(["ExpandableCalendar"])
@@ -15,7 +14,6 @@ Sentry.init({
 })
 
 export default function RootLayout() {
-	useDeviceContext(tw)
 	useOTAUpdates()
 
 	return (

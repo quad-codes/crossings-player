@@ -1,6 +1,6 @@
-import { ExpoConfig, ConfigContext } from "expo/config"
-import v from "./version.json"
+import { ConfigContext, ExpoConfig } from "expo/config"
 import extra from "./extraConfig.json"
+import v from "./version.json"
 
 const IS_DEV = process.env.APP_VARIANT === "development"
 

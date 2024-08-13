@@ -1,6 +1,6 @@
-import { create } from "twrnc"
+import { type ClassValue, clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
 
-/** Turns tailwind strings into style objects */
-export const tw = create(require(`../../tailwind.config.js`))
-
-export const tws = tw.style
+export function cn(...args: ClassValue[]) {
+	return twMerge(clsx(args))
+}

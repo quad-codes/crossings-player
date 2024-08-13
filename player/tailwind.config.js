@@ -1,79 +1,37 @@
-const { reduce } = require("lodash")
-const { plugin } = require("twrnc")
-
-/**
- * @typedef {"background" | "on-background" | "on-background-low" | "primary" | "on-primary" | "surface-not-started" | "surface-in-progress" | "surface-done" | "on-surface"} ColorName
- * @typedef {Record<ColorName, string>} Colors
- */
-
-/** @type Record<"light"|"dark", Colors> */
-const colors = {
-	light: {
-		background: "white",
-		"on-background": "black",
-		"on-background-low": "#eee",
-		primary: "blue",
-		"on-primary": "white",
-		"surface-not-started": "#6A0DAD",
-		"surface-in-progress": "#A76ACD",
-		"surface-done": "#DCC1E9",
-		"on-surface": "white",
-	},
-	dark: {
-		background: "black",
-		"on-background": "white",
-		"on-background-low": "#111",
-		primary: "blue",
-		"on-primary": "white",
-		"surface-not-started": "green",
-		"surface-in-progress": "yellow",
-		"surface-done": "red",
-		"on-surface": "white",
-	},
-}
-
-/** @type Record<string,string> */
-const initForLight = {}
-/** @type Record<string,string> */
-const initForDark = {}
+const plugin = require("tailwindcss/plugin")
 
 module.exports = {
 	content: ["./src/**/*.{ts,tsx}"],
 	theme: {
 		extend: {
 			colors: {
-				...reduce(
-					colors.light,
-					(acc, value, key) => {
-						acc[key] = value
-						return acc
-					},
-					initForLight,
-				),
-				...reduce(
-					colors.dark,
-					(acc, value, key) => {
-						acc[`dark-${key}`] = value
-						return acc
-					},
-					initForDark,
-				),
+				background: "var(--color-background)",
+				"on-background": "var(--color-on-background)",
+				"on-background-low": "var(--color-on-background-low)",
+				primary: "var(--color-primary)",
+				"on-primary": "var(--color-on-primary)",
+				opening: "var(--color-opening)",
+				"surface-not-started": "var(--color-surface-not-started)",
+				"surface-in-progress": "var(--color-surface-in-progress)",
+				"surface-done": "var(--color-surface-done)",
+				"on-surface": "var(--color-on-surface)",
 				t: "red",
 			},
 			fontFamily: { "mono-base": "Iosevka" },
 		},
 	},
 	plugins: [
+		require("nativewind/dist/tailwind/safe-area").safeArea,
 		plugin(({ addUtilities }) =>
 			addUtilities({
+				// usually paired with `absolute`
 				".full": {
-					position: "absolute",
 					top: 0,
 					bottom: 0,
 					left: 0,
 					right: 0,
 				},
-			})
+			}),
 		),
 	],
 }

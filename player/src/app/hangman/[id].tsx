@@ -6,8 +6,7 @@ import type { DateString, KeyState, Letter } from "@/types"
 import { diffFromToday, isToday } from "@/utils/dateUtils"
 import { createWord } from "@/utils/hangmanUtils"
 import { normalizeGreek } from "@/utils/normalizeGreek"
-import { tw } from "@/utils/twHelpers"
-import { Link, router, useLocalSearchParams } from "expo-router"
+import { useLocalSearchParams } from "expo-router"
 import { filter, reduce, reject, uniq } from "lodash"
 import { useEffect, useState } from "react"
 import { View } from "react-native"
@@ -30,7 +29,7 @@ export default function Page() {
 
 	if (isLoading) {
 		return (
-			<View style={tw`flex-1 items-center justify-center`}>
+			<View className="flex-1 items-center justify-center">
 				<Text>Loading...</Text>
 			</View>
 		)
@@ -38,7 +37,7 @@ export default function Page() {
 
 	if (!data) {
 		return (
-			<View style={tw`flex-1 items-center justify-center`}>
+			<View className="flex-1 items-center justify-center">
 				<Text>Not found</Text>
 			</View>
 		)
@@ -59,24 +58,24 @@ export default function Page() {
 
 	return (
 		<Screen back>
-			<View style={tw`flex-1 py-24`}>
-				<Text style={tw`text-lg`}>Λέξη για {isToday(date) ? "σήμερα" : date}</Text>
+			<View className="flex-1 py-24">
+				<Text className="text-lg">Λέξη για {isToday(date) ? "σήμερα" : date}</Text>
 
-				<View style={tw`mt-8 flex-1 flex-row justify-center`}>
+				<View className="mt-8 flex-1 flex-row justify-center">
 					{(word.split("") as Letter[]).map((letter, i) => (
-						<Text key={i} style={tw`mx-0.5 font-mono-base text-3xl`}>
+						<Text key={i} className="mx-0.5 font-mono-base text-3xl">
 							{guesses.includes(normalizeGreek(letter)) ? letter : "_"}
 						</Text>
 					))}
 				</View>
-				<View style={tw`flex-1`}>
-					<Text style={tw`text-lg`}>Λάθη</Text>
-					<View style={tw`flex-1 flex-row flex-wrap`}>
-						<Text style={tw`font-mono-base text-3xl`}>{wrongGuessesDisplayed.join(" ")}</Text>
+				<View className="flex-1">
+					<Text className="text-lg">Λάθη</Text>
+					<View className="flex-1 flex-row flex-wrap">
+						<Text className="font-mono-base text-3xl">{wrongGuessesDisplayed.join(" ")}</Text>
 					</View>
 				</View>
 
-				<View style={tw`flex-1`} />
+				<View className="flex-1" />
 				<Keyboard
 					noBackspace
 					keyStates={{
@@ -96,20 +95,19 @@ export default function Page() {
 			</View>
 
 			{finished && (
-				<View
-					style={tw`absolute bottom-0 left-0 right-0 top-0 items-center justify-center bg-background opacity-90 dark:bg-dark-background`}
-				>
+				<View className="absolute bottom-0 left-0 right-0 top-0 items-center justify-center bg-background opacity-90">
 					{lost && (
 						<>
-							<Text style={tw`text-4xl`}>Δε το βρήκες σήμερα.</Text>
-							<Text style={tw`text-2xl`}>Αλλά αυριο θα τα καταφέρεις!</Text>
-							<Text style={tw`text-4xl`}>Η λέξη ήταν "{word}".</Text>
+							<Text className="text-4xl">Δε το βρήκες σήμερα.</Text>
+							{/*  more texts for success anf failure */}
+							<Text className="text-2xl">Αλλά αυριο θα τα καταφέρεις!</Text>
+							<Text className="text-4xl">Η λέξη ήταν "{word}".</Text>
 						</>
 					)}
 					{won && (
 						<>
-							<Text style={tw`text-4xl`}>Μπράβο!</Text>
-							<Text style={tw`text-2xl`}>Το streak σου είναι 55.</Text>
+							<Text className="text-4xl">Μπράβο!</Text>
+							<Text className="text-2xl">Το streak σου είναι 55.</Text>
 						</>
 					)}
 
@@ -126,12 +124,12 @@ export default function Page() {
 								type: "text/plain",
 							})
 						}}
-						style={tw`mt-24`}
+						className="mt-24"
 					>
 						Μοιράσου το
 					</Button>
 
-					<Button href=".." style={tw`mt-12`}>
+					<Button href=".." className="mt-12">
 						Πίσω
 					</Button>
 				</View>

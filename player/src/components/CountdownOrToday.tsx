@@ -4,7 +4,6 @@ import { Button, Text } from "@/design-system"
 import { useAppState } from "@/hooks/useAppState"
 import { getToday, isToday } from "@/utils/dateUtils"
 import { t } from "@/utils/texts"
-import { tw } from "@/utils/twHelpers"
 import * as Linking from "expo-linking"
 import * as Notifications from "expo-notifications"
 import humanizeDuration from "humanize-duration"
@@ -64,27 +63,25 @@ export function CountdownOrToday() {
 	}
 
 	return (
-		<View style={tw`pt-4`}>
-			<Text style={tw`text-xl`}>Σήμερα: {selectedDate}</Text>
-			{isToday(selectedDate)
-				? (
-					<>
-						<Text style={tw`mt-1`}>Τα επόμενα παιχνίδια θα εμφανιστούν σε:</Text>
-						<Text style={tw`mt-1`}>
-							{humanizeDuration(remainingMillis, { round: true, language: "el" })}
-						</Text>
-						{!scheduledDailyNotif && (
-							<Button small onPress={() => scheduleDailyNotif()} style={tw`mt-2`}>
-								{t("notif.new-games")}
-							</Button>
-						)}
-					</>
-				)
-				: (
-					<Button small onPress={() => setSelectedDate(getToday())} style={tw`mt-2`}>
-						Πήγαινε στα σημερινά
-					</Button>
-				)}
+		<View className="pt-4">
+			<Text className="text-xl">Σήμερα: {selectedDate}</Text>
+			{isToday(selectedDate) ? (
+				<>
+					<Text className="mt-1">Τα επόμενα παιχνίδια θα εμφανιστούν σε:</Text>
+					<Text className="mt-1">
+						{humanizeDuration(remainingMillis, { round: true, language: "el" })}
+					</Text>
+					{!scheduledDailyNotif && (
+						<Button small onPress={() => scheduleDailyNotif()} className="mt-2">
+							{t("notif.new-games")}
+						</Button>
+					)}
+				</>
+			) : (
+				<Button small onPress={() => setSelectedDate(getToday())} className="mt-2">
+					Πήγαινε στα σημερινά
+				</Button>
+			)}
 		</View>
 	)
 }
