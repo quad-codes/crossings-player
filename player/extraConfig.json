@@ -3,7 +3,7 @@
 	"appName": "Καθημερινά Παιχνίδια",
 	"slug": "crossings-el",
 	"scheme": "crossings-el",
-	"iosBundleIdentifier": "codes.quad.crossings.el",
-	"androidPackage": "codes.quad.crossings.el",
+	"iosBundleIdentifier": "com.pvinis.crossings.el",
+	"androidPackage": "com.pvinis.crossings.el",
 	"easProjectId": "8503a5c0-0951-49df-81f7-cdd323478b0e"
 }

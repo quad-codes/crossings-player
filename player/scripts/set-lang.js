@@ -31,13 +31,13 @@ async function main() {
 	)
 
 	const extraConfigJson = await jq.run(
-		`.id = "${langConfig[lang].id}" |`
-			+ `.appName = "${langConfig[lang].appName}" |`
-			+ `.easProjectId = "${langConfig[lang].easProjectId}" |`
-			+ `.slug = "crossings-${langConfig[lang].id}" |`
-			+ `.scheme = "crossings-${langConfig[lang].id}" |`
-			+ `.iosBundleIdentifier = "codes.quad.crossings.${langConfig[lang].id}" |`
-			+ `.androidPackage = "codes.quad.crossings.${langConfig[lang].id}"`,
+		`.id = "${langConfig[lang].id}" |` +
+			`.appName = "${langConfig[lang].appName}" |` +
+			`.easProjectId = "${langConfig[lang].easProjectId}" |` +
+			`.slug = "crossings-${langConfig[lang].id}" |` +
+			`.scheme = "crossings-${langConfig[lang].id}" |` +
+			`.iosBundleIdentifier = "com.pvinis.crossings.${langConfig[lang].id}" |` +
+			`.androidPackage = "com.pvinis.crossings.${langConfig[lang].id}"`,
 		path.join(__dirname, "../extraConfig.json"),
 	)
 	fs.writeFileSync(path.join(__dirname, "../extraConfig.json"), extraConfigJson)
@@ -46,23 +46,3 @@ async function main() {
 ;(async () => {
 	await main()
 })()
-
-// emove
-
-// export default ({ config }: ConfigContext): ExpoConfig => ({
-// 	...config,
-
-// 	name: IS_DEV ? `${extra.appName} (DEV)` : extra.appName,
-// 	slug: `crossings-${LID}`,
-// 	scheme: `crossings-${LID}`,
-// 	version: v.version,
-// 	icon: "./assets/app-icon.png",
-// 	ios: {
-// 		bundleIdentifier: IS_DEV ? `codes.quad.crossings.${LID}.dev` : `codes.quad.crossings.${LID}`,
-// 		buildNumber: String(v.build),
-// 		config: { usesNonExemptEncryption: false },
-// 	},
-// 	android: {
-// 		package: IS_DEV ? `codes.quad.crossings.${LID}.dev` : `codes.quad.crossings.${LID}`,
-// 		versionCode: v.build,
-// 	},
