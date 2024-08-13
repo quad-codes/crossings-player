@@ -2,6 +2,8 @@ import { DateString, Game, GameState } from "@/types"
 import { atomWithStorage } from "@/utils/atomWithStorage"
 import { atom } from "jotai"
 
+// export const crosserData = atomWithStorage<Record<DateString, CrosserData>>("crossers", {})
+
 export const calendarDataAtom = atomWithStorage<
 	Record<DateString, Partial<Record<Game, GameState>>>
 >("calendarData", {

@@ -1,6 +1,6 @@
 {
 	"id": "el",
-	"appName": "Καθημερινά Παιχνίδια",
+	"appName": "Παιχνίδια Ημέρας",
 	"slug": "crossings-el",
 	"scheme": "crossings-el",
 	"iosBundleIdentifier": "com.pvinis.crossings.el",

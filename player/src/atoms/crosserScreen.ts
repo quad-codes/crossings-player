@@ -1,6 +1,8 @@
 import { Direction } from "@/types"
 import { atom } from "jotai"
 
+// export const crosserId = atom<string | undefined>(undefined)
+// export const crosserData = atom(null)
 
 export const directionAtom = atom<Direction>("across")
 export const highlightedRowAtom = atom<number | null>(null)

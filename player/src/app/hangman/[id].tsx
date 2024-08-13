@@ -20,7 +20,7 @@ export default function Page() {
 
 	const { isLoading, data } = useHangmanQuery(date)
 
-	const [guesses, setGuesses] = useState<Letter[]>([]) //// move to atom
+	const [guesses, setGuesses] = useState<Letter[]>([])
 
 	useEffect(() => {
 		const timeliness = diffFromToday(date)
@@ -137,4 +137,3 @@ export default function Page() {
 		</Screen>
 	)
 }
-
