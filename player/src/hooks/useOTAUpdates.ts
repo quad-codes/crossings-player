@@ -22,3 +22,5 @@ async function onFetchUpdateAsync() {
 		console.error("Error fetching update", e)
 	}
 }
+
+/// remove

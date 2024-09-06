@@ -1,6 +1,6 @@
 import "@/global.css"
 import { AnimatedSplashScreen } from "@/components/SplashScreen"
-import { useOTAUpdates } from "@/hooks/useOTAUpdates"
+// import { useOTAUpdates } from "@/hooks/useOTAUpdates"
 import { Providers } from "@/utils/providers"
 import { Stack } from "expo-router"
 import { LogBox, View } from "react-native"
@@ -15,7 +15,7 @@ Sentry.init({
 })
 
 export default function RootLayout() {
-	useOTAUpdates()
+	// useOTAUpdates()
 
 	return (
 		<View style={[{ flex: 1 }, useSafeAreaEnv()]}>

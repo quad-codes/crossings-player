@@ -29,7 +29,7 @@
 				"APP_VARIANT": "development"
 			},
 			"distribution": "internal",
-			"channel": "development-device"
+			"channel": "development"
 		}
 	},
 	"submit": {
