@@ -1,6 +1,5 @@
 import { ConfigContext, ExpoConfig } from "expo/config"
 import extra from "./extraConfig.json"
-import v from "./version.json"
 
 const IS_DEV = process.env.APP_VARIANT === "development"
 
@@ -10,16 +9,14 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
 	name: IS_DEV ? `${extra.appName} (DEV)` : extra.appName,
 	slug: extra.slug,
 	scheme: extra.scheme,
-	version: v.version,
+	version: "0.6.1",
 	icon: "./assets/app-icon.png",
 	ios: {
 		bundleIdentifier: extra.iosBundleIdentifier + (IS_DEV ? ".dev" : ""),
-		buildNumber: String(v.build),
 		config: { usesNonExemptEncryption: false },
 	},
 	android: {
 		package: extra.androidPackage + (IS_DEV ? ".dev" : ""),
-		versionCode: v.build,
 	},
 	userInterfaceStyle: "automatic",
 	splash: {

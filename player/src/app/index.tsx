@@ -16,7 +16,6 @@ import { MarkedDates } from "react-native-calendars/src/types"
 import v from "../../version.json"
 import { cssInterop, useColorScheme } from "nativewind"
 
-
 const NWExpandableCalendar = cssInterop(ExpandableCalendar, {
 	themeClassName: {
 		target: false,
@@ -107,4 +106,3 @@ function DebugSplashScreen() {
 		</View>
 	)
 }
-

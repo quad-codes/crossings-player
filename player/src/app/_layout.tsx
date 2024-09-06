@@ -23,12 +23,7 @@ export default function RootLayout() {
 				<Stack screenOptions={{ headerShown: false }} />
 			</Providers>
 
-			<AnimatedSplashScreen
-				homeScreenReady={true}
-				allLoaded={
-					true
-				}
-			/>
+			<AnimatedSplashScreen homeScreenReady allLoaded />
 		</View>
 	)
 }
