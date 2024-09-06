@@ -13,7 +13,6 @@ import { DateTime } from "luxon"
 import { View } from "react-native"
 import { CalendarProvider, ExpandableCalendar } from "react-native-calendars"
 import { MarkedDates } from "react-native-calendars/src/types"
-import v from "../../version.json"
 import { cssInterop, useColorScheme } from "nativewind"
 
 const NWExpandableCalendar = cssInterop(ExpandableCalendar, {
@@ -63,6 +62,9 @@ export default function Index() {
 					allowShadow={false}
 					themeClassName="{}-[theme.calendarBackground]:color-background {}-[theme.selectedDayBackgroundColor]:color-purple-500"
 					firstDay={1}
+					theme={{
+						calendarBackground: "red",
+					}}
 					maxDate={today}
 					markedDates={markedDates}
 					closeOnDayPress={false}
@@ -92,7 +94,7 @@ export default function Index() {
 
 			<Text className="absolute right-4 bottom-safe">
 				{upd.isUpdateAvailable ? "• " : ""}v{Application.nativeApplicationVersion} (
-				{Application.nativeBuildVersion} - {v.jsbuild})
+				{Application.nativeBuildVersion} - add jsbuild)
 			</Text>
 		</Screen>
 	)

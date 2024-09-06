@@ -18,7 +18,6 @@ module.exports = {
 				"surface-in-progress": "var(--color-surface-in-progress)",
 				"surface-done": "var(--color-surface-done)",
 				"on-surface": "var(--color-on-surface)",
-
 				t: "red",
 			},
 			fontFamily: { "mono-base": "Iosevka" },

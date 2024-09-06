@@ -39,9 +39,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
 
 	extra: {
 		eas: { projectId: extra.easProjectId },
-		pvinis: { lang: extra.id, jsbuild: v.jsbuild },
+		pvinis: { lang: extra.id, jsbuild: 9 },
 	},
 
 	runtimeVersion: { policy: "appVersion" },
-	updates: { url: "https://u.expo.dev/99375595-9000-4912-bb9a-1258a6ed9c0f" },
+	updates: { url: "https://u.expo.dev/8503a5c0-0951-49df-81f7-cdd323478b0e" },
 })

@@ -4,7 +4,7 @@ const { withNativeWind } = require("nativewind/metro")
 module.exports = (() => {
 	let config = getSentryExpoConfig(__dirname)
 
-	config = withNativeWind(config, { input: "./src/global.css" })
+	config = withNativeWind(config, { input: "./src/global.css", inlineRem: 16 })
 
 	const { transformer, resolver } = config
 	config.transformer = {
