@@ -1,5 +1,11 @@
 # player
 
+## 0.7.3
+
+### Patch Changes
+
+- nothing
+
 ## 0.7.2
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "player",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "main": "expo-router/entry",
   "scripts": {
     "set-lang": "run(){ ./scripts/set-lang.js $1 ; pnpx prettier -w extraConfig.json ;} ; run",
@@ -21,7 +21,7 @@
     "db:gen-types": "pnpx supabase gen types typescript --linked --schema=public > src/generated/database.types.ts",
     "test:ui": "maestro test trial.yaml",
     "test:ui:studio": "maestro studio",
-    "releaseprep": "pnpm changeset version ; pnpx changeset tag ; ./scripts/tag-rename.sh",
+    "releaseprep": "pnpm changeset version ; pnpm changeset tag ; ./scripts/tag-rename.sh",
     "eas": "pnpx eas-cli@latest"
   },
   "dependencies": {
