@@ -1,15 +1,16 @@
 import { PropsWithChildren } from "react"
-import { Analytics } from "./Analytics"
-import { QueryClient } from "./QueryClient"
+import { NativeWindSafeAreaWrapper } from "./NativeWindSafeAreaWrapper"
+import { QueryClientProvider } from "./QueryClientProvider"
+import { combineProviders } from "./combineProviders"
+import { AnalyticsProvider } from "./AnalyticsProvider"
 
 export function Providers({ children }: PropsWithChildren) {
-	return (
-		<Analytics>
-			<QueryClient>
-				{/**/}
-				{children}
-				{/**/}
-			</QueryClient>
-		</Analytics>
+	return combineProviders(
+		[
+			AnalyticsProvider,
+			NativeWindSafeAreaWrapper, // below SafeAreaProvider (which comes with expo-router)
+			QueryClientProvider,
+		],
+		children,
 	)
 }

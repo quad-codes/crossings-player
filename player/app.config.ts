@@ -2,21 +2,23 @@ import { ConfigContext, ExpoConfig } from "expo/config"
 import extra from "./extraConfig.json"
 
 const IS_DEV = process.env.APP_VARIANT === "development"
+const IS_DEVDEVICE = process.env.APP_VARIANT === "development-device"
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
 	...config,
 
-	name: IS_DEV ? `${extra.appName} (DEV)` : extra.appName,
+	name: extra.appName + (IS_DEV ? " (DEV)" : "") + (IS_DEVDEVICE ? " (DEVDEVICE)" : ""),
 	slug: extra.slug,
 	scheme: extra.scheme,
 	version: "0.6.1",
 	icon: "./assets/app-icon.png",
 	ios: {
-		bundleIdentifier: extra.iosBundleIdentifier + (IS_DEV ? ".dev" : ""),
+		bundleIdentifier:
+			extra.iosBundleIdentifier + (IS_DEV ? ".dev" : "") + (IS_DEVDEVICE ? ".devdevice" : ""),
 		config: { usesNonExemptEncryption: false },
 	},
 	android: {
-		package: extra.androidPackage + (IS_DEV ? ".dev" : ""),
+		package: extra.androidPackage + (IS_DEV ? ".dev" : "") + (IS_DEVDEVICE ? ".devdevice" : ""),
 	},
 	userInterfaceStyle: "automatic",
 	splash: {

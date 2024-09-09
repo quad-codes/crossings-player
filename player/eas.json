@@ -26,7 +26,7 @@
 			"extends": "production",
 			"developmentClient": true,
 			"env": {
-				"APP_VARIANT": "development"
+				"APP_VARIANT": "development-device"
 			},
 			"distribution": "internal",
 			"channel": "development"

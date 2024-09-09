@@ -8,6 +8,16 @@ const client = new PostHog(process.env.EXPO_PUBLIC_POSTHOG_API_KEY, {
 	host: "https://eu.i.posthog.com",
 })
 
+export function AnalyticsProvider(props: PropsWithChildren) {
+	return (
+		<PostHogProvider
+			client={client}
+			// debug
+			{...props}
+		/>
+	)
+}
+
 client.register({
 	platform: Platform.OS,
 	os: osName,
@@ -16,7 +26,3 @@ client.register({
 	is_dev: __DEV__,
 	full_version: `${Application.nativeApplicationVersion} (${Application.nativeBuildVersion} - add jsbuild)`,
 })
-
-export function Analytics({ children }: PropsWithChildren) {
-	return <PostHogProvider client={client}>{children}</PostHogProvider>
-}
