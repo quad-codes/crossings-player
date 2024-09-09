@@ -1,24 +1,29 @@
 import { ConfigContext, ExpoConfig } from "expo/config"
-import extra from "./extraConfig.json"
+import extraJson from "./extraConfig.json"
+import packageJson from "./package.json"
+import { coerce, major, minor, patch } from "semver"
 
 const IS_DEV = process.env.APP_VARIANT === "development"
 const IS_DEVDEVICE = process.env.APP_VARIANT === "development-device"
 
+const appVersion = coerce(major(packageJson.version) + "." + minor(packageJson.version))?.version
+const jsBuild = patch(packageJson.version)
+
 export default ({ config }: ConfigContext): ExpoConfig => ({
 	...config,
 
-	name: extra.appName + (IS_DEV ? " (DEV)" : "") + (IS_DEVDEVICE ? " (DEVDEVICE)" : ""),
-	slug: extra.slug,
-	scheme: extra.scheme,
-	version: "0.6.1",
+	name: extraJson.appName + (IS_DEV ? " (DEV)" : "") + (IS_DEVDEVICE ? " (DEVDEVICE)" : ""),
+	slug: extraJson.slug,
+	scheme: extraJson.scheme,
+	version: appVersion,
 	icon: "./assets/app-icon.png",
 	ios: {
 		bundleIdentifier:
-			extra.iosBundleIdentifier + (IS_DEV ? ".dev" : "") + (IS_DEVDEVICE ? ".devdevice" : ""),
+			extraJson.iosBundleIdentifier + (IS_DEV ? ".dev" : "") + (IS_DEVDEVICE ? ".devdevice" : ""),
 		config: { usesNonExemptEncryption: false },
 	},
 	android: {
-		package: extra.androidPackage + (IS_DEV ? ".dev" : "") + (IS_DEVDEVICE ? ".devdevice" : ""),
+		package: extraJson.androidPackage + (IS_DEV ? ".dev" : "") + (IS_DEVDEVICE ? ".devdevice" : ""),
 	},
 	userInterfaceStyle: "automatic",
 	splash: {
@@ -40,8 +45,11 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
 	],
 
 	extra: {
-		eas: { projectId: extra.easProjectId },
-		pvinis: { lang: extra.id, jsbuild: 9 },
+		eas: { projectId: extraJson.easProjectId },
+		pvinis: {
+			lang: extraJson.id,
+			jsbuild: jsBuild,
+		},
 	},
 
 	runtimeVersion: {
