@@ -1,4 +1,5 @@
 import { selectedDateAtom } from "@/atoms/session"
+import Constants from "expo-constants"
 import { calendarDataAtom } from "@/atoms/storage"
 import { CountdownOrToday } from "@/components/CountdownOrToday"
 import { Button, GameButton, Screen, Text } from "@/design-system"
@@ -82,7 +83,7 @@ export default function Index() {
 							className="mt-4"
 						/>
 						<GameButton
-							title="Σταυρόλεξοooooo"
+							title="Σταυρόλεξο"
 							subtitle="Έρχεται σύντομα"
 							state={calendarData[selectedDate]?.crossword ?? "not-started"}
 							// onPress={() => router.push(`crossword/${selectedDate}`)}
@@ -94,7 +95,7 @@ export default function Index() {
 
 			<Text className="absolute right-4 bottom-safe">
 				{upd.isUpdateAvailable ? "• " : ""}v{Application.nativeApplicationVersion} (
-				{Application.nativeBuildVersion} - add jsbuild)
+				{Application.nativeBuildVersion} - {Constants.expoConfig?.extra?.pvinis?.jsbuild})
 			</Text>
 		</Screen>
 	)

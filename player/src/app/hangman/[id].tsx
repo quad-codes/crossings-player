@@ -120,7 +120,7 @@ export default function Page() {
 								})
 								.join("")
 							Share.open({
-								message: `Κρεμαλα #${data.id}\n\n${sharedText}`,
+								message: `Κρεμαλα #${data.id}\n\n${sharedText}\n`,
 								type: "text/plain",
 							})
 						}}
