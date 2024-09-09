@@ -44,6 +44,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
 		pvinis: { lang: extra.id, jsbuild: 9 },
 	},
 
-	runtimeVersion: { policy: "appVersion" },
+	runtimeVersion: {
+		policy: "appVersion", // appVersion `1.2.3`, nativeVersion `1.2.3(29)`, fingerprint `magic`, custom `whatever-string-we-want`
+	},
 	updates: { url: "https://u.expo.dev/8503a5c0-0951-49df-81f7-cdd323478b0e" },
 })

@@ -1,4 +1,5 @@
 import * as Application from "expo-application"
+import Constants from "expo-constants"
 import { modelName, osName, osVersion } from "expo-device"
 import PostHog, { PostHogProvider } from "posthog-react-native"
 import { PropsWithChildren } from "react"
@@ -24,5 +25,5 @@ client.register({
 	os_version: osVersion,
 	device: modelName,
 	is_dev: __DEV__,
-	full_version: `${Application.nativeApplicationVersion} (${Application.nativeBuildVersion} - add jsbuild)`,
+	full_version: `${Application.nativeApplicationVersion} (${Application.nativeBuildVersion} - ${Constants.expoConfig?.extra?.pvinis?.jsbuild})`,
 })

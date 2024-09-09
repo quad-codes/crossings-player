@@ -16,7 +16,7 @@
     "devclient:ios": "pnpm run eas build:run -p ios --latest",
     "devclient:android": "pnpm run eas build:run -p android --latest",
     "submit": "pnpm run eas submit --platform all",
-    "update:push": "pnpm eas update --branch production",
+    "updatejs": "pnpm eas update --branch production --message",
     "db:init": "pnpx supabase login ; pnpx supabase init ; pnpx supabase link",
     "db:gen-types": "pnpx supabase gen types typescript --linked --schema=public > src/generated/database.types.ts",
     "test:ui": "maestro test trial.yaml",
@@ -67,6 +67,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.25.2",
+    "@changesets/cli": "^2.27.8",
     "@types/humanize-duration": "3.27.4",
     "@types/lodash": "4.17.7",
     "@types/luxon": "3.4.2",
