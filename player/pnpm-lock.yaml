@@ -16,13 +16,13 @@ importers:
         version: 1.6.4(@babel/runtime@7.25.6)(react-native@0.74.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
       '@supabase-cache-helpers/postgrest-react-query':
         specifier: ^1.10.1
-        version: 1.10.1(@supabase/postgrest-js@1.15.8)(@supabase/supabase-js@2.45.3)(@tanstack/react-query@5.55.0(react@18.2.0))(react@18.2.0)
+        version: 1.10.1(@supabase/postgrest-js@1.15.8)(@supabase/supabase-js@2.45.3)(@tanstack/react-query@5.55.4(react@18.2.0))(react@18.2.0)
       '@supabase/supabase-js':
         specifier: 2.45.3
         version: 2.45.3
       '@tanstack/react-query':
-        specifier: 5.55.0
-        version: 5.55.0(react@18.2.0)
+        specifier: 5.55.4
+        version: 5.55.4(react@18.2.0)
       clsx:
         specifier: 2.1.1
         version: 2.1.1
@@ -122,6 +122,9 @@ importers:
       react-use:
         specifier: 17.5.1
         version: 17.5.1(react-dom@18.3.1(react@18.2.0))(react@18.2.0)
+      semver:
+        specifier: 7.6.3
+        version: 7.6.3
       tailwind-merge:
         specifier: 2.5.2
         version: 2.5.2
@@ -159,9 +162,6 @@ importers:
       react-native-svg-transformer:
         specifier: ^1.5.0
         version: 1.5.0(react-native-svg@15.2.0(react-native@0.74.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native@0.74.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.2.79)(react@18.2.0))(typescript@5.3.3)
-      semver:
-        specifier: ^7.6.3
-        version: 7.6.3
       typescript:
         specifier: ~5.3.3
         version: 5.3.3
@@ -1631,11 +1631,11 @@ packages:
     peerDependencies:
       '@svgr/core': '*'
 
-  '@tanstack/query-core@5.54.1':
-    resolution: {integrity: sha512-hKS+WRpT5zBFip21pB6Jx1C0hranWQrbv5EJ7qPoiV5MYI3C8rTCqWC9DdBseiPT1JgQWh8Y55YthuYZNiw3Xw==}
+  '@tanstack/query-core@5.55.4':
+    resolution: {integrity: sha512-uoRqNnRfzOH4OMIoxj8E2+Us89UIGXfau981qYJWsNMkFS1GXR4UIyzUTVGq4N7SDLHgFPpo6IOazqUV5gkMZA==}
 
-  '@tanstack/react-query@5.55.0':
-    resolution: {integrity: sha512-2uYuxEbRQD8TORUiTUacEOwt1e8aoSqUOJFGY5TUrh6rQ3U85zrMS2wvbNhBhXGh6Vj69QDCP2yv8tIY7joo6Q==}
+  '@tanstack/react-query@5.55.4':
+    resolution: {integrity: sha512-e3uX5XkLD9oTV66/VsVpkYz3Ds/ps/Yk+V5d89xthAbtNIKKBEm4FdNb9yISFzGEGezUzVO68qmfmiSrtScvsg==}
     peerDependencies:
       react: ^18 || ^19
 
@@ -7662,11 +7662,11 @@ snapshots:
       merge-anything: 5.1.7
       xregexp: 5.1.1
 
-  '@supabase-cache-helpers/postgrest-react-query@1.10.1(@supabase/postgrest-js@1.15.8)(@supabase/supabase-js@2.45.3)(@tanstack/react-query@5.55.0(react@18.2.0))(react@18.2.0)':
+  '@supabase-cache-helpers/postgrest-react-query@1.10.1(@supabase/postgrest-js@1.15.8)(@supabase/supabase-js@2.45.3)(@tanstack/react-query@5.55.4(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@supabase-cache-helpers/postgrest-core': 0.8.1(@supabase/postgrest-js@1.15.8)(@supabase/supabase-js@2.45.3)
       '@supabase/postgrest-js': 1.15.8
-      '@tanstack/react-query': 5.55.0(react@18.2.0)
+      '@tanstack/react-query': 5.55.4(react@18.2.0)
       flat: 6.0.1
       react: 18.2.0
     transitivePeerDependencies:
@@ -7793,11 +7793,11 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@tanstack/query-core@5.54.1': {}
+  '@tanstack/query-core@5.55.4': {}
 
-  '@tanstack/react-query@5.55.0(react@18.2.0)':
+  '@tanstack/react-query@5.55.4(react@18.2.0)':
     dependencies:
-      '@tanstack/query-core': 5.54.1
+      '@tanstack/query-core': 5.55.4
       react: 18.2.0
 
   '@trysound/sax@0.2.0': {}
