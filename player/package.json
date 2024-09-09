@@ -1,6 +1,6 @@
 {
   "name": "player",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "main": "expo-router/entry",
   "scripts": {
     "set-lang": "run(){ ./scripts/set-lang.js $1 ; pnpx prettier -w extraConfig.json ;} ; run",
