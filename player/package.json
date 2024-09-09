@@ -21,6 +21,7 @@
     "db:gen-types": "pnpx supabase gen types typescript --linked --schema=public > src/generated/database.types.ts",
     "test:ui": "maestro test trial.yaml",
     "test:ui:studio": "maestro studio",
+    "releaseprep": "pnpm changeset version ; pnpx changeset tag ; ./scripts/tag-rename.sh",
     "eas": "pnpx eas-cli@latest"
   },
   "dependencies": {
