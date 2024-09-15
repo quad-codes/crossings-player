@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const DEBUG = false
+const DEBUG = true
 
 const { execSync } = require("child_process")
 const { diff, rsort } = require("semver")
