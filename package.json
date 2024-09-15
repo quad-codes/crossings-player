@@ -22,7 +22,8 @@
     "test:ui": "maestro test trial.yaml",
     "test:ui:studio": "maestro studio",
     "releaseprep": "pnpm changeset version ; pnpm changeset tag ; ./scripts/tag-rename.sh",
-    "eas": "pnpx eas-cli@latest"
+    "eas": "pnpx eas-cli@latest",
+    "prepare": "husky"
   },
   "dependencies": {
     "@sentry/react-native": "~5.31.1",
@@ -74,6 +75,7 @@
     "@types/lodash": "4.17.7",
     "@types/luxon": "3.4.2",
     "@types/react": "~18.2.79",
+    "husky": "^9.1.6",
     "node-jq": "6.0.1",
     "prettier": "3.3.3",
     "prettier-plugin-tailwindcss": "0.6.6",

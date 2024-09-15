@@ -150,6 +150,9 @@ importers:
       '@types/react':
         specifier: ~18.2.79
         version: 18.2.79
+      husky:
+        specifier: ^9.1.6
+        version: 9.1.6
       node-jq:
         specifier: 6.0.1
         version: 6.0.1
@@ -3003,6 +3006,11 @@ packages:
 
   humanize-duration@3.32.1:
     resolution: {integrity: sha512-inh5wue5XdfObhu/IGEMiA1nUXigSGcaKNemcbLRKa7jXYGDZXr3LoT9pTIzq2hPEbld7w/qv9h+ikWGz8fL1g==}
+
+  husky@9.1.6:
+    resolution: {integrity: sha512-sqbjZKK7kf44hfdE94EoX8MZNk0n7HeW37O4YrVGCF4wzgQjp+akPAkfUK5LZ6KuR/6sqeAVuXHji+RzQgOn5A==}
+    engines: {node: '>=18'}
+    hasBin: true
 
   hyphenate-style-name@1.1.0:
     resolution: {integrity: sha512-WDC/ui2VVRrz3jOVi+XtjqkDjiVjTtFaAGiW37k6b+ohyQ5wYDOGkvCZa8+H0nx3gyvv0+BST9xuOgIyGQ00gw==}
@@ -9331,6 +9339,8 @@ snapshots:
   human-signals@2.1.0: {}
 
   humanize-duration@3.32.1: {}
+
+  husky@9.1.6: {}
 
   hyphenate-style-name@1.1.0: {}
 
