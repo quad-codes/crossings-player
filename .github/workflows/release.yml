@@ -18,3 +18,5 @@ jobs:
       - run: pnpm install
 
       - run: ./scripts/do-release.js
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
