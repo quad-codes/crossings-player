@@ -21,7 +21,6 @@
     "db:gen-types": "pnpx supabase gen types typescript --linked --schema=public > src/generated/database.types.ts",
     "test:ui": "maestro test trial.yaml",
     "test:ui:studio": "maestro studio",
-    "releaseprep": "pnpm changeset version ; pnpm changeset tag ; ./scripts/tag-rename.sh",
     "eas": "pnpx eas-cli@latest",
     "prepare": "husky"
   },
@@ -29,8 +28,8 @@
     "@sentry/react-native": "~5.31.1",
     "@shopify/flash-list": "1.6.4",
     "@supabase-cache-helpers/postgrest-react-query": "^1.10.1",
-    "@supabase/supabase-js": "2.45.3",
-    "@tanstack/react-query": "5.55.4",
+    "@supabase/supabase-js": "2.45.4",
+    "@tanstack/react-query": "5.56.2",
     "clsx": "2.1.1",
     "expo": "~51.0.32",
     "expo-application": "~5.9.1",
@@ -50,7 +49,7 @@
     "jotai": "2.9.3",
     "lodash": "4.17.21",
     "luxon": "3.5.0",
-    "nativewind": "4.1.6",
+    "nativewind": "4.1.10",
     "posthog-react-native": "3.1.2",
     "react": "18.2.0",
     "react-native": "0.74.5",
@@ -66,11 +65,10 @@
     "react-use": "17.5.1",
     "semver": "7.6.3",
     "tailwind-merge": "2.5.2",
-    "tailwindcss": "3.4.10"
+    "tailwindcss": "3.4.11"
   },
   "devDependencies": {
     "@babel/core": "7.25.2",
-    "@changesets/cli": "^2.27.8",
     "@types/humanize-duration": "3.27.4",
     "@types/lodash": "4.17.7",
     "@types/luxon": "3.4.2",

@@ -10,5 +10,5 @@
 		"checkJs": true
 	},
 	"extends": "expo/tsconfig.base",
-	"include": ["**/*.d.ts", "**/*.ts", "**/*.tsx", "tailwind.config.js"]
+	"include": ["globals.d.ts", "**/*.ts", "**/*.tsx", "tailwind.config.js", "nativewind-env.d.ts"]
 }
