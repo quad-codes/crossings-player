@@ -14,7 +14,7 @@ LAST_VERSION=$(git show HEAD^:package.json 2>/dev/null | grep '"version"' | sed 
 # Compare versions
 if [ "$CURRENT_VERSION" != "$LAST_VERSION" ]; then
   # Tag the commit with the new version
-  git tag "v$CURRENT_VERSION"
+  git tag "version/$CURRENT_VERSION"
   echo "Tagged with v$CURRENT_VERSION"
 else
   echo "No version change detected."
