@@ -1,5 +1,11 @@
 # player
 
+## 0.7.4
+
+### Patch Changes
+
+- 9b1c3c7: try gh
+
 ## 0.7.3
 
 ### Patch Changes
