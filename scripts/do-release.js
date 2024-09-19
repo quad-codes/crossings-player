@@ -17,7 +17,10 @@ console.log(currentDiff)
 
 if (currentDiff === "major" || currentDiff === "minor") {
 	execSync("pnpm run build:prod --no-wait -p ios", { stdio: "inherit" })
+	execSync("pnpm run build:devdevice --no-wait -p ios", { stdio: "inherit" })
+	execSync("pnpm run build:dev --no-wait -p ios", { stdio: "inherit" })
 }
 if (currentDiff === "patch") {
-	execSync("pnpm run updatejs testtt", { stdio: "inherit" })
+	const latestSha = execSync("git log -1 --format=%h").toString().trim()
+	execSync("pnpm run updatejs " + latestSha, { stdio: "inherit" })
 }
