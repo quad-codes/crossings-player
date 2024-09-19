@@ -1,5 +1,4 @@
 import { selectedDateAtom } from "@/atoms/session"
-import Constants from "expo-constants"
 import { calendarDataAtom } from "@/atoms/storage"
 import { CountdownOrToday } from "@/components/CountdownOrToday"
 import { Button, GameButton, Screen, Text } from "@/design-system"
@@ -15,6 +14,7 @@ import { View } from "react-native"
 import { CalendarProvider, ExpandableCalendar } from "react-native-calendars"
 import { MarkedDates } from "react-native-calendars/src/types"
 import { cssInterop, useColorScheme } from "nativewind"
+import { jsBuild } from "@@/extra"
 
 const NWExpandableCalendar = cssInterop(ExpandableCalendar, {
 	themeClassName: {
@@ -95,7 +95,7 @@ export default function Index() {
 
 			<Text className="absolute right-4 bottom-safe">
 				{upd.isUpdateAvailable ? "• " : ""}v{Application.nativeApplicationVersion} (
-				{Application.nativeBuildVersion} - {Constants.expoConfig?.extra?.pvinis?.jsbuild})
+				{Application.nativeBuildVersion} - {jsBuild})
 			</Text>
 		</Screen>
 	)

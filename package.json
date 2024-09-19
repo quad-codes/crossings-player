@@ -76,6 +76,7 @@
     "@types/lodash": "4.17.7",
     "@types/luxon": "3.4.2",
     "@types/react": "~18.2.79",
+    "@types/semver": "^7.5.8",
     "husky": "^9.1.6",
     "node-jq": "6.0.1",
     "prettier": "3.3.3",

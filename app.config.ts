@@ -1,13 +1,12 @@
 import { ConfigContext, ExpoConfig } from "expo/config"
 import extraJson from "./extraConfig.json"
 import packageJson from "./package.json"
-import { coerce, major, minor, patch } from "semver"
+import { coerce, major, minor } from "semver"
 
 const IS_DEV = process.env.APP_VARIANT === "development"
 const IS_DEVDEVICE = process.env.APP_VARIANT === "development-device"
 
 const appVersion = coerce(major(packageJson.version) + "." + minor(packageJson.version))?.version
-const jsBuild = patch(packageJson.version)
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
 	...config,
@@ -46,10 +45,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
 
 	extra: {
 		eas: { projectId: extraJson.easProjectId },
-		pvinis: {
-			lang: extraJson.id,
-			jsbuild: jsBuild,
-		},
 	},
 
 	runtimeVersion: {

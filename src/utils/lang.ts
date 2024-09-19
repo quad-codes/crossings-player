@@ -1,5 +1,5 @@
 // import loc from "@/../languages/lang.json"
-import Constants from "expo-constants"
+import { lang } from "@@/extra"
 
 type Language = "el" | "he"
 
@@ -11,5 +11,5 @@ type Language = "el" | "he"
 // }
 
 export function getLID(): Language {
-	return (Constants.expoConfig?.extra?.pvinis?.lang ?? "el") as Language
+	return (lang ?? "el") as Language
 }
