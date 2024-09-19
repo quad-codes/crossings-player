@@ -10,26 +10,26 @@
 			"ios": { "image": "latest" },
 			"android": { "image": "latest" },
 			"autoIncrement": true,
+
 			"channel": "production"
 		},
 		"development": {
 			"extends": "production",
+
 			"developmentClient": true,
-			"env": {
-				"APP_VARIANT": "development"
-			},
-			"distribution": "internal",
 			"ios": { "simulator": true },
+			"env": { "APP_VARIANT": "development" },
+			"distribution": "internal",
+
 			"channel": "development"
 		},
 		"development-device": {
-			"extends": "production",
-			"developmentClient": true,
-			"env": {
-				"APP_VARIANT": "development-device"
-			},
-			"distribution": "internal",
-			"channel": "development"
+			"extends": "development",
+
+			"ios": { "simulator": false },
+			"env": { "APP_VARIANT": "development-device" },
+
+			"channel": "development-device"
 		}
 	},
 	"submit": {
