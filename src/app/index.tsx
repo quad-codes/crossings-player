@@ -83,7 +83,7 @@ export default function Index() {
 							className="mt-4"
 						/>
 						<GameButton
-							title="Σταυρόλεξοfaabbbbbb!!!!!--"
+							title="Σταυρόλεξοfbb!!!!!--++"
 							subtitle="Έρχεται σύντομα"
 							state={calendarData[selectedDate]?.crossword ?? "not-started"}
 							// onPress={() => router.push(`crossword/${selectedDate}`)}
