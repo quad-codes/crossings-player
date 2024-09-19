@@ -105,6 +105,17 @@ export default function Index() {
 						>
 							print
 						</Button>
+						<Button
+							onPress={async () => {
+								try {
+									await Updates.reloadAsync()
+								} catch (e) {
+									Sentry.captureException(e)
+								}
+							}}
+						>
+							install
+						</Button>
 					</View>
 				</View>
 			</CalendarProvider>
