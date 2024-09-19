@@ -1,0 +1,19 @@
+name: build:prod
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-prod:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Fetch all history including tags
+      - uses: jdx/mise-action@v2
+
+      - run: pnpm install
+
+      - run: pnpm run build:prod -p ios
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
