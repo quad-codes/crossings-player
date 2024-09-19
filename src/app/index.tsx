@@ -1,4 +1,5 @@
 import { selectedDateAtom } from "@/atoms/session"
+import * as Sentry from "@sentry/react-native"
 import { calendarDataAtom } from "@/atoms/storage"
 import { CountdownOrToday } from "@/components/CountdownOrToday"
 import { Button, GameButton, Screen, Text } from "@/design-system"
@@ -84,12 +85,26 @@ export default function Index() {
 							className="mt-4"
 						/>
 						<GameButton
-							name="Σταυρόλεξοfbb!!!!!--++"
+							name="ρόλεξfbb!!!!!--++"
 							subtitle="Έρχεται σύντομα"
 							state={calendarData[selectedDate]?.crossword ?? "not-started"}
 							// onPress={() => router.push(`crossword/${selectedDate}`)}
 							className="mt-4 opacity-30"
 						/>
+						<Button
+							onPress={async () => {
+								const l = await Updates.readLogEntriesAsync()
+								Sentry.captureMessage("Updates constants", {
+									extra: {
+										upd,
+										u: Updates,
+										l,
+									},
+								})
+							}}
+						>
+							print
+						</Button>
 					</View>
 				</View>
 			</CalendarProvider>

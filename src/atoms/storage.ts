@@ -18,8 +18,8 @@ export const scheduledDailyNotifAtom = atomWithStorage("scheduledDailyNotif", fa
 export const hangmanDataAtom = atomWithStorage<
 	Record<DateString, { state: GameState; guesses: string[] }>
 >("hangmanData", {
-	"2024-06-14": {
-		state: "done",
-		guesses: ["h", "e", "l", "o", "w", "r", "d"],
+	"2024-06-20": {
+		state: "in-progress",
+		guesses: ["Η", "Θ", "Ι"],
 	},
 })
