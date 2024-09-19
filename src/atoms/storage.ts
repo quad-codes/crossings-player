@@ -14,3 +14,12 @@ export const calendarDataAtom = atomWithStorage<
 })
 
 export const scheduledDailyNotifAtom = atomWithStorage("scheduledDailyNotif", false)
+
+export const hangmanDataAtom = atomWithStorage<
+	Record<DateString, { state: GameState; guesses: string[] }>
+>("hangmanData", {
+	"2024-06-14": {
+		state: "done",
+		guesses: ["h", "e", "l", "o", "w", "r", "d"],
+	},
+})

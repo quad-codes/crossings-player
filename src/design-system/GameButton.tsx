@@ -5,13 +5,14 @@ import { Text } from "./Text"
 import { cn } from "@/utils/twHelpers"
 
 interface GameProps extends ClassName {
-	title: string
+	name: string
 	subtitle?: string
+	streak?: number
 	state: GameState
 	onPress?: () => void
 }
 
-export function GameButton({ title, subtitle, state, onPress, className }: GameProps) {
+export function GameButton({ name, subtitle, streak, state, onPress, className }: GameProps) {
 	return (
 		<TouchableOpacity onPress={onPress}>
 			<View
@@ -34,8 +35,9 @@ export function GameButton({ title, subtitle, state, onPress, className }: GameP
 					size={32}
 					color="white"
 				/>
-				<Text className="ml-4 text-lg text-on-surface">{title}</Text>
+				<Text className="ml-4 text-lg text-on-surface">{name}</Text>
 				<Text className="ml-4 text-sm text-on-surface">{subtitle}</Text>
+				<Text className="ml-4 text-sm text-on-surface">Streak: {streak}</Text>
 			</View>
 		</TouchableOpacity>
 	)

@@ -77,13 +77,14 @@ export default function Index() {
 						<CountdownOrToday />
 
 						<GameButton
-							title="Κρεμάλα"
+							name="Κρεμάλα"
 							state={calendarData[selectedDate]?.hangman ?? "not-started"}
+							streak={3}
 							onPress={() => router.push(`hangman/${selectedDate}`)}
 							className="mt-4"
 						/>
 						<GameButton
-							title="Σταυρόλεξοfbb!!!!!--++"
+							name="Σταυρόλεξοfbb!!!!!--++"
 							subtitle="Έρχεται σύντομα"
 							state={calendarData[selectedDate]?.crossword ?? "not-started"}
 							// onPress={() => router.push(`crossword/${selectedDate}`)}
